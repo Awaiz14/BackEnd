@@ -1,23 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+    <style> 
+
+        body { 
+          margin: 0; 
+          padding: 0; /* Setting no margin or padding for any content in the body*/
+          background-color: maroon;
+        }
+        
+        .navbar {
+          background-color: blueviolet;
+          border-bottom: 4px solid black;
+          
+        }
+        
+        .navbar-nav .nav-link {
+        font-size: 18px;
+        color: white;
+        }
+        
+        form {
+          width: 400px;
+          margin-top: 20px;
+          margin-left: 20px;
+          background-color: orangered;
+          justify-content: center;
+          text-align: center;
+          border: solid 4px black;
+          border-radius: 6px;
+        }
+
+        select {
+          border: 2px solid black;
+          border-radius: 4px;
+          padding: 2px;
+          margin-bottom: 10px;
+          width: 350px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="date"] {
+          border: 2px solid black;
+          border-radius: 4px;
+          padding: 2px;
+          margin-bottom: 10px;
+          width: 350px;
+        }
+
+        input[type="submit"] {
+          padding: 8px 16px;
+          margin-bottom: 10px;
+          background-color: #4CAF50;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+    </style>
+        <body>
+        
+          <nav class="navbar navbar-expand-lg bg-maroon">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="index.html">St Alphonsus Primary School</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                  </li>
+        
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Classes
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">View Classes</a></li>
+                      <li><a class="dropdown-item" href="AddClass.html">Add a Class</a></li>
+                      <li><a class="dropdown-item" href="#">Remove a Class</a></li>
+                    </ul>
+                  </li>
+        
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Teachers
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">View Teachers</a></li>
+                      <li><a class="dropdown-item" href="AddTeacher.html">Add a Teacher</a></li>
+                      <li><a class="dropdown-item" href="#">Remove a Teacher</a></li>
+                    </ul>
+                  </li>
+        
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Pupils
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">View Pupils</a></li>
+                      <li><a class="dropdown-item" href="AddPupil.html">Add a Pupil</a></li>
+                      <li><a class="dropdown-item" href="#">Remove a Pupil</a></li>
+                    </ul>
+                  </li>
+        
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Parents
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">View Parents</a></li>
+                      <li><a class="dropdown-item" href="AddParent.html">Add a Parent</a></li>
+                      <li><a class="dropdown-item" href="#">Remove a Parent</a></li>
+                    </ul>
+                  </li>
+        
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Dropdown link
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
 
     <form action="AddClass.php" method="post">
-        <label for="className">Class Name:</label><br>
-        <input type="text" id="className" name="className"><br>
-        <label for="teacherID">TeacherID:</label><br>
-        <input type="text" id="teacherID" name="teacherID"><br>
+        <label for="id">Class Name:</label><br>
+        <select name="className" id="className" required>
+          <option value=""disabled selected>Select a class</option>
+          <option value="Reception">Reception</option>
+          <option value="Year1">Year1</option>
+          <option value="Year2">Year2</option>
+          <option value="Year3">Year3</option>
+          <option value="Year4">Year4</option>
+          <option value="Year5">Year5</option>
+          <option value="Year6">Year6</option>
+        </select> <br>
+        <label for="id">TeacherID:</label><br>
+        <select name="teacherID" id="teacherID" required>
+          <option value=""disabled selected>Select a teacher</option>
+          <option value="T001">T001</option>
+          <option value="T002">T002</option>
+          <option value="T003">T003</option>
+          <option value="T004">T004</option>
+          <option value="T005">T005</option>
+          <option value="T006">T006</option>
+          <option value="T007">T007</option>
+        </select> <br>
         <label for="Capacity">Class Capacity:</label><br>
-        <input type="text" id="classCapacity" name="classCapacity"><br><br>
+        <input type="number" id="classCapacity" name="classCapacity" placeholder="Enter a number" required><br><br>
         <input type="submit" value="Submit">
       </form> 
       
       <p>If you click the "Submit" button, the form-data will be sent to a page called "AddClass.php".</p>
-    
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>  
 </body>
 </html>
