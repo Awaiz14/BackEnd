@@ -22,19 +22,27 @@ $teacherPhone = $_POST['teacherPhone'];
 $teacherAddress = $_POST['teacherAddress'];
 $annualSalary = $_POST['annualSalary'];
 
+//error variable
+$error = false;
+
 // Validate name
 if (!preg_match("/^[A-Za-z]+$/", $teacherName)) {
     echo "Error: First name should only contain letters.<br>";
+    $error = true;
  }
  // Validate surname
  if (!preg_match("/^[A-Za-z]+$/", $teacherSurname)) {
     echo "Error: Last name should only contain letters.<br>";
+    $error = true;
  }
  // Validate annual salary
  if (!preg_match("/^£\d+$/", $annualSalary)) {
     echo "Error: Annual salary should start with £ and be followed by digits.<br>";
+    $error = true;
+ }
+
+ if ($error) {
     echo '<button onclick="history.go(-1)">Go Back</button>';
- exit;
  }
  
  else{
