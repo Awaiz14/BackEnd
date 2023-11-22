@@ -21,6 +21,7 @@ $studentSurname = $_POST['studentSurname'];
  
     if ($conn->query($sql) === TRUE) {
         echo "Data inserted successfully";
+        echo '<a href="AddPupil.html"><button>Go Back</button></a>';
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

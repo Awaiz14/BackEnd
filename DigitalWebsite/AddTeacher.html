@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
     <style> 
 
         body { 
           margin: 0; 
           padding: 0; /* Setting no margin or padding for any content in the body*/
-          background-color: red;
+          background-color: blue;
         }
         
         .navbar {
@@ -23,7 +23,49 @@
         .navbar-nav .nav-link {
         font-size: 18px;
         }
-        </style>
+        
+        form {
+          width: 400px;
+          margin-top: 20px;
+          margin-left: 20px;
+          background-color: orangered;
+          justify-content: center;
+          text-align: center;
+          border: solid 4px black;
+          border-radius: 6px;
+        }
+
+        select {
+          border: 2px solid black;
+          border-radius: 4px;
+          padding: 2px;
+          margin-bottom: 10px;
+          width: 350px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="date"] {
+          border: 2px solid black;
+          border-radius: 4px;
+          padding: 2px;
+          margin-bottom: 10px;
+          width: 350px;
+        }
+
+        input[type="submit"] {
+          padding: 8px 16px;
+          margin-bottom: 10px;
+          background-color: #4CAF50;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+    </style>
         <body>
         
           <nav class="navbar navbar-expand-lg bg-maroon">
@@ -97,16 +139,36 @@
             </div>
           </nav>
 
-    <form action="AddPupil.php" method="post">
+    <form action="AddTeacher.php" method="post">
+        <label for="id">TeacherID:</label><br>
+        <select name="teacherID" id="teacherID">
+          <option value="T001">T001</option>
+          <option value="T002">T002</option>
+          <option value="T003">T003</option>
+          <option value="T004">T004</option>
+          <option value="T005">T005</option>
+          <option value="T006">T006</option>
+          <option value="T007">T007</option>
+        </select> <br>
         <label for="fname">First name:</label><br>
-        <input type="text" id="studentName" name="studentName"><br>
+        <input type="text" id="teacherName" name="teacherName" placeholder="e.g. John" required><br>
         <label for="lname">Last name:</label><br>
-        <input type="text" id="studentSurname" name="studentSurname"><br><br>
+        <input type="text" id="teacherSurname" name="teacherSurname" placeholder="e.g. Smith" required><br>
+        <label for="dob">Date Of Birth:</label><br>
+        <input type="date" id="teacherDOB" name="teacherDOB" max="2023-01-01"><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="teacherEmail" name="teacherEmail" placeholder="e.g. example@outlook.com" required><br>
+        <label for="phone">Phone number:</label><br>
+        <input type="tel" id="teacherPhone" name="teacherPhone" placeholder="e.g. 07826482714" required><br>
+        <label for="address">Address:</label><br>
+        <input type="text" id="teacherAddress" name="teacherAddress" placeholder="House number street, city, country, postcode" required><br>
+        <label for="salary">Annual Salary:</label><br>
+        <input type="text" id="annualSalary" name="annualSalary" placeholder="£ Enter salary in pounds" required><br><br>
         <input type="submit" value="Submit">
-      </form> 
-      
-      <p>If you click the "Submit" button, the form-data will be sent to a page called "/index.php".</p>
-   
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>      
+      </form>
+     
+      <p>If you click the "Submit" button, the form-data will be sent to a page called "AddTeacher.php".</p>
+  
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
