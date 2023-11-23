@@ -108,7 +108,7 @@
                       Students
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">View Students</a></li>
+                      <li><a class="dropdown-item" href="ViewStudentHTML.php">View Students</a></li>
                       <li><a class="dropdown-item" href="AddStudent.html">Add a Student</a></li>
                       <li><a class="dropdown-item" href="#">Remove a Student</a></li>
                     </ul>
@@ -143,6 +143,7 @@
     <form action="AddTeacher.php" method="post">
         <label for="id">TeacherID:</label><br>
         <select name="teacherID" id="teacherID">
+          <option value=""disabled selected>Select</option>
           <option value="T001">T001</option>
           <option value="T002">T002</option>
           <option value="T003">T003</option>
@@ -153,6 +154,7 @@
         </select> <br>
         <label for="title">Title:</label><br>
         <select name="teacherTitle" id="teacherTitle">
+          <option value=""disabled selected>Select</option>
           <option value="Mr">Mr</option>
           <option value="Mrs">Mrs</option>
           <option value="Miss">Miss</option>

@@ -109,7 +109,7 @@
                       Students
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">View Students</a></li>
+                      <li><a class="dropdown-item" href="ViewStudentHTML.php">View Students</a></li>
                       <li><a class="dropdown-item" href="AddStudent.html">Add a Student</a></li>
                       <li><a class="dropdown-item" href="#">Remove a Student</a></li>
                     </ul>
@@ -143,7 +143,7 @@
 
     <form action="AddStudent.php" method="post">
       <label for="id">StudentID:</label><br>
-      <input type="text" id="studentID" name="studentID" placeholder="e.g. S001" required><br>
+      <input type="text" id="studentID" name="studentID" maxlength="4" placeholder="e.g. S001" required><br>
       <label for="fname">First name:</label><br>
       <input type="text" id="studentName" name="studentName" placeholder="e.g. John" required><br>
       <label for="lname">Last name:</label><br>

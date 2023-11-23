@@ -1,52 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome!</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@1,700&family=Sail&display=swap" rel="stylesheet">
-  </head>
+<title>View Teachers</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
 
 <style> 
 
-body { 
-  margin: 0; 
-  padding: 0; /* Setting no margin or padding for any content in the body*/
-  background-image: url(schoolbg.jpg); /* Adding image as background */
-  background-repeat: no-repeat; 
-  background-attachment: fixed; /* Keeps image in place so does not move when scrolling */
-  background-size: cover; /* Allows image to cover full page */
-  background-position: center;
-}
+        body { 
+          margin: 0; 
+          padding: 0; /* Setting no margin or padding for any content in the body*/
+          background-color: pink;
+        }
+        
+        .navbar {
+          background-color: blueviolet;
+          border-bottom: 4px solid black;
+          
+        }
+        
+        .navbar-nav .nav-link {
+          font-size: 18px;
+          color: white;
+        }
 
-h1 {
-    color: yellow; /* Sets colour */
-    font-size: 70px; /* Sets text size */
-    font-family: 'Sail', sans-serif; /* Sets the font */
-    font-weight:100; /* Sets the boldness */
-    text-shadow: 2px 2px 8px black; /* Adds shadow behind text making it more visible on background */
-    background-color: rgba(0,0,0,0.5);
-    text-align: center; /* Sets text to show in center of page */ 
-    margin-top: 46.900px; /* Added due to bootstrap as it takes away default margins */
-    margin-bottom: 46.900px; /* Added due to bootstrap as it takes away default margins */}
+        h1 {
+          margin-left: 20px;
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
 
-.navbar {
-  background-color: blueviolet;
-  border-bottom: 4px solid black;
-  
-}
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
 
-.navbar-nav .nav-link {
-font-size: 18px;
-color: white;
-}
+        th, td {
+          padding: 6px;
+          color: white;
+          text-align: center;
+          border-bottom: 1px solid #ddd;
+        }
+
+        th {
+          background-color: maroon;
+        }
+
+        tr {
+          background-color: grey;
+        }
+        tr:hover {
+          background-color: blue; 
+        }
+
 </style>
+
 <body>
 
-  <nav class="navbar navbar-expand-lg bg-maroon">
+<nav class="navbar navbar-expand-lg bg-maroon">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.html">St Alphonsus Primary School</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,7 +66,7 @@ color: white;
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+            <a class="nav-link" href="index.html">Home</a>
           </li>
 
           <li class="nav-item dropdown">
@@ -81,7 +92,7 @@ color: white;
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Students
             </a>
             <ul class="dropdown-menu">
@@ -117,9 +128,25 @@ color: white;
     </div>
   </nav>
 
-    <h1> Welcome to St Alphonsus Primary School </h1>
+<h1>Students</h1>
+<table>
+<tr>
+<th>studentID</th>
+<th>studentName</th>
+<th>studentSurname</th>
+<th>studentDOB</th>
+<th>studentEmail</th>
+<th>studentAddress</th>
+<th>className</th>
+<th>teacherID</th>
+<th>parent1ID</th>
+<th>parent2ID</th>
+<th>medicalInfo</th>
+</tr>
+<!-- PHP code to retrieve and display teachers' information -->
+<?php include 'ViewStudent.php';?>
 
-    
+</table>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
