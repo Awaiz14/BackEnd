@@ -10,7 +10,7 @@
         body { 
           margin: 0; 
           padding: 0; /* Setting no margin or padding for any content in the body*/
-          background-color: blue;
+          background-color: yellow;
         }
         
         .navbar {
@@ -70,7 +70,7 @@
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Classes
             </a>
             <ul class="dropdown-menu">
@@ -81,7 +81,7 @@
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Teachers
             </a>
             <ul class="dropdown-menu">
@@ -128,24 +128,17 @@
     </div>
   </nav>
 
-<h1>Teachers</h1>
+<h1>Classes</h1>
 <table>
 <tr>
+<th>className</th>
 <th>teacherID</th>
-<th>teacherTitle</th>
-<th>teacherName</th>
-<th>teacherSurname</th>
-<th>teacherDOB</th>
-<th>teacherEmail</th>
-<th>teacherPhone</th>
-<th>teacherAddress</th>
-<th>annualSalary</th>
+<th>classCapacity</th>
 </tr>
 <!-- PHP code to retrieve and display teachers' information -->
-<?php include 'ViewTeachers.php';?>
+<?php include 'ViewClass.php';?>
 
 </table>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
-

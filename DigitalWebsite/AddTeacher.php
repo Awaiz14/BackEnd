@@ -14,6 +14,7 @@ if ($conn->connect_error) {
 }
 // Get form data
 $teacherID = $_POST['teacherID'];
+$teacherTitle = $_POST['teacherTitle'];
 $teacherName = $_POST['teacherName'];
 $teacherSurname = $_POST['teacherSurname'];
 $teacherDOB = $_POST['teacherDOB'];
@@ -47,8 +48,8 @@ if (!preg_match("/^[A-Za-z]+$/", $teacherName)) {
  
  else{
     // Insert data into the "pupils" table
-    $sql = "INSERT INTO teachers (teacherID, teacherName, teacherSurname, teacherDOB, teacherEmail, teacherPhone, teacherAddress, annualSalary) 
-    VALUES ('$teacherID', '$teacherName', '$teacherSurname', '$teacherDOB', '$teacherEmail', '$teacherPhone', '$teacherAddress', '$annualSalary')";
+    $sql = "INSERT INTO teachers (teacherID, teacherTitle, teacherName, teacherSurname, teacherDOB, teacherEmail, teacherPhone, teacherAddress, annualSalary) 
+    VALUES ('$teacherID', '$teacherTitle', '$teacherName', '$teacherSurname', '$teacherDOB', '$teacherEmail', '$teacherPhone', '$teacherAddress', '$annualSalary')";
  
     if ($conn->query($sql) === TRUE) {
         echo "Data inserted successfully<br>";
