@@ -30,7 +30,7 @@ $medicalInfo = $_POST['medicalInfo'];
     VALUES ('$studentID', '$studentName', '$studentSurname', '$studentDOB', '$studentEmail', '$studentAddress', '$className', '$teacherID', '$parent1ID', '$parent2ID', '$medicalInfo')";
  
     if ($conn->query($sql) === TRUE) {
-        echo "Data inserted successfully";
+        echo "Data inserted successfully<br>";
         echo '<a href="AddStudent.html"><button>Go Back</button></a>';
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;

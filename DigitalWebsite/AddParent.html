@@ -119,7 +119,7 @@
                       Parents
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">View Parents</a></li>
+                      <li><a class="dropdown-item" href="ViewParentHTML.php">View Parents</a></li>
                       <li><a class="dropdown-item" href="AddParent.html">Add a Parent</a></li>
                       <li><a class="dropdown-item" href="#">Remove a Parent</a></li>
                     </ul>
@@ -142,7 +142,7 @@
 
     <form action="AddParent.php" method="post">
         <label for="id">ParentID:</label><br>
-        <input type="text" id="parentID" name="parentID" placeholder="e.g. P001" required><br>
+        <input type="text" id="parentID" name="parentID" maxlength="4" placeholder="e.g. P001" required><br>
         <label for="fname">First name:</label><br>
         <input type="text" id="parentName" name="parentName" placeholder="e.g. John" required><br>
         <label for="lname">Last name:</label><br>

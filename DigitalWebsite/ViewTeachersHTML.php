@@ -107,7 +107,7 @@
               Parents
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">View Parents</a></li>
+              <li><a class="dropdown-item" href="ViewParentHTML.php">View Parents</a></li>
               <li><a class="dropdown-item" href="AddParent.html">Add a Parent</a></li>
               <li><a class="dropdown-item" href="#">Remove a Parent</a></li>
             </ul>
