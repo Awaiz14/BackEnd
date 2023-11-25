@@ -1,147 +1,156 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>View Teachers</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
+<!DOCTYPE html> <!-- Specify the document is written in HTML -->
+<html lang="en"> <!-- indicates start of HTML document and the language of it (english) -->
+  <head> <!-- Head section provides non-visible information, metadata and resource links -->
+    <meta charset="UTF-8"> <!-- Specify metadata such as character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>View Parent!</title> <!-- Set the title of the page which is shown in the browser tabs -->
+    <!-- Links elements to link external resources (Bootstrap) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
 
-<style> 
+  <!-- MY OWN CODE -->
+  <style> 
+    body { /* Styling the main body */
+      margin: 0; 
+      padding: 0; /* Setting no margin or padding for any content in the body*/
+      background-color: darkgreen;
+    }
+      
+    .navbar {
+    background-color: blueviolet; /* Adds background colour to bootstrap nav bar */
+    border-bottom: 4px solid black; /* Adds a bottom border to bootstrap nav bar */
+    }
 
-        body { 
-          margin: 0; 
-          padding: 0; /* Setting no margin or padding for any content in the body*/
-          background-color: darkgreen;
-        }
-        
-        .navbar {
-          background-color: blueviolet;
-          border-bottom: 4px solid black;
-          
-        }
-        
-        .navbar-nav .nav-link {
-          font-size: 18px;
-          color: white;
-        }
+    .navbar-nav .nav-link {
+      font-size: 18px; /* Changes size of navbar link text */
+      color: white; /* Changes colour of navbar link text */
+    }
 
-        h1 {
-          margin-left: 20px;
-          margin-top: 20px;
-          margin-bottom: 20px;
-        }
+    h1 { /* Styles the heading on the page */
+      margin-left: 20px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
 
-        table {
-          border-collapse: collapse;
-          width: 100%;
-        }
+    table { /* Styles the table on the page */
+      border-collapse: collapse;
+      width: 100%; /* Makes table width of page */
+    }
 
-        th, td {
-          padding: 6px;
-          color: white;
-          text-align: center;
-          border-bottom: 1px solid #ddd;
-        }
+    th, td { /* Stands for table header & table data */
+      padding: 6px;
+      color: white; /* Styles the colour of header and data texts in the table */
+      text-align: center; /* Centers the texts in their boxes */
+    }
 
-        th {
-          background-color: maroon;
-        }
+    th { /* Styles table header alone */
+      background-color: maroon; /* Adds background colour for header */
+    }
 
-        tr {
-          background-color: grey;
-        }
-        tr:hover {
-          background-color: blue; 
-        }
+    tr { /* Styles table rows */
+      background-color: grey; /* background colour of table rows */
+      border-bottom: 1px solid white; /* Adds a border below each row */
+    }
 
-</style>
+    tr:hover { /* Styles the hover over table rows */
+      background-color: blue; 
+    }
 
-<body>
+    /* END OF MY OWN CODE */
+  </style>
 
-<nav class="navbar navbar-expand-lg bg-maroon">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">St Alphonsus Primary School</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-maroon">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">St Alphonsus Primary School</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Classes
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="ViewClassHTML.php">View Classes</a></li>
-              <li><a class="dropdown-item" href="AddClass.html">Add a Class</a></li>
-              <li><a class="dropdown-item" href="#">Remove a Class</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Classes
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="ViewClassHTML.php">View Classes</a></li>
+                  <li><a class="dropdown-item" href="AddClass.html">Add a Class</a></li>
+                  <li><a class="dropdown-item" href="#">Remove a Class</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Teachers
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="ViewTeachersHTML.php">View Teachers</a></li>
+                  <li><a class="dropdown-item" href="AddTeacher.html">Add a Teacher</a></li>
+                  <li><a class="dropdown-item" href="#">Remove a Teacher</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Students
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="ViewStudentHTML.php">View Students</a></li>
+                  <li><a class="dropdown-item" href="AddStudent.html">Add a Student</a></li>
+                  <li><a class="dropdown-item" href="#">Remove a Student</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Parents
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="ViewParentHTML.php">View Parents</a></li>
+                  <li><a class="dropdown-item" href="AddParent.html">Add a Parent</a></li>
+                  <li><a class="dropdown-item" href="#">Remove a Parent</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown link
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
             </ul>
-          </li>
+          </div>
+        </div>
+      </nav>
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Teachers
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="ViewTeachersHTML.php">View Teachers</a></li>
-              <li><a class="dropdown-item" href="AddTeacher.html">Add a Teacher</a></li>
-              <li><a class="dropdown-item" href="#">Remove a Teacher</a></li>
-            </ul>
-          </li>
+      <!-- MY OWN CODE -->
+      <h1>Parents</h1>
+      
+      <table> <!-- Creates table on webpage -->
+        <tr>  <!-- Defines the table row and groups headers and data -->
+        <th>parentID</th> <!-- Table header for each column -->
+        <th>parentName</th>
+        <th>parentSurname</th>
+        <th>parentEmail</th>
+        <th>parentPhone</th>
+        <th>parentAddress</th>
+        </tr>
+        <!-- PHP code that needs to be executed to retrieve and display information required -->
+        <?php include 'ViewParent.php';?>
+      </table>
+      
+      <!-- END OF MY OWN CODE -->
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Students
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="ViewStudentHTML.php">View Students</a></li>
-              <li><a class="dropdown-item" href="AddStudent.html">Add a Student</a></li>
-              <li><a class="dropdown-item" href="#">Remove a Student</a></li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Parents
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="ViewParentHTML.php">View Parents</a></li>
-              <li><a class="dropdown-item" href="AddParent.html">Add a Parent</a></li>
-              <li><a class="dropdown-item" href="#">Remove a Parent</a></li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown link
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-<h1>Parents</h1>
-<table>
-<tr>
-<th>parentID</th>
-<th>parentName</th>
-<th>parentSurname</th>
-<th>parentEmail</th>
-<th>parentPhone</th>
-<th>parentAddress</th>
-</tr>
-<!-- PHP code to retrieve and display teachers' information -->
-<?php include 'ViewParent.php';?>
-
-</table>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</body>
+      <!-- JS cdn link for bootstrap elements to work -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    </body>
 </html>

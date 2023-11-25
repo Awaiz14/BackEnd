@@ -1,73 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document</title>
+<!DOCTYPE html> <!-- Specify the document is written in HTML -->
+ <html lang="en"> <!-- indicates start of HTML document and the language of it (english) -->
+    <head> <!-- Head section provides non-visible information, metadata and resource links -->
+      <meta charset="UTF-8"> <!-- Specify metadata such as character encoding -->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+      <title>Add a Teacher!</title> <!-- Set the title of the page which is shown in the browser tabs -->
+      <!-- Links elements to link external resources (Bootstrap) -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  </head>
+    </head>
+
+    <!-- MY OWN CODE -->
     <style> 
-
-        body { 
-          margin: 0; 
-          padding: 0; /* Setting no margin or padding for any content in the body*/
-          background-color: blue;
-        }
+      body { /* Styling the main body */
+        margin: 0; 
+        padding: 0; /* Setting no margin or padding for any content in the body*/
+        background-color: blue;
+      }
         
-        .navbar {
-          background-color: blueviolet;
-          border-bottom: 4px solid black;
-          
-        }
+      .navbar {
+      background-color: blueviolet; /* Adds background colour to bootstrap nav bar */
+      border-bottom: 4px solid black; /* Adds a bottom border to bootstrap nav bar */
+      }
+
+      .navbar-nav .nav-link {
+        font-size: 18px; /* Changes size of navbar link text */
+        color: white; /* Changes colour of navbar link text */
+      }
         
-        .navbar-nav .nav-link {
-        font-size: 18px;
-        color: white;
-        }
-        
-        form {
-          width: 400px;
-          margin-top: 20px;
-          margin-left: 20px;
-          background-color: orangered;
-          justify-content: center;
-          text-align: center;
-          border: solid 4px black;
-          border-radius: 6px;
-        }
+      form {
+        width: 400px; /* Changes size of the html form */
+        margin-top: 20px; /* Adds spacing on top */
+        margin-left: 20px; /* Adds spacing on left */
+        background-color: orangered; /* Changes background colour of form */
+        justify-content: center; /* Centers all the content in form */
+        text-align: center; /* Centers all the text in form */
+        border: solid 4px black; /* Adds border to form */
+        border-radius: 6px;
+      }
 
-        select {
-          border: 2px solid black;
-          border-radius: 4px;
-          padding: 2px;
-          margin-bottom: 10px;
-          width: 350px;
-        }
+      select { /* Styles the input boxes which are select options */
+        border: 2px solid black;
+        border-radius: 4px;
+        padding: 2px;
+        margin-bottom: 10px;
+        width: 350px; /* Size of the option box */
+      }
 
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        input[type="number"],
-        input[type="date"] {
-          border: 2px solid black;
-          border-radius: 4px;
-          padding: 2px;
-          margin-bottom: 10px;
-          width: 350px;
-        }
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="number"],
+      input[type="date"] { /* Styles the the different input boxes based on input type*/
+        border: 2px solid black;
+        border-radius: 4px;
+        padding: 2px;
+        margin-bottom: 10px; /* Adds space below each input box */
+        width: 350px; /* Size of the input boxes */
+      }
 
-        input[type="submit"] {
-          padding: 8px 16px;
-          margin-bottom: 10px;
-          background-color: #4CAF50;
-          color: white;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-        }
+      input[type="submit"] { /* Styles the submit button */
+        padding: 8px 16px;
+        margin-bottom: 10px;
+        background-color: #4CAF50; /* Colour of submit button */
+        color: white; /* Colour of submit buttons text */
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
 
+      /* END OF MY OWN CODE */
     </style>
-        <body>
+
+    <body>
         
           <nav class="navbar navbar-expand-lg bg-maroon">
             <div class="container-fluid">
@@ -140,10 +143,12 @@
             </div>
           </nav>
 
-    <form action="AddTeacher.php" method="post">
-        <label for="id">TeacherID:</label><br>
+    <!-- MY OWN CODE  -->
+    <form action="AddTeacher.php" method="post"> <!-- Creates a HTML form and links to php -->
+
+        <label for="id">TeacherID:</label><br> <!-- form option as a select option dropdown -->
         <select name="teacherID" id="teacherID">
-          <option value=""disabled selected>Select</option>
+          <option value=""disabled selected>Select</option> <!-- Acts like a placeholder default option non-selectable -->
           <option value="T001">T001</option>
           <option value="T002">T002</option>
           <option value="T003">T003</option>
@@ -152,32 +157,45 @@
           <option value="T006">T006</option>
           <option value="T007">T007</option>
         </select> <br>
-        <label for="title">Title:</label><br>
+
+        <label for="title">Title:</label><br> <!-- form option as a select option dropdown -->
         <select name="teacherTitle" id="teacherTitle">
-          <option value=""disabled selected>Select</option>
+          <option value=""disabled selected>Select</option> <!-- Acts like a placeholder default option non-selectable -->
           <option value="Mr">Mr</option>
           <option value="Mrs">Mrs</option>
           <option value="Miss">Miss</option>
         </select> <br>
-        <label for="fname">First name:</label><br>
+
+        <label for="fname">First name:</label><br> <!-- form option copy/pasted for as many needed -->
         <input type="text" id="teacherName" name="teacherName" placeholder="e.g. John" required><br>
-        <label for="lname">Last name:</label><br>
+
+        <label for="lname">Last name:</label><br> <!-- form option copy/pasted for as many needed -->
         <input type="text" id="teacherSurname" name="teacherSurname" placeholder="e.g. Smith" required><br>
-        <label for="dob">Date Of Birth:</label><br>
+
+        <label for="dob">Date Of Birth:</label><br><!-- form option copy/pasted for as many needed -->
         <input type="date" id="teacherDOB" name="teacherDOB" max="2023-01-01"><br>
-        <label for="email">Email:</label><br>
+
+        <label for="email">Email:</label><br> <!-- form option copy/pasted for as many needed -->
         <input type="email" id="teacherEmail" name="teacherEmail" placeholder="e.g. example@outlook.com" required><br>
-        <label for="phone">Phone number:</label><br>
+
+        <label for="phone">Phone number:</label><br> <!-- form option copy/pasted for as many needed -->
         <input type="tel" id="teacherPhone" name="teacherPhone" placeholder="e.g. 07826482714" required><br>
-        <label for="address">Address:</label><br>
+
+        <label for="address">Address:</label><br> <!-- form option copy/pasted for as many needed -->
         <input type="text" id="teacherAddress" name="teacherAddress" placeholder="House number street, city, country, postcode" required><br>
-        <label for="salary">Annual Salary:</label><br>
+
+        <label for="salary">Annual Salary:</label><br> <!-- form option copy/pasted for as many needed -->
         <input type="text" id="annualSalary" name="annualSalary" placeholder="£ Enter salary in pounds" required><br><br>
-        <input type="submit" value="Submit">
+
+        <input type="submit" value="Submit"> <!-- Submit button -->
       </form>
      
       <p>If you click the "Submit" button, the form-data will be sent to a page called "AddTeacher.php".</p>
+
+      <!-- END OF MY OWN CODE -->
   
+      <!-- JS cdn link for bootstrap elements to work -->  
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</body>
+    
+    </body>
 </html>
