@@ -24,9 +24,10 @@ $result = mysqli_query($conn, $query);
 if (mysqli_num_rows($result) > 0) {
    echo "The teacher is already assigned to another class<br>";
    echo '<button onclick="history.go(-1)">Go Back</button>';
-   // You can also redirect the user back to the form or display an error message
-   
-} else {
+   // You can also redirect the user back to the form or display an error message 
+} 
+
+else {
  
     // Insert data into the "pupils" table
     $sql = "INSERT INTO classes (className, teacherID, classCapacity) VALUES ('$className', '$teacherID', '$classCapacity')";

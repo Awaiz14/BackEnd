@@ -3,12 +3,9 @@
     <head> <!-- Head section provides non-visible information, metadata and resource links -->
       <meta charset="UTF-8"> <!-- Specify metadata such as character encoding -->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-      <title>Welcome!</title> <!-- Set the title of the page which is shown in the browser tabs -->
-      <!-- Links elements to link external resources starting with Bootstrap, CSS and Google fonts -->
+      <title>Add a Teacher Assistant!</title> <!-- Set the title of the page which is shown in the browser tabs -->
+      <!-- Links elements to link external resources (Bootstrap) -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@1,700&family=Sail&display=swap" rel="stylesheet">
     </head>
 
     <!-- MY OWN CODE -->
@@ -16,35 +13,60 @@
       body { /* Styling the main body */
         margin: 0; 
         padding: 0; /* Setting no margin or padding for any content in the body*/
-        background-image: url(schoolbg.jpg); /* Adding image as background */
-        background-repeat: no-repeat; 
-        background-attachment: fixed; /* Keeps image in place so does not move when scrolling */
-        background-size: cover; /* Allows image to cover full page */
-        background-position: center;
+        background-color: lightseagreen;
       }
-
-      h1 {
-        color: yellow; /* Sets colour of heading */
-        font-size: 70px; /* Sets text size of heading */
-        font-family: 'Sail', sans-serif; /* Sets the font */
-        font-weight:100; /* Sets the boldness */
-        text-shadow: 2px 2px 8px black; /* Adds shadow behind text making it more visible on background */
-        background-color: rgba(0,0,0,0.5); /* Adds background colour to text */
-        text-align: center; /* Sets text to show in center of page */ 
-        margin-top: 46.900px; /* Added due to bootstrap as it takes away default margins */
-        margin-bottom: 46.900px; /* Added due to bootstrap as it takes away default margins */
-      }
-
+        
       .navbar {
-        background-color: blueviolet; /* Adds background colour to bootstrap nav bar */
-        border-bottom: 4px solid black; /* Adds a bottom border to bootstrap nav bar */
+      background-color: blueviolet; /* Adds background colour to bootstrap nav bar */
+      border-bottom: 4px solid black; /* Adds a bottom border to bootstrap nav bar */
       }
 
       .navbar-nav .nav-link {
         font-size: 18px; /* Changes size of navbar link text */
         color: white; /* Changes colour of navbar link text */
       }
-    
+        
+      form {
+        width: 400px; /* Changes size of the html form */
+        margin-top: 20px; /* Adds spacing on top */
+        margin-left: 20px; /* Adds spacing on left */
+        background-color: orangered; /* Changes background colour of form */
+        justify-content: center; /* Centers all the content in form */
+        text-align: center; /* Centers all the text in form */
+        border: solid 4px black; /* Adds border to form */
+        border-radius: 6px;
+      }
+
+      select { /* Styles the input boxes which are select options */
+        border: 2px solid black;
+        border-radius: 4px;
+        padding: 2px;
+        margin-bottom: 10px;
+        width: 350px; /* Size of the option box */
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="number"],
+      input[type="date"] { /* Styles the the different input boxes based on input type*/
+        border: 2px solid black;
+        border-radius: 4px;
+        padding: 2px;
+        margin-bottom: 10px; /* Adds space below each input box */
+        width: 350px; /* Size of the input boxes */
+      }
+
+      input[type="submit"] { /* Styles the submit button */
+        padding: 8px 16px;
+        margin-bottom: 10px;
+        background-color: #4CAF50; /* Colour of submit button */
+        color: white; /* Colour of submit buttons text */
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
       /* END OF MY OWN CODE */
     </style>
 
@@ -60,7 +82,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.html">Home</a> <!-- Has home page link in navbar with it being active while on page -->
+                <a class="nav-link" href="index.html">Home</a> <!-- Has home page link in navbar with it being active while on page -->
               </li>
 
               <li class="nav-item dropdown">
@@ -108,12 +130,12 @@
               </li>
 
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Teacher Assistants
                 </a>
                 <ul class="dropdown-menu"> <!-- Added Teacher assistants link as dropdown options -->
                   <li><a class="dropdown-item" href="#">View Teacher Assistants</a></li>
-                  <li><a class="dropdown-item" href="AddTeacherAssistant.html">Add Teacher Assistants</a></li>
+                  <li><a class="dropdown-item" href="AddTeacherassistant.html">Add Teacher Assistants</a></li>
                   <li><a class="dropdown-item" href="#">Remove Teacher Assistants</a></li>
                 </ul>
               </li>
@@ -124,7 +146,7 @@
                 </a>
                 <ul class="dropdown-menu"> <!-- Added Attendance link as dropdown options -->
                   <li><a class="dropdown-item" href="#">View Attendance</a></li>
-                  <li><a class="dropdown-item" href="TakeAttendance.html">Take Attendance</a></li>
+                  <li><a class="dropdown-item" href="#">Take Attendance</a></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </li>
@@ -144,7 +166,61 @@
         </div>
       </nav>
 
-      <h1> Welcome to St Alphonsus Primary School </h1> <!-- Added heading on page -->
+      <!-- MY OWN CODE  -->
+      <form action="AddTeacherassistant.php" method="post"> <!-- Creates a HTML form and links to php -->
+
+        <label for="id">AssistantID:</label><br> <!-- form option as a select option dropdown -->
+        <select name="assistantID" id="assistantID" required>
+          <option value=""disabled selected>Select</option> <!-- Acts like a placeholder default option non-selectable -->
+          <option value="TA001">TA001</option>
+          <option value="TA002">TA002</option>
+          <option value="TA003">TA003</option>
+          <option value="TA004">TA004</option>
+          <option value="TA005">TA005</option>
+          <option value="TA006">TA006</option>
+          <option value="TA007">TA007</option>
+        </select> <br>
+
+        <label for="title">Title:</label><br> <!-- form option as a select option dropdown -->
+        <select name="assistantTitle" id="assistantTitle" required>
+          <option value=""disabled selected>Select</option> <!-- Acts like a placeholder default option non-selectable -->
+          <option value="Mr">Mr</option>
+          <option value="Mrs">Mrs</option>
+          <option value="Miss">Miss</option>
+        </select> <br>
+
+        <label for="fname">First name:</label><br> <!-- form option copy/pasted for as many needed -->
+        <input type="text" id="assistantName" name="assistantName" placeholder="e.g. John" required><br>
+
+        <label for="lname">Last name:</label><br> <!-- form option copy/pasted for as many needed -->
+        <input type="text" id="assistantSurname" name="assistantSurname" placeholder="e.g. Smith" required><br>
+
+        <label for="dob">Date Of Birth:</label><br><!-- form option copy/pasted for as many needed -->
+        <input type="date" id="assistantDOB" name="assistantDOB" max="2023-01-01"><br>
+
+        <label for="email">Email:</label><br> <!-- form option copy/pasted for as many needed -->
+        <input type="email" id="assistantEmail" name="assistantEmail" placeholder="e.g. example@outlook.com" required><br>
+
+        <label for="phone">Phone number:</label><br> <!-- form option copy/pasted for as many needed -->
+        <input type="tel" id="assistantPhone" name="assistantPhone" placeholder="e.g. 07826482714" required><br>
+
+        <label for="address">Address:</label><br> <!-- form option copy/pasted for as many needed -->
+        <input type="text" id="assistantAddress" name="assistantAddress" placeholder="House number street, city, country, postcode" required><br>
+
+        <label for="id">TeacherID:</label><br> <!-- form option as a select option dropdown -->
+        <select name="teacherID" id="teacherID" required>
+          <option value=""disabled selected>Select</option> <!-- Acts like a placeholder default option non-selectable -->
+          <option value="T001">T001</option>
+          <option value="T002">T002</option>
+          <option value="T003">T003</option>
+          <option value="T004">T004</option>
+          <option value="T005">T005</option>
+          <option value="T006">T006</option>
+          <option value="T007">T007</option>
+        </select> <br><br>
+
+        <input type="submit" value="Submit"> <!-- Submit button -->
+      </form>
 
       <!-- JS cdn link for bootstrap elements to work -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
