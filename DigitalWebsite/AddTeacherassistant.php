@@ -26,6 +26,15 @@ $teacherID = $_POST['teacherID'];
 //error variable
 $error = false;
 
+// Check if the teacher ID already exists in the database
+$query = "SELECT * FROM teacherassistants WHERE teacherID = '$teacherID'";
+$result = mysqli_query($conn, $query);
+// If a row is returned, it means the teacher ID is already assigned to a assistant
+if (mysqli_num_rows($result) > 0) {
+   echo "The teacher already has an existing assistant <br>";
+   $error = true;
+}
+
 // Validate name
 if (!preg_match("/^[A-Za-z]+$/", $assistantName)) {
     echo "Error: First name should only contain letters.<br>";
