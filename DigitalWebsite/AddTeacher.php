@@ -21,7 +21,7 @@ $teacherDOB = $_POST['teacherDOB'];
 $teacherEmail = $_POST['teacherEmail'];
 $teacherPhone = $_POST['teacherPhone'];
 $teacherAddress = $_POST['teacherAddress'];
-$annualSalary = $_POST['annualSalary'];
+$teacherSalary = $_POST['teacherSalary'];
 
 //error variable
 $error = false;
@@ -37,7 +37,7 @@ if (!preg_match("/^[A-Za-z]+$/", $teacherName)) {
     $error = true;
  }
  // Validate annual salary
- if (!preg_match("/^£\d+$/", $annualSalary)) {
+ if (!preg_match("/^£\d+$/", $teacherSalary)) {
     echo "Error: Annual salary should start with £ and be followed by digits.<br>";
     $error = true;
  }
@@ -48,8 +48,8 @@ if (!preg_match("/^[A-Za-z]+$/", $teacherName)) {
  
  else{
     // Insert data into the "pupils" table
-    $sql = "INSERT INTO teachers (teacherID, teacherTitle, teacherName, teacherSurname, teacherDOB, teacherEmail, teacherPhone, teacherAddress, annualSalary) 
-    VALUES ('$teacherID', '$teacherTitle', '$teacherName', '$teacherSurname', '$teacherDOB', '$teacherEmail', '$teacherPhone', '$teacherAddress', '$annualSalary')";
+    $sql = "INSERT INTO teachers (teacherID, teacherTitle, teacherName, teacherSurname, teacherDOB, teacherEmail, teacherPhone, teacherAddress, teacherSalary) 
+    VALUES ('$teacherID', '$teacherTitle', '$teacherName', '$teacherSurname', '$teacherDOB', '$teacherEmail', '$teacherPhone', '$teacherAddress', '$teacherSalary')";
  
     if ($conn->query($sql) === TRUE) {
         echo "Data inserted successfully<br>";

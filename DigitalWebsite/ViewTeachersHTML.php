@@ -144,7 +144,7 @@
         <th>teacherEmail</th>
         <th>teacherPhone</th>
         <th>teacherAddress</th>
-        <th>annualSalary</th>
+        <th>teacherSalary</th>
         </tr>
         <!-- PHP code that needs to be executed to retrieve and display information required -->
         <?php include 'ViewTeachers.php';?>
