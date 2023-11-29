@@ -160,7 +160,7 @@
     
     <table> <!-- Creates table on webpage -->
       <tr>  <!-- Defines the table row and groups headers and data -->
-      <th>AssistantID</th> <!-- Table header for each column -->
+      <th>assistantID</th> <!-- Table header for each column -->
       <th>assistantTitle</th>
       <th>assistantName</th>
       <th>assistantSurname</th>
@@ -169,6 +169,7 @@
       <th>assistantPhone</th>
       <th>assistantAddress</th>
       <th>teacherID</th>
+      <th>assistantSalary</th>
       </tr>
       <!-- PHP code that needs to be executed to retrieve and display information required -->
       <?php include 'ViewTeacherassistant.php';?>

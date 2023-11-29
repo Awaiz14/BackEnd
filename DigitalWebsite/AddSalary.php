@@ -22,29 +22,28 @@ $payFrequency = $_POST['payFrequency'];
  // Insert the data into the "pupils" table
  $sql = "INSERT INTO salaries (staffID, staffRole, staffLevel, annualPay, payFrequency) 
  VALUES ('$staffID', '$staffRole', '$staffLevel', '$annualPay', '$payFrequency')";
+ if ($conn->query($sql) === TRUE) {
+    echo "Data inserted in Salaries table successfully<br>";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
 
  // Update the annual salary in the teachers table
 $sql = "UPDATE teachers SET teacherSalary = '$annualPay' WHERE teacherID = '$staffID'";
 if ($conn->query($sql) === TRUE) {
-   echo "Annual salary updated successfully for staffID: $staffID<br>";
+   echo "Annual salary updated successfully in Teachers table for TeacherID: $staffID if staff is in this table<br>";
 } else {
    echo "Error updating annual salary: " . $conn->error;
 }
 // Update the annual salary in the teacherassistants table
 $sql = "UPDATE teacherassistants SET assistantSalary = '$annualPay' WHERE assistantID = '$staffID'";
 if ($conn->query($sql) === TRUE) {
-   echo "Annual salary updated successfully for staffID: $staffID<br>";
+   echo "Annual salary updated successfully in TeacherAssistants table for assistantID: $staffID if staff is in this table<br>";
+   echo '<a href="AddSalaryHTML.php"><button>Go Back</button></a>';
 } else {
    echo "Error updating annual salary: " . $conn->error;
 }
 
- if ($conn->query($sql) === TRUE) {
-     echo "Data inserted successfully<br>";
-     echo '<a href="AddSalaryHTML.php"><button>Go Back</button></a>';
- } else {
-     echo "Error: " . $sql . "<br>" . $conn->error;
- }
- 
 // Close connection
 $conn->close();
 ?>

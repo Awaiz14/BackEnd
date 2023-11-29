@@ -56,7 +56,7 @@ if (!preg_match("/^[A-Za-z]+$/", $assistantName)) {
     VALUES ('$assistantID', '$assistantTitle', '$assistantName', '$assistantSurname', '$assistantDOB', '$assistantEmail', '$assistantPhone', '$assistantAddress', '$teacherID')";
  
     if ($conn->query($sql) === TRUE) {
-        echo "Data inserted successfully<br>";
+        echo "Data inserted into TeacherAssistants table successfully<br>";
         echo '<a href="AddTeacherassistant.html"><button>Go Back</button></a>';
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;

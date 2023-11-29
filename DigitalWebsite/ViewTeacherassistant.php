@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
    // Retrieve teachers' information from the database
    $query = "SELECT assistantID, assistantTitle, assistantName, assistantSurname, assistantDOB, 
-   assistantEmail, assistantPhone, assistantAddress, teacherID FROM teacherassistants";
+   assistantEmail, assistantPhone, assistantAddress, teacherID, assistantSalary FROM teacherassistants";
    $result = mysqli_query($conn, $query);
    // Display the retrieved information in the HTML table
    while ($row = mysqli_fetch_assoc($result)) {
@@ -28,6 +28,7 @@ if ($conn->connect_error) {
        echo "<td>" . $row['assistantPhone'] . "</td>";
        echo "<td>" . $row['assistantAddress'] . "</td>";
        echo "<td>" . $row['teacherID'] . "</td>";
+       echo "<td>" . $row['assistantSalary'] . "</td>";
        echo "</tr>";
    }
    // Close the database connection
