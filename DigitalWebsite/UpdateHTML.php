@@ -1,10 +1,10 @@
 <!DOCTYPE html> <!-- Specify the document is written in HTML -->
-  <html lang="en"> <!-- indicates start of HTML document and the language of it (english) -->
+ <html lang="en"> <!-- indicates start of HTML document and the language of it (english) -->
     <head> <!-- Head section provides non-visible information, metadata and resource links -->
       <meta charset="UTF-8"> <!-- Specify metadata such as character encoding -->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-      <title>View Parent!</title> <!-- Set the title of the page which is shown in the browser tabs -->
-      <!-- Links elements to link external resources (Bootstrap) -->
+      <title>Welcome!</title> <!-- Set the title of the page which is shown in the browser tabs -->
+      <!-- Links elements to link external resources starting with Bootstrap, CSS and Google fonts -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     </head>
 
@@ -13,7 +13,7 @@
       body { /* Styling the main body */
         margin: 0; 
         padding: 0; /* Setting no margin or padding for any content in the body*/
-        background-color: darkmagenta;
+        background-color: maroon;
       }
         
       .navbar {
@@ -25,40 +25,51 @@
         font-size: 18px; /* Changes size of navbar link text */
         color: white; /* Changes colour of navbar link text */
       }
-
-      h1 { /* Styles the heading on the page */
-        margin-left: 20px;
-        margin-top: 20px;
-        margin-bottom: 20px;
+      
+      form {
+        width: 400px; /* Changes size of the html form */
+        margin-top: 20px; /* Adds spacing on top */
+        margin-left: 20px; /* Adds spacing on left */
+        background-color: orangered; /* Changes background colour of form */
+        justify-content: center; /* Centers all the content in form */
+        text-align: center; /* Centers all the text in form */
+        border: solid 4px black; /* Adds border to form */
+        border-radius: 6px;
       }
 
-      table { /* Styles the table on the page */
-        border-collapse: collapse;
-        width: 100%; /* Makes table width of page */
+      select { /* Styles the input boxes which are select options */
+        border: 2px solid black;
+        border-radius: 4px;
+        padding: 2px;
+        margin-bottom: 10px;
+        width: 350px; /* Size of the option box */
       }
 
-      th, td { /* Stands for table header & table data */
-        padding: 6px;
-        color: white; /* Styles the colour of header and data texts in the table */
-        text-align: center; /* Centers the texts in their boxes */
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="number"],
+      input[type="date"] { /* Styles the the different input boxes based on input type*/
+        border: 2px solid black;
+        border-radius: 4px;
+        padding: 2px;
+        margin-bottom: 10px; /* Adds space below each input box */
+        width: 350px; /* Size of the input boxes */
       }
 
-      th { /* Styles table header alone */
-        background-color: maroon; /* Adds background colour for header */
-      }
-
-      tr { /* Styles table rows */
-        background-color: grey; /* background colour of table rows */
-        border-bottom: 1px solid white; /* Adds a border below each row */
-      }
-
-      tr:hover { /* Styles the hover over table rows */
-        background-color: blue; 
+      input[type="submit"] { /* Styles the submit button */
+        padding: 8px 16px;
+        margin-bottom: 10px;
+        background-color: #4CAF50; /* Colour of submit button */
+        color: white; /* Colour of submit buttons text */
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
       }
 
       /* END OF MY OWN CODE */
     </style>
-
+    
     <body>
       <!-- Strictly Bootstrap code added from Bootstrap website to create Recipe cards (changed to suit my webpage) -->
       <!-- https://getbootstrap.com/docs/5.3/components/navbar/ -->
@@ -155,26 +166,98 @@
         </div>
       </nav>
 
-      <!-- MY OWN CODE -->
-      <h1>Salaries</h1>
-      
-      <table> <!-- Creates table on webpage -->
-        <tr>  <!-- Defines the table row and groups headers and data -->
-        <th>staffID</th> <!-- Table header for each column -->
-        <th>staffRole</th>
-        <th>staffLevel</th>
-        <th>annualPay</th>
-        <th>payFrequency</th>
-        <th>Operations</th>
-        </tr>
-        <!-- PHP code that needs to be executed to retrieve and display information required -->
-        <?php include 'UpdateSalary.php';?>
-      </table>
-      
-      <!-- END OF MY OWN CODE -->
+      <?php
+        //Retrieve the staffID from the URL parameter
+        $staffID = $_GET['id'];
+
+        // Database connection parameters
+        $servername = "127.0.0.1";
+        $username = "root";
+        $password = "";
+        $database = "school";
+        
+        // Creates the connection using parameters
+        $conn = new mysqli($servername, $username, $password, $database);
+        
+        // Checks connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Retrieve the existing record
+        $sql = "SELECT * FROM salaries WHERE staffID = '$staffID'";
+        $result = $conn->query($sql);
+        // Display the existing record in a form
+        if ($result->num_rows > 0) {
+          $row = $result->fetch_assoc();
+
+      ?>
+      <form action="UpdateSubmit.php" method="POST">
+          StaffID: <input type="text" id="staffID" name="staffID" value="<?php echo $row['staffID']; ?>" readonly><br>
+
+          Staff Role: <input type="text" id="staffRole" name="staffRole"  value="<?php echo $row['staffRole']; ?>" readonly><br>
+
+          Staff Level:
+          <select id="staffLevel" name="staffLevel" onchange="validatePay()">
+          <option value="1" <?php if($row['staffLevel'] == 1) echo "selected"; ?>>1</option>
+          <option value="2" <?php if($row['staffLevel'] == 2) echo "selected"; ?>>2</option>
+          <option value="3" <?php if($row['staffLevel'] == 3) echo "selected"; ?>>3</option>
+          </select>
+
+          Annual Pay: <input type="number" id="annualPay" name="annualPay" value="<?php echo $row['annualPay']; ?>"><br>
+
+          Pay Frequency:
+          <select id="payFrequency" name="payFrequency">
+          <option value="Monthly" <?php if($row['payFrequency'] == 'Monthly') echo "selected"; ?>>Monthly</option>
+          <option value="Weekly" <?php if($row['payFrequency'] == 'Weekly') echo "selected"; ?>>Weekly</option>
+          </select>
+
+          <input type="submit" value="Update">
+      </form>
+
+      <?php
+        } else {
+          echo "No record found.";
+        }
+        $conn->close();
+      ?>
 
       <!-- JS cdn link for bootstrap elements to work -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    
+
+      <script>
+      function validatePay() {
+      var staffRoleSelect = document.getElementById("staffRole");
+      var staffLevelSelect = document.getElementById("staffLevel");
+      var annualPayInput = document.getElementById("annualPay");
+      var selectedStaffLevel = staffLevelSelect.value;
+      var selectedStaffRole = staffRoleSelect.value;
+      // Perform the necessary checks and update the annual pay range
+      if (selectedStaffRole === "Assistant" && selectedStaffLevel === "1") {
+        annualPayInput.setAttribute("min", "18000");
+        annualPayInput.setAttribute("max", "20000");
+      } else if (selectedStaffRole === "Assistant" && selectedStaffLevel === "2") {
+        annualPayInput.setAttribute("min", "20001");
+        annualPayInput.setAttribute("max", "22000");
+      } else if (selectedStaffRole === "Assistant" && selectedStaffLevel === "3") {
+        annualPayInput.setAttribute("min", "22001");
+        annualPayInput.setAttribute("max", "24000");
+      } else if (selectedStaffRole === "Teacher" && selectedStaffLevel === "1") {
+        annualPayInput.setAttribute("min", "24001");
+        annualPayInput.setAttribute("max", "28000");
+      } else if (selectedStaffRole === "Teacher" && selectedStaffLevel === "2") {
+        annualPayInput.setAttribute("min", "28001");
+        annualPayInput.setAttribute("max", "32000");
+      } else if (selectedStaffRole === "Teacher" && selectedStaffLevel === "3") {
+        annualPayInput.setAttribute("min", "32001");
+        annualPayInput.setAttribute("max", "40000");
+      } else {
+        // Clear the range attributes if no match is found
+        annualPayInput.removeAttribute("min");
+        annualPayInput.removeAttribute("max");
+      }
+      }
+      </script>
+      
     </body>
 </html>

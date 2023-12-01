@@ -71,70 +71,94 @@
     </style>
     
     <body>
-      <nav class="navbar navbar-expand-lg bg-maroon">
+      <!-- Strictly Bootstrap code added from Bootstrap website to create Recipe cards (changed to suit my webpage) -->
+      <!-- https://getbootstrap.com/docs/5.3/components/navbar/ -->
+      <nav class="navbar navbar-expand-lg bg-maroon"> <!-- Expands navbar full width and chooses bg colour - overwritten with css -->
         <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">St Alphonsus Primary School</a>
+          <a class="navbar-brand" href="index.html">St Alphonsus Primary School</a> <!-- Has school name as logo on left in navbar -->
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="index.html">Home</a> <!-- Has home page link in navbar with it being active while on page -->
               </li>
-    
+
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Classes
                 </a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu"> <!-- Added Classes link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewClassHTML.php">View Classes</a></li>
                   <li><a class="dropdown-item" href="AddClass.html">Add a Class</a></li>
                   <li><a class="dropdown-item" href="#">Remove a Class</a></li>
                 </ul>
               </li>
-    
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Teachers
                 </a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu"> <!-- Added Teachers link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewTeachersHTML.php">View Teachers</a></li>
                   <li><a class="dropdown-item" href="AddTeacher.html">Add a Teacher</a></li>
                   <li><a class="dropdown-item" href="#">Remove a Teacher</a></li>
                 </ul>
               </li>
-    
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Students
                 </a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu"> <!-- Added Students link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewStudentHTML.php">View Students</a></li>
                   <li><a class="dropdown-item" href="AddStudent.html">Add a Student</a></li>
                   <li><a class="dropdown-item" href="#">Remove a Student</a></li>
                 </ul>
               </li>
-    
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Parents
                 </a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu"> <!-- Added Parents link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewParentHTML.php">View Parents</a></li>
                   <li><a class="dropdown-item" href="AddParent.html">Add a Parent</a></li>
                   <li><a class="dropdown-item" href="#">Remove a Parent</a></li>
                 </ul>
               </li>
-    
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown link
+                  Teacher Assistants
                 </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                <ul class="dropdown-menu"> <!-- Added Teacher assistants link as dropdown options -->
+                  <li><a class="dropdown-item" href="ViewTeacherassistantHTML.php">View Teacher Assistants</a></li>
+                  <li><a class="dropdown-item" href="AddTeacherAssistant.html">Add a Teacher Assistant</a></li>
+                  <li><a class="dropdown-item" href="#">Remove Teacher Assistants</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Attendance
+                </a>
+                <ul class="dropdown-menu"> <!-- Added Attendance link as dropdown options -->
+                  <li><a class="dropdown-item" href="#">View Attendance</a></li>
+                  <li><a class="dropdown-item" href="TakeAttendance.html">Take Attendance</a></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Salaries
+                </a>
+                <ul class="dropdown-menu"> <!-- Added Salaries link as dropdown options -->
+                  <li><a class="dropdown-item" href="ViewSalaryHTML.php">View Salaries</a></li>
+                  <li><a class="dropdown-item" href="AddSalaryHTML.php">Add Salaries</a></li>
+                  <li><a class="dropdown-item" href="UpdateSalaryHTML.php">Update/Delete Salaries</a></li>
                 </ul>
               </li>
             </ul>

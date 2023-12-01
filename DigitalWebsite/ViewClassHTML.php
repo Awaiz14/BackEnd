@@ -118,12 +118,34 @@
 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown link
+                  Teacher Assistants
                 </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                <ul class="dropdown-menu"> <!-- Added Teacher assistants link as dropdown options -->
+                  <li><a class="dropdown-item" href="ViewTeacherassistantHTML.php">View Teacher Assistants</a></li>
+                  <li><a class="dropdown-item" href="AddTeacherAssistant.html">Add a Teacher Assistant</a></li>
+                  <li><a class="dropdown-item" href="#">Remove Teacher Assistants</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Attendance
+                </a>
+                <ul class="dropdown-menu"> <!-- Added Attendance link as dropdown options -->
+                  <li><a class="dropdown-item" href="#">View Attendance</a></li>
+                  <li><a class="dropdown-item" href="TakeAttendance.html">Take Attendance</a></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Salaries
+                </a>
+                <ul class="dropdown-menu"> <!-- Added Salaries link as dropdown options -->
+                  <li><a class="dropdown-item" href="ViewSalaryHTML.php">View Salaries</a></li>
+                  <li><a class="dropdown-item" href="AddSalaryHTML.php">Add Salaries</a></li>
+                  <li><a class="dropdown-item" href="UpdateSalaryHTML.php">Update/Delete Salaries</a></li>
                 </ul>
               </li>
             </ul>

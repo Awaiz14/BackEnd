@@ -59,8 +59,8 @@
     /* END OF MY OWN CODE */
   </style>
 
-  <body>
-    <nav class="navbar navbar-expand-lg bg-maroon">
+<body>
+      <nav class="navbar navbar-expand-lg bg-maroon">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html">St Alphonsus Primary School</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,9 +69,9 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link"  href="index.html">Home</a>
               </li>
-
+    
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Classes
@@ -82,7 +82,7 @@
                   <li><a class="dropdown-item" href="#">Remove a Class</a></li>
                 </ul>
               </li>
-
+    
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Teachers
@@ -93,7 +93,7 @@
                   <li><a class="dropdown-item" href="#">Remove a Teacher</a></li>
                 </ul>
               </li>
-
+    
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Students
@@ -104,7 +104,7 @@
                   <li><a class="dropdown-item" href="#">Remove a Student</a></li>
                 </ul>
               </li>
-
+    
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Parents
@@ -115,15 +115,37 @@
                   <li><a class="dropdown-item" href="#">Remove a Parent</a></li>
                 </ul>
               </li>
+    
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Teacher Assistants
+                </a>
+                <ul class="dropdown-menu"> <!-- Added Teacher assistants link as dropdown options -->
+                  <li><a class="dropdown-item" href="ViewTeacherassistantHTML.php">View Teacher Assistants</a></li>
+                  <li><a class="dropdown-item" href="AddTeacherAssistant.html">Add a Teacher Assistant</a></li>
+                  <li><a class="dropdown-item" href="#">Remove Teacher Assistants</a></li>
+                </ul>
+              </li>
 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown link
+                  Attendance
                 </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                <ul class="dropdown-menu"> <!-- Added Attendance link as dropdown options -->
+                  <li><a class="dropdown-item" href="#">View Attendance</a></li>
+                  <li><a class="dropdown-item" href="TakeAttendance.html">Take Attendance</a></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Salaries
+                </a>
+                <ul class="dropdown-menu"> <!-- Added Salaries link as dropdown options -->
+                  <li><a class="dropdown-item" href="ViewSalaryHTML.php">View Salaries</a></li>
+                  <li><a class="dropdown-item" href="AddSalaryHTML.php">Add Salaries</a></li>
+                  <li><a class="dropdown-item" href="UpdateSalaryHTML.php">Update/Delete Salaries</a></li>
                 </ul>
               </li>
             </ul>

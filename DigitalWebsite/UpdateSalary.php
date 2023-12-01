@@ -23,7 +23,7 @@ if ($conn->connect_error) {
        echo "<td>" . $row['staffLevel'] . "</td>";
        echo "<td>" . $row['annualPay'] . "</td>";
        echo "<td>" . $row['payFrequency'] . "</td>";
-       echo "<td> <button><a href='Update.php?id=".$row['staffID']."'>Update</a></button>
+       echo "<td> <button><a href='UpdateHTML.php?id=".$row['staffID']."'>Update</a></button>
        <button><a href='Delete.php?id=".$row['staffID']."'>Delete</a></button></td>";
        echo "</tr>";
    }
