@@ -167,14 +167,29 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
    $row = $result->fetch_assoc();
    ?>
-<form action="process_update.php" method="POST">
-    StaffID: <input type="text" name="staffID" value="<?php echo $row['staffID']; ?>" readonly><br>
-    Staff Role: <input type="text" name="staffRole" value="<?php echo $row['staffRole']; ?>" readonly><br>
-    Staff Level: <input type="text" name="staffLevel" value="<?php echo $row['staffLevel']; ?>"><br>
-    Annual Pay: <input type="text" name="annualPay" value="<?php echo $row['annualPay']; ?>"><br>
-    Pay Frequency: <input type="text" name="payFrequency" value="<?php echo $row['payFrequency']; ?>"><br>
+<form action="UpdateSubmit.php" method="POST">
+    StaffID: <input type="text" id="staffID" name="staffID" value="<?php echo $row['staffID']; ?>" readonly><br>
+
+    Staff Role: <input type="text" id="staffRole" name="staffRole"  value="<?php echo $row['staffRole']; ?>" readonly><br>
+
+    Staff Level:
+    <select id="staffLevel" name="staffLevel" onchange="validatePay()">
+    <option value="1" <?php if($row['staffLevel'] == 1) echo "selected"; ?>>1</option>
+    <option value="2" <?php if($row['staffLevel'] == 2) echo "selected"; ?>>2</option>
+    <option value="3" <?php if($row['staffLevel'] == 3) echo "selected"; ?>>3</option>
+    </select>
+
+    Annual Pay: <input type="number" id="annualPay" name="annualPay" value="<?php echo $row['annualPay']; ?>"><br>
+
+    Pay Frequency:
+    <select id="payFrequency" name="payFrequency">
+    <option value="Monthly" <?php if($row['payFrequency'] == 'Monthly') echo "selected"; ?>>Monthly</option>
+    <option value="Weekly" <?php if($row['payFrequency'] == 'Weekly') echo "selected"; ?>>Weekly</option>
+    </select>
+
     <input type="submit" value="Update">
 </form>
+
 <?php
 } else {
    echo "No record found.";
@@ -184,22 +199,6 @@ $conn->close();
 
       <!-- JS cdn link for bootstrap elements to work -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-      
-      <script>
-         function updateStaffRole() {
-          var staffIDSelect = document.getElementById("staffID");
-          var staffRoleInput = document.getElementById("staffRole");
-          var selectedStaffID = staffIDSelect.value;
-          // Perform the necessary checks and update the staff role
-          if (selectedStaffID.startsWith("TA")) {
-            staffRoleInput.value = "Assistant";
-          } else if (selectedStaffID.startsWith("T")) {
-            staffRoleInput.value = "Teacher";
-          } else {
-            staffRoleInput.value = ""; // Clear the staff role if no match is found
-          }
-        }
-      </script>
 
       <script>
       function validatePay() {
