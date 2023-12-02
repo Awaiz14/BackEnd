@@ -158,7 +158,7 @@
                 <ul class="dropdown-menu"> <!-- Added Salaries link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewSalaryHTML.php">View Salaries</a></li>
                   <li><a class="dropdown-item" href="AddSalaryHTML.php">Add Salaries</a></li>
-                  <li><a class="dropdown-item" href="UpdateSalaryHTML.php">Update/Delete Salaries</a></li>
+                  <li><a class="dropdown-item" href="EditSalaryHTML.php">Update/Delete Salaries</a></li>
                 </ul>
               </li>
             </ul>
@@ -168,7 +168,7 @@
 
       <form action="addSalary.php" method="POST">
         <label for="staffID">Staff ID:</label>
-        <select name="staffID" id="staffID" onchange="updateStaffRole()">
+        <select name="staffID" id="staffID" onchange="updateStaffRole()" required>
         <?php include 'AddSalaryDropdownOptions.php'; ?>
         </select>
         <br>
@@ -177,7 +177,7 @@
         <input type="text" id="staffRole" name="staffRole" readonly> <br>
         
         <label for="staffLevel">Staff level:</label><br> <!-- Label name for form option -->
-        <select name="staffLevel" id="staffLevel" onchange="validatePay()"> 
+        <select name="staffLevel" id="staffLevel" onchange="validatePay()" required> 
           <option value=""disabled selected>Select a level</option> <!-- Acts like a placeholder default option non-selectable -->
           <option value="1">1</option>
           <option value="2">2</option>
@@ -185,7 +185,7 @@
         </select> <br>
 
         <label for="pay">Annual Pay:</label><br> <!-- form option copy/pasted for as many needed -->
-        <input type="number" id="annualPay" name="annualPay"><br>
+        <input type="number" id="annualPay" name="annualPay" required><br>
 
         <label for="frequency">Pay Frequency:</label><br> 
         <select name="payFrequency" id="payFrequency" required> 

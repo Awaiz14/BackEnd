@@ -3,7 +3,7 @@
     <head> <!-- Head section provides non-visible information, metadata and resource links -->
       <meta charset="UTF-8"> <!-- Specify metadata such as character encoding -->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-      <title>View Teacher Assistants!</title> <!-- Set the title of the page which is shown in the browser tabs -->
+      <title>View Parent!</title> <!-- Set the title of the page which is shown in the browser tabs -->
       <!-- Links elements to link external resources (Bootstrap) -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     </head>
@@ -13,12 +13,12 @@
       body { /* Styling the main body */
         margin: 0; 
         padding: 0; /* Setting no margin or padding for any content in the body*/
-        background-color: lightgreen;
+        background-color: darkmagenta;
       }
         
       .navbar {
-        background-color: blueviolet; /* Adds background colour to bootstrap nav bar */
-        border-bottom: 4px solid black; /* Adds a bottom border to bootstrap nav bar */
+      background-color: blueviolet; /* Adds background colour to bootstrap nav bar */
+      border-bottom: 4px solid black; /* Adds a bottom border to bootstrap nav bar */
       }
 
       .navbar-nav .nav-link {
@@ -141,7 +141,7 @@
               </li>
 
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Salaries
                 </a>
                 <ul class="dropdown-menu"> <!-- Added Salaries link as dropdown options -->
@@ -156,23 +156,51 @@
       </nav>
 
       <!-- MY OWN CODE -->
-      <h1>Teacher Assistants</h1>
+      <h1>Salaries</h1>
       
       <table> <!-- Creates table on webpage -->
         <tr>  <!-- Defines the table row and groups headers and data -->
-        <th>assistantID</th> <!-- Table header for each column -->
-        <th>assistantTitle</th>
-        <th>assistantName</th>
-        <th>assistantSurname</th>
-        <th>assistantDOB</th>
-        <th>assistantEmail</th>
-        <th>assistantPhone</th>
-        <th>assistantAddress</th>
-        <th>teacherID</th>
-        <th>assistantSalary</th>
+        <th>staffID</th> <!-- Table header for each column -->
+        <th>staffRole</th>
+        <th>staffLevel</th>
+        <th>annualPay</th>
+        <th>payFrequency</th>
+        <th>Operations</th>
         </tr>
         <!-- PHP code that needs to be executed to retrieve and display information required -->
-        <?php include 'ViewTeacherassistant.php';?>
+        <?php
+        // Database connection parameters
+        $servername = "127.0.0.1";
+        $username = "root";
+        $password = "";
+        $database = "school";
+        
+        // Creates the connection using parameters
+        $conn = new mysqli($servername, $username, $password, $database);
+        
+        // Checks connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+          // Retrieve Salary information from the database
+          $query = "SELECT staffID, staffRole, staffLevel, annualPay, payFrequency FROM salaries";
+          $result = mysqli_query($conn, $query);
+          // Display the retrieved information in the HTML table
+          while ($row = mysqli_fetch_assoc($result)) {
+              echo "<tr>";
+              echo "<td>" . $row['staffID'] . "</td>";
+              echo "<td>" . $row['staffRole'] . "</td>";
+              echo "<td>" . $row['staffLevel'] . "</td>";
+              echo "<td>" . $row['annualPay'] . "</td>";
+              echo "<td>" . $row['payFrequency'] . "</td>";
+              echo "<td> <button><a href='EditSalaryUpdate.php?id=".$row['staffID']."'>Update</a></button>
+              <button><a href='EditSalaryDelete.php?id=".$row['staffID']."'>Delete</a></button></td>";
+              echo "</tr>";
+          }
+          
+          // Close the database connection
+          mysqli_close($conn);
+        ?>
       </table>
       
       <!-- END OF MY OWN CODE -->

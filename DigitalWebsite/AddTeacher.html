@@ -156,7 +156,7 @@
                 <ul class="dropdown-menu"> <!-- Added Salaries link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewSalaryHTML.php">View Salaries</a></li>
                   <li><a class="dropdown-item" href="AddSalaryHTML.php">Add Salaries</a></li>
-                  <li><a class="dropdown-item" href="UpdateSalaryHTML.php">Update/Delete Salaries</a></li>
+                  <li><a class="dropdown-item" href="EditSalaryHTML.php">Update/Delete Salaries</a></li>
                 </ul>
               </li>
             </ul>
@@ -168,7 +168,7 @@
       <form action="AddTeacher.php" method="post"> <!-- Creates a HTML form and links to php -->
 
         <label for="id">TeacherID:</label><br> <!-- form option as a select option dropdown -->
-        <select name="teacherID" id="teacherID">
+        <select name="teacherID" id="teacherID" required>
           <option value=""disabled selected>Select</option> <!-- Acts like a placeholder default option non-selectable -->
           <option value="T001">T001</option>
           <option value="T002">T002</option>
@@ -180,7 +180,7 @@
         </select> <br>
 
         <label for="title">Title:</label><br> <!-- form option as a select option dropdown -->
-        <select name="teacherTitle" id="teacherTitle">
+        <select name="teacherTitle" id="teacherTitle" required>
           <option value=""disabled selected>Select</option> <!-- Acts like a placeholder default option non-selectable -->
           <option value="Mr">Mr</option>
           <option value="Mrs">Mrs</option>
@@ -194,7 +194,7 @@
         <input type="text" id="teacherSurname" name="teacherSurname" placeholder="e.g. Smith" required><br>
 
         <label for="dob">Date Of Birth:</label><br><!-- form option copy/pasted for as many needed -->
-        <input type="date" id="teacherDOB" name="teacherDOB" max="2023-01-01"><br>
+        <input type="date" id="teacherDOB" name="teacherDOB" max="2023-01-01" required><br>
 
         <label for="email">Email:</label><br> <!-- form option copy/pasted for as many needed -->
         <input type="email" id="teacherEmail" name="teacherEmail" placeholder="e.g. example@outlook.com" required><br>
