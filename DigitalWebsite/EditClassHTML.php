@@ -75,7 +75,7 @@
               </li>
 
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Classes
                 </a>
                 <ul class="dropdown-menu"> <!-- Added Classes link as dropdown options -->
@@ -92,7 +92,7 @@
                 <ul class="dropdown-menu"> <!-- Added Teachers link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewTeachersHTML.php">View Teachers</a></li>
                   <li><a class="dropdown-item" href="AddTeacher.html">Add a Teacher</a></li>
-                  <li><a class="dropdown-item" href="#">Remove a Teacher</a></li>
+                  <li><a class="dropdown-item" href="EditTeacherHTML.php">Update Teachers</a></li>
                 </ul>
               </li>
 

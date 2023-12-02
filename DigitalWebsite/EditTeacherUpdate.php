@@ -168,7 +168,7 @@
 
       <?php
         //Retrieve the staffID from the URL parameter
-        $className = $_GET['id'];
+        $teacherID = $_GET['id'];
 
         // Database connection parameters
         $servername = "127.0.0.1";
@@ -185,28 +185,34 @@
         }
 
         // Retrieve the existing record
-        $sql = "SELECT * FROM classes WHERE className = '$className'";
+        $sql = "SELECT * FROM teachers WHERE teacherID = '$teacherID'";
         $result = $conn->query($sql);
         // Display the existing record in a form
         if ($result->num_rows > 0) {
           $row = $result->fetch_assoc();
 
       ?>
-      <form action="EditClassUpdateSubmit.php" method="POST">
-          Class Name: <input type="text" id="className" name="className" value="<?php echo $row['className']; ?>" readonly><br>
-
-          TeacherID:
-          <select id="teacherID" name="teacherID">
-          <option value="T001" <?php if($row['teacherID'] == "T001") echo "selected"; ?>>T001</option>
-          <option value="T002" <?php if($row['teacherID'] == "T002") echo "selected"; ?>>T002</option>
-          <option value="T003" <?php if($row['teacherID'] == "T003") echo "selected"; ?>>T003</option>
-          <option value="T004" <?php if($row['teacherID'] == "T004") echo "selected"; ?>>T004</option>
-          <option value="T005" <?php if($row['teacherID'] == "T005") echo "selected"; ?>>T005</option>
-          <option value="T006" <?php if($row['teacherID'] == "T006") echo "selected"; ?>>T006</option>
-          <option value="T007" <?php if($row['teacherID'] == "T007") echo "selected"; ?>>T007</option>
+      <form action="EditTeacherUpdateSubmit.php" method="POST">
+          TeacherID: <input type="text" id="teacherID" name="teacherID" value="<?php echo $row['teacherID']; ?>" readonly><br>
+          
+          Teacher Title:
+          <select id="teacherTitle" name="teacherTitle">
+          <option value="Mr" <?php if($row['teacherTitle'] == "Mr") echo "selected"; ?>>Mr</option>
+          <option value="Mrs" <?php if($row['teacherTitle'] == "Mrs") echo "selected"; ?>>Mrs</option>
+          <option value="Miss" <?php if($row['teacherTitle'] == "Miss") echo "selected"; ?>>Miss</option>
           </select><br>
 
-          Class Capacity: <input type="number" id="classCapacity" name="classCapacity" value="<?php echo $row['classCapacity']; ?>" required><br><br>
+          First Name: <input type="text" id="teacherName" name="teacherName" value="<?php echo $row['teacherName']; ?>" required><br>
+
+          Last Name: <input type="text" id="teacherSurname" name="teacherSurname" value="<?php echo $row['teacherSurname']; ?>" required><br>
+          
+          Date Of Birth: <input type="date" id="teacherDOB" name="teacherDOB" value="<?php echo $row['teacherDOB']; ?>" required><br>
+
+          Email: <input type="email" id="teacherEmail" name="teacherEmail" value="<?php echo $row['teacherEmail']; ?>" required><br>
+
+          Phone number: <input type="tel" id="teacherPhone" name="teacherPhone" value="<?php echo $row['teacherPhone']; ?>" required><br>
+
+          Address: <input type="text" id="teacherAddress" name="teacherAddress" value="<?php echo $row['teacherAddress']; ?>" required><br><br>
 
           <input type="submit" value="Update">
       </form>
