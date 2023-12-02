@@ -1,10 +1,10 @@
 <!DOCTYPE html> <!-- Specify the document is written in HTML -->
-  <html lang="en"> <!-- indicates start of HTML document and the language of it (english) -->
+ <html lang="en"> <!-- indicates start of HTML document and the language of it (english) -->
     <head> <!-- Head section provides non-visible information, metadata and resource links -->
       <meta charset="UTF-8"> <!-- Specify metadata such as character encoding -->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-      <title>View Parent!</title> <!-- Set the title of the page which is shown in the browser tabs -->
-      <!-- Links elements to link external resources (Bootstrap) -->
+      <title>Welcome!</title> <!-- Set the title of the page which is shown in the browser tabs -->
+      <!-- Links elements to link external resources starting with Bootstrap, CSS and Google fonts -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     </head>
 
@@ -13,7 +13,7 @@
       body { /* Styling the main body */
         margin: 0; 
         padding: 0; /* Setting no margin or padding for any content in the body*/
-        background-color: darkmagenta;
+        background-color: maroon;
       }
         
       .navbar {
@@ -25,40 +25,51 @@
         font-size: 18px; /* Changes size of navbar link text */
         color: white; /* Changes colour of navbar link text */
       }
-
-      h1 { /* Styles the heading on the page */
-        margin-left: 20px;
-        margin-top: 20px;
-        margin-bottom: 20px;
+      
+      form {
+        width: 400px; /* Changes size of the html form */
+        margin-top: 20px; /* Adds spacing on top */
+        margin-left: 20px; /* Adds spacing on left */
+        background-color: orangered; /* Changes background colour of form */
+        justify-content: center; /* Centers all the content in form */
+        text-align: center; /* Centers all the text in form */
+        border: solid 4px black; /* Adds border to form */
+        border-radius: 6px;
       }
 
-      table { /* Styles the table on the page */
-        border-collapse: collapse;
-        width: 100%; /* Makes table width of page */
+      select { /* Styles the input boxes which are select options */
+        border: 2px solid black;
+        border-radius: 4px;
+        padding: 2px;
+        margin-bottom: 10px;
+        width: 350px; /* Size of the option box */
       }
 
-      th, td { /* Stands for table header & table data */
-        padding: 6px;
-        color: white; /* Styles the colour of header and data texts in the table */
-        text-align: center; /* Centers the texts in their boxes */
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="number"],
+      input[type="date"] { /* Styles the the different input boxes based on input type*/
+        border: 2px solid black;
+        border-radius: 4px;
+        padding: 2px;
+        margin-bottom: 10px; /* Adds space below each input box */
+        width: 350px; /* Size of the input boxes */
       }
 
-      th { /* Styles table header alone */
-        background-color: maroon; /* Adds background colour for header */
-      }
-
-      tr { /* Styles table rows */
-        background-color: grey; /* background colour of table rows */
-        border-bottom: 1px solid white; /* Adds a border below each row */
-      }
-
-      tr:hover { /* Styles the hover over table rows */
-        background-color: blue; 
+      input[type="submit"] { /* Styles the submit button */
+        padding: 8px 16px;
+        margin-bottom: 10px;
+        background-color: #4CAF50; /* Colour of submit button */
+        color: white; /* Colour of submit buttons text */
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
       }
 
       /* END OF MY OWN CODE */
     </style>
-
+    
     <body>
       <!-- Strictly Bootstrap code added from Bootstrap website to create Recipe cards (changed to suit my webpage) -->
       <!-- https://getbootstrap.com/docs/5.3/components/navbar/ -->
@@ -75,13 +86,13 @@
               </li>
 
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Classes
                 </a>
                 <ul class="dropdown-menu"> <!-- Added Classes link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewClassHTML.php">View Classes</a></li>
                   <li><a class="dropdown-item" href="AddClass.html">Add a Class</a></li>
-                  <li><a class="dropdown-item" href="#">Remove a Class</a></li>
+                  <li><a class="dropdown-item" href="EditClassHTML.php">Update Classes</a></li>
                 </ul>
               </li>
 
@@ -141,13 +152,13 @@
               </li>
 
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Salaries
                 </a>
                 <ul class="dropdown-menu"> <!-- Added Salaries link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewSalaryHTML.php">View Salaries</a></li>
                   <li><a class="dropdown-item" href="AddSalaryHTML.php">Add Salaries</a></li>
-                  <li><a class="dropdown-item" href="EditSalaryHTML.php">Update/Delete Salaries</a></li>
+                  <li><a class="dropdown-item" href="UpdateSalaryHTML.php">Update/Delete Salaries</a></li>
                 </ul>
               </li>
             </ul>
@@ -155,20 +166,10 @@
         </div>
       </nav>
 
-      <!-- MY OWN CODE -->
-      <h1>Salaries</h1>
-      
-      <table> <!-- Creates table on webpage -->
-        <tr>  <!-- Defines the table row and groups headers and data -->
-        <th>staffID</th> <!-- Table header for each column -->
-        <th>staffRole</th>
-        <th>staffLevel</th>
-        <th>annualPay</th>
-        <th>payFrequency</th>
-        <th>Edit</th>
-        </tr>
-        <!-- PHP code that needs to be executed to retrieve and display information required -->
-        <?php
+      <?php
+        //Retrieve the staffID from the URL parameter
+        $className = $_GET['id'];
+
         // Database connection parameters
         $servername = "127.0.0.1";
         $username = "root";
@@ -182,31 +183,43 @@
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-          // Retrieve Salary information from the database
-          $query = "SELECT staffID, staffRole, staffLevel, annualPay, payFrequency FROM salaries";
-          $result = mysqli_query($conn, $query);
-          // Display the retrieved information in the HTML table
-          while ($row = mysqli_fetch_assoc($result)) {
-              echo "<tr>";
-              echo "<td>" . $row['staffID'] . "</td>";
-              echo "<td>" . $row['staffRole'] . "</td>";
-              echo "<td>" . $row['staffLevel'] . "</td>";
-              echo "<td>" . $row['annualPay'] . "</td>";
-              echo "<td>" . $row['payFrequency'] . "</td>";
-              echo "<td> <button><a href='EditSalaryUpdate.php?id=".$row['staffID']."'>Update</a></button>
-              <button><a href='EditSalaryDelete.php?id=".$row['staffID']."'>Delete</a></button></td>";
-              echo "</tr>";
-          }
-          
-          // Close the database connection
-          mysqli_close($conn);
-        ?>
-      </table>
-      
-      <!-- END OF MY OWN CODE -->
+
+        // Retrieve the existing record
+        $sql = "SELECT * FROM classes WHERE className = '$className'";
+        $result = $conn->query($sql);
+        // Display the existing record in a form
+        if ($result->num_rows > 0) {
+          $row = $result->fetch_assoc();
+
+      ?>
+      <form action="EditClassUpdateSubmit.php" method="POST">
+          Class Name: <input type="text" id="className" name="className" value="<?php echo $row['className']; ?>" readonly><br>
+
+          TeacherID:
+          <select id="teacherID" name="teacherID">
+          <option value="T001" <?php if($row['teacherID'] == "T001") echo "selected"; ?>>T001</option>
+          <option value="T002" <?php if($row['teacherID'] == "T002") echo "selected"; ?>>T002</option>
+          <option value="T003" <?php if($row['teacherID'] == "T003") echo "selected"; ?>>T003</option>
+          <option value="T004" <?php if($row['teacherID'] == "T004") echo "selected"; ?>>T004</option>
+          <option value="T005" <?php if($row['teacherID'] == "T005") echo "selected"; ?>>T005</option>
+          <option value="T006" <?php if($row['teacherID'] == "T006") echo "selected"; ?>>T006</option>
+          <option value="T007" <?php if($row['teacherID'] == "T007") echo "selected"; ?>>T007</option>
+          </select><br>
+
+          Class Capacity: <input type="number" id="classCapacity" name="classCapacity" value="<?php echo $row['classCapacity']; ?>" required><br><br>
+
+          <input type="submit" value="Update">
+      </form>
+
+      <?php
+        } else {
+          echo "No record found.";
+        }
+        $conn->close();
+      ?>
 
       <!-- JS cdn link for bootstrap elements to work -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    
+      
     </body>
 </html>

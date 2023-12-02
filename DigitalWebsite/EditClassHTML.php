@@ -75,13 +75,13 @@
               </li>
 
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Classes
                 </a>
                 <ul class="dropdown-menu"> <!-- Added Classes link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewClassHTML.php">View Classes</a></li>
                   <li><a class="dropdown-item" href="AddClass.html">Add a Class</a></li>
-                  <li><a class="dropdown-item" href="#">Remove a Class</a></li>
+                  <li><a class="dropdown-item" href="EditClassHTML.php">Update Classes</a></li>
                 </ul>
               </li>
 
@@ -141,7 +141,7 @@
               </li>
 
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Salaries
                 </a>
                 <ul class="dropdown-menu"> <!-- Added Salaries link as dropdown options -->
@@ -156,15 +156,13 @@
       </nav>
 
       <!-- MY OWN CODE -->
-      <h1>Salaries</h1>
+      <h1>Classes</h1>
       
       <table> <!-- Creates table on webpage -->
         <tr>  <!-- Defines the table row and groups headers and data -->
-        <th>staffID</th> <!-- Table header for each column -->
-        <th>staffRole</th>
-        <th>staffLevel</th>
-        <th>annualPay</th>
-        <th>payFrequency</th>
+        <th>className</th> <!-- Table header for each column -->
+        <th>teacherID</th>
+        <th>classCapacity</th>
         <th>Edit</th>
         </tr>
         <!-- PHP code that needs to be executed to retrieve and display information required -->
@@ -183,18 +181,15 @@
             die("Connection failed: " . $conn->connect_error);
         }
           // Retrieve Salary information from the database
-          $query = "SELECT staffID, staffRole, staffLevel, annualPay, payFrequency FROM salaries";
+          $query = "SELECT className, teacherID, classCapacity FROM classes";
           $result = mysqli_query($conn, $query);
           // Display the retrieved information in the HTML table
           while ($row = mysqli_fetch_assoc($result)) {
               echo "<tr>";
-              echo "<td>" . $row['staffID'] . "</td>";
-              echo "<td>" . $row['staffRole'] . "</td>";
-              echo "<td>" . $row['staffLevel'] . "</td>";
-              echo "<td>" . $row['annualPay'] . "</td>";
-              echo "<td>" . $row['payFrequency'] . "</td>";
-              echo "<td> <button><a href='EditSalaryUpdate.php?id=".$row['staffID']."'>Update</a></button>
-              <button><a href='EditSalaryDelete.php?id=".$row['staffID']."'>Delete</a></button></td>";
+              echo "<td>" . $row['className'] . "</td>";
+              echo "<td>" . $row['teacherID'] . "</td>";
+              echo "<td>" . $row['classCapacity'] . "</td>";
+              echo "<td> <button><a href='EditClassUpdate.php?id=".$row['className']."'>Update</a></button> </td>";
               echo "</tr>";
           }
           
