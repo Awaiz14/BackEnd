@@ -36,7 +36,7 @@ if (mysqli_query($conn, $query)) {
    echo "Classes table has been updated successfully!<br>";
 }
 
-// Update the corresponding pay in teachers table
+// Update the corresponding teacher in students table
 $teacherQuery = "UPDATE students SET teacherID = '$teacherID' WHERE className = '$className'";
 if (mysqli_query($conn, $teacherQuery)) {
    echo "Updated in Students!<br>";

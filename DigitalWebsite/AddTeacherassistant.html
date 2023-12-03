@@ -190,10 +190,10 @@
         </select> <br>
 
         <label for="fname">First name:</label><br> <!-- form option copy/pasted for as many needed -->
-        <input type="text" id="assistantName" name="assistantName" placeholder="e.g. John" required><br>
+        <input type="text" id="assistantName" name="assistantName" placeholder="e.g. John" pattern="[A-Za-z]+" title="Please enter a valid First name (no numbers)" required><br>
 
         <label for="lname">Last name:</label><br> <!-- form option copy/pasted for as many needed -->
-        <input type="text" id="assistantSurname" name="assistantSurname" placeholder="e.g. Smith" required><br>
+        <input type="text" id="assistantSurname" name="assistantSurname" placeholder="e.g. Smith" pattern="[A-Za-z]+" title="Please enter a valid Surname (no numbers)" required><br>
 
         <label for="dob">Date Of Birth:</label><br><!-- form option copy/pasted for as many needed -->
         <input type="date" id="assistantDOB" name="assistantDOB" max="2023-01-01" required><br>

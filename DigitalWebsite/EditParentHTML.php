@@ -1,9 +1,9 @@
 <!DOCTYPE html> <!-- Specify the document is written in HTML -->
- <html lang="en"> <!-- indicates start of HTML document and the language of it (english) -->
+  <html lang="en"> <!-- indicates start of HTML document and the language of it (english) -->
     <head> <!-- Head section provides non-visible information, metadata and resource links -->
       <meta charset="UTF-8"> <!-- Specify metadata such as character encoding -->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-      <title>Add a Teacher!</title> <!-- Set the title of the page which is shown in the browser tabs -->
+      <title>View Parent!</title> <!-- Set the title of the page which is shown in the browser tabs -->
       <!-- Links elements to link external resources (Bootstrap) -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     </head>
@@ -13,7 +13,7 @@
       body { /* Styling the main body */
         margin: 0; 
         padding: 0; /* Setting no margin or padding for any content in the body*/
-        background-color: blue;
+        background-color: darkmagenta;
       }
         
       .navbar {
@@ -25,64 +25,55 @@
         font-size: 18px; /* Changes size of navbar link text */
         color: white; /* Changes colour of navbar link text */
       }
-        
-      form {
-        width: 400px; /* Changes size of the html form */
-        margin-top: 20px; /* Adds spacing on top */
-        margin-left: 20px; /* Adds spacing on left */
-        background-color: orangered; /* Changes background colour of form */
-        justify-content: center; /* Centers all the content in form */
-        text-align: center; /* Centers all the text in form */
-        border: solid 4px black; /* Adds border to form */
-        border-radius: 6px;
+
+      h1 { /* Styles the heading on the page */
+        margin-left: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
       }
 
-      select { /* Styles the input boxes which are select options */
-        border: 2px solid black;
-        border-radius: 4px;
-        padding: 2px;
-        margin-bottom: 10px;
-        width: 350px; /* Size of the option box */
+      table { /* Styles the table on the page */
+        border-collapse: collapse;
+        width: 100%; /* Makes table width of page */
       }
 
-      input[type="text"],
-      input[type="email"],
-      input[type="tel"],
-      input[type="number"],
-      input[type="date"] { /* Styles the the different input boxes based on input type*/
-        border: 2px solid black;
-        border-radius: 4px;
-        padding: 2px;
-        margin-bottom: 10px; /* Adds space below each input box */
-        width: 350px; /* Size of the input boxes */
+      th, td { /* Stands for table header & table data */
+        padding: 6px;
+        color: white; /* Styles the colour of header and data texts in the table */
+        text-align: center; /* Centers the texts in their boxes */
       }
 
-      input[type="submit"] { /* Styles the submit button */
-        padding: 8px 16px;
-        margin-bottom: 10px;
-        background-color: #4CAF50; /* Colour of submit button */
-        color: white; /* Colour of submit buttons text */
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
+      th { /* Styles table header alone */
+        background-color: maroon; /* Adds background colour for header */
+      }
+
+      tr { /* Styles table rows */
+        background-color: grey; /* background colour of table rows */
+        border-bottom: 1px solid white; /* Adds a border below each row */
+      }
+
+      tr:hover { /* Styles the hover over table rows */
+        background-color: blue; 
       }
 
       /* END OF MY OWN CODE */
     </style>
 
     <body>
-      <nav class="navbar navbar-expand-lg bg-maroon">
+      <!-- Strictly Bootstrap code added from Bootstrap website to create Recipe cards (changed to suit my webpage) -->
+      <!-- https://getbootstrap.com/docs/5.3/components/navbar/ -->
+      <nav class="navbar navbar-expand-lg bg-maroon"> <!-- Expands navbar full width and chooses bg colour - overwritten with css -->
         <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">St Alphonsus Primary School</a>
+          <a class="navbar-brand" href="index.html">St Alphonsus Primary School</a> <!-- Has school name as logo on left in navbar -->
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link"  href="index.html">Home</a>
+                <a class="nav-link" href="index.html">Home</a> <!-- Has home page link in navbar with it being active while on page -->
               </li>
-    
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Classes
@@ -104,29 +95,29 @@
                   <li><a class="dropdown-item" href="EditTeacherHTML.php">Update Teachers</a></li>
                 </ul>
               </li>
-    
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Students
                 </a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu"> <!-- Added Students link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewStudentHTML.php">View Students</a></li>
                   <li><a class="dropdown-item" href="AddStudent.html">Add a Student</a></li>
                   <li><a class="dropdown-item" href="#">Remove a Student</a></li>
                 </ul>
               </li>
-    
+
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Parents
                 </a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu"> <!-- Added Parents link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewParentHTML.php">View Parents</a></li>
                   <li><a class="dropdown-item" href="AddParent.html">Add a Parent</a></li>
-                  <li><a class="dropdown-item" href="#">Remove a Parent</a></li>
+                  <li><a class="dropdown-item" href="EditParentHTML.php">Update Parents</a></li>
                 </ul>
               </li>
-    
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Teacher Assistants
@@ -164,55 +155,59 @@
         </div>
       </nav>
 
-      <!-- MY OWN CODE  -->
-      <form action="AddTeacher.php" method="post"> <!-- Creates a HTML form and links to php -->
-
-        <label for="id">TeacherID:</label><br> <!-- form option as a select option dropdown -->
-        <select name="teacherID" id="teacherID" required>
-          <option value=""disabled selected>Select</option> <!-- Acts like a placeholder default option non-selectable -->
-          <option value="T001">T001</option>
-          <option value="T002">T002</option>
-          <option value="T003">T003</option>
-          <option value="T004">T004</option>
-          <option value="T005">T005</option>
-          <option value="T006">T006</option>
-          <option value="T007">T007</option>
-        </select> <br>
-
-        <label for="title">Title:</label><br> <!-- form option as a select option dropdown -->
-        <select name="teacherTitle" id="teacherTitle" required>
-          <option value=""disabled selected>Select</option> <!-- Acts like a placeholder default option non-selectable -->
-          <option value="Mr">Mr</option>
-          <option value="Mrs">Mrs</option>
-          <option value="Miss">Miss</option>
-        </select> <br>
-
-        <label for="fname">First name:</label><br> <!-- form option copy/pasted for as many needed -->
-        <input type="text" id="teacherName" name="teacherName" placeholder="e.g. John" pattern="[A-Za-z]+" title="Please enter a valid First name (no numbers)" required><br>
-
-        <label for="lname">Last name:</label><br> <!-- form option copy/pasted for as many needed -->
-        <input type="text" id="teacherSurname" name="teacherSurname" placeholder="e.g. Smith" pattern="[A-Za-z]+" title="Please enter a valid First name (no numbers)" required><br>
-
-        <label for="dob">Date Of Birth:</label><br><!-- form option copy/pasted for as many needed -->
-        <input type="date" id="teacherDOB" name="teacherDOB" max="2023-01-01" required><br>
-
-        <label for="email">Email:</label><br> <!-- form option copy/pasted for as many needed -->
-        <input type="email" id="teacherEmail" name="teacherEmail" placeholder="e.g. example@outlook.com" required><br>
-
-        <label for="phone">Phone number:</label><br> <!-- form option copy/pasted for as many needed -->
-        <input type="tel" id="teacherPhone" name="teacherPhone" placeholder="e.g. 07826482714" required><br>
-
-        <label for="address">Address:</label><br> <!-- form option copy/pasted for as many needed -->
-        <input type="text" id="teacherAddress" name="teacherAddress" placeholder="House number street, city, country, postcode" required><br><br>
-
-        <input type="submit" value="Submit"> <!-- Submit button -->
-      </form>
+      <!-- MY OWN CODE -->
+      <h1>Parents</h1>
       
-      <p>If you click the "Submit" button, the form-data will be sent to a page called "AddTeacher.php".</p>
-
+      <table> <!-- Creates table on webpage -->
+        <tr>  <!-- Defines the table row and groups headers and data -->
+        <th>parentID</th> <!-- Table header for each column -->
+        <th>parentName</th>
+        <th>parentSurname</th>
+        <th>parentEmail</th>
+        <th>parentPhone</th>
+        <th>parentAddress</th>
+        <th>Edit</th>
+        </tr>
+        <!-- PHP code that needs to be executed to retrieve and display information required -->
+        <?php
+        // Database connection parameters
+        $servername = "127.0.0.1";
+        $username = "root";
+        $password = "";
+        $database = "school";
+        
+        // Creates the connection using parameters
+        $conn = new mysqli($servername, $username, $password, $database);
+        
+        // Checks connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+          // Retrieve Salary information from the database
+          $query = "SELECT parentID, parentName, parentSurname, 
+          parentEmail, parentPhone, parentAddress FROM parents";
+          $result = mysqli_query($conn, $query);
+          // Display the retrieved information in the HTML table
+          while ($row = mysqli_fetch_assoc($result)) {
+              echo "<tr>";
+              echo "<td>" . $row['parentID'] . "</td>";
+              echo "<td>" . $row['parentName'] . "</td>";
+              echo "<td>" . $row['parentSurname'] . "</td>";
+              echo "<td>" . $row['parentEmail'] . "</td>";
+              echo "<td>" . $row['parentPhone'] . "</td>";
+              echo "<td>" . $row['parentAddress'] . "</td>";
+              echo "<td> <button><a href='EditparentUpdate.php?id=".$row['parentID']."'>Update</a></button> </td>";
+              echo "</tr>";
+          }
+          
+          // Close the database connection
+          mysqli_close($conn);
+        ?>
+      </table>
+      
       <!-- END OF MY OWN CODE -->
-  
-      <!-- JS cdn link for bootstrap elements to work -->  
+
+      <!-- JS cdn link for bootstrap elements to work -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     
     </body>

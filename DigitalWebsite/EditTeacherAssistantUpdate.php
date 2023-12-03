@@ -3,8 +3,8 @@
     <head> <!-- Head section provides non-visible information, metadata and resource links -->
       <meta charset="UTF-8"> <!-- Specify metadata such as character encoding -->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-      <title>Add a Teacher!</title> <!-- Set the title of the page which is shown in the browser tabs -->
-      <!-- Links elements to link external resources (Bootstrap) -->
+      <title>Welcome!</title> <!-- Set the title of the page which is shown in the browser tabs -->
+      <!-- Links elements to link external resources starting with Bootstrap, CSS and Google fonts -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     </head>
 
@@ -13,7 +13,7 @@
       body { /* Styling the main body */
         margin: 0; 
         padding: 0; /* Setting no margin or padding for any content in the body*/
-        background-color: blue;
+        background-color: maroon;
       }
         
       .navbar {
@@ -25,7 +25,7 @@
         font-size: 18px; /* Changes size of navbar link text */
         color: white; /* Changes colour of navbar link text */
       }
-        
+      
       form {
         width: 400px; /* Changes size of the html form */
         margin-top: 20px; /* Adds spacing on top */
@@ -69,20 +69,22 @@
 
       /* END OF MY OWN CODE */
     </style>
-
+    
     <body>
-      <nav class="navbar navbar-expand-lg bg-maroon">
+      <!-- Strictly Bootstrap code added from Bootstrap website to create Recipe cards (changed to suit my webpage) -->
+      <!-- https://getbootstrap.com/docs/5.3/components/navbar/ -->
+      <nav class="navbar navbar-expand-lg bg-maroon"> <!-- Expands navbar full width and chooses bg colour - overwritten with css -->
         <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">St Alphonsus Primary School</a>
+          <a class="navbar-brand" href="index.html">St Alphonsus Primary School</a> <!-- Has school name as logo on left in navbar -->
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link"  href="index.html">Home</a>
+                <a class="nav-link" href="index.html">Home</a> <!-- Has home page link in navbar with it being active while on page -->
               </li>
-    
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Classes
@@ -104,37 +106,37 @@
                   <li><a class="dropdown-item" href="EditTeacherHTML.php">Update Teachers</a></li>
                 </ul>
               </li>
-    
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Students
                 </a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu"> <!-- Added Students link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewStudentHTML.php">View Students</a></li>
                   <li><a class="dropdown-item" href="AddStudent.html">Add a Student</a></li>
                   <li><a class="dropdown-item" href="#">Remove a Student</a></li>
                 </ul>
               </li>
-    
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Parents
                 </a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu"> <!-- Added Parents link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewParentHTML.php">View Parents</a></li>
                   <li><a class="dropdown-item" href="AddParent.html">Add a Parent</a></li>
                   <li><a class="dropdown-item" href="#">Remove a Parent</a></li>
                 </ul>
               </li>
-    
+
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Teacher Assistants
                 </a>
                 <ul class="dropdown-menu"> <!-- Added Teacher assistants link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewTeacherassistantHTML.php">View Teacher Assistants</a></li>
                   <li><a class="dropdown-item" href="AddTeacherAssistant.html">Add a Teacher Assistant</a></li>
-                  <li><a class="dropdown-item" href="#">Remove Teacher Assistants</a></li>
+                  <li><a class="dropdown-item" href="EditTeacherAssistantHTML.php">Update Teacher Assistants</a></li>
                 </ul>
               </li>
 
@@ -156,7 +158,7 @@
                 <ul class="dropdown-menu"> <!-- Added Salaries link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewSalaryHTML.php">View Salaries</a></li>
                   <li><a class="dropdown-item" href="AddSalaryHTML.php">Add Salaries</a></li>
-                  <li><a class="dropdown-item" href="EditSalaryHTML.php">Update/Delete Salaries</a></li>
+                  <li><a class="dropdown-item" href="UpdateSalaryHTML.php">Update/Delete Salaries</a></li>
                 </ul>
               </li>
             </ul>
@@ -164,56 +166,77 @@
         </div>
       </nav>
 
-      <!-- MY OWN CODE  -->
-      <form action="AddTeacher.php" method="post"> <!-- Creates a HTML form and links to php -->
+      <?php
+        //Retrieve the staffID from the URL parameter
+        $assistantID = $_GET['id'];
 
-        <label for="id">TeacherID:</label><br> <!-- form option as a select option dropdown -->
-        <select name="teacherID" id="teacherID" required>
-          <option value=""disabled selected>Select</option> <!-- Acts like a placeholder default option non-selectable -->
-          <option value="T001">T001</option>
-          <option value="T002">T002</option>
-          <option value="T003">T003</option>
-          <option value="T004">T004</option>
-          <option value="T005">T005</option>
-          <option value="T006">T006</option>
-          <option value="T007">T007</option>
-        </select> <br>
+        // Database connection parameters
+        $servername = "127.0.0.1";
+        $username = "root";
+        $password = "";
+        $database = "school";
+        
+        // Creates the connection using parameters
+        $conn = new mysqli($servername, $username, $password, $database);
+        
+        // Checks connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-        <label for="title">Title:</label><br> <!-- form option as a select option dropdown -->
-        <select name="teacherTitle" id="teacherTitle" required>
-          <option value=""disabled selected>Select</option> <!-- Acts like a placeholder default option non-selectable -->
-          <option value="Mr">Mr</option>
-          <option value="Mrs">Mrs</option>
-          <option value="Miss">Miss</option>
-        </select> <br>
+        // Retrieve the existing record
+        $sql = "SELECT * FROM teacherassistants WHERE assistantID = '$assistantID'";
+        $result = $conn->query($sql);
+        // Display the existing record in a form
+        if ($result->num_rows > 0) {
+          $row = $result->fetch_assoc();
 
-        <label for="fname">First name:</label><br> <!-- form option copy/pasted for as many needed -->
-        <input type="text" id="teacherName" name="teacherName" placeholder="e.g. John" pattern="[A-Za-z]+" title="Please enter a valid First name (no numbers)" required><br>
+      ?>
+      <form action="EditTeacherAssistantUpdateSubmit.php" method="POST">
+          AssistantID: <input type="text" id="assistantID" name="assistantID" value="<?php echo $row['assistantID']; ?>" readonly><br>
+          
+          assistant Title:
+          <select id="assistantTitle" name="assistantTitle">
+          <option value="Mr" <?php if($row['assistantTitle'] == "Mr") echo "selected"; ?>>Mr</option>
+          <option value="Mrs" <?php if($row['assistantTitle'] == "Mrs") echo "selected"; ?>>Mrs</option>
+          <option value="Miss" <?php if($row['assistantTitle'] == "Miss") echo "selected"; ?>>Miss</option>
+          </select><br>
 
-        <label for="lname">Last name:</label><br> <!-- form option copy/pasted for as many needed -->
-        <input type="text" id="teacherSurname" name="teacherSurname" placeholder="e.g. Smith" pattern="[A-Za-z]+" title="Please enter a valid First name (no numbers)" required><br>
+          First Name: <input type="text" id="assistantName" name="assistantName" pattern="[A-Za-z]+" title="Please enter a valid First name (no numbers)" value="<?php echo $row['assistantName']; ?>" required><br>
 
-        <label for="dob">Date Of Birth:</label><br><!-- form option copy/pasted for as many needed -->
-        <input type="date" id="teacherDOB" name="teacherDOB" max="2023-01-01" required><br>
+          Last Name: <input type="text" id="assistantSurname" name="assistantSurname" pattern="[A-Za-z]+" title="Please enter a valid Surname (no numbers)" value="<?php echo $row['assistantSurname']; ?>" required><br>
+          
+          Date Of Birth: <input type="date" id="assistantDOB" name="assistantDOB" value="<?php echo $row['assistantDOB']; ?>" required><br>
 
-        <label for="email">Email:</label><br> <!-- form option copy/pasted for as many needed -->
-        <input type="email" id="teacherEmail" name="teacherEmail" placeholder="e.g. example@outlook.com" required><br>
+          Email: <input type="email" id="assistantEmail" name="assistantEmail" value="<?php echo $row['assistantEmail']; ?>" required><br>
 
-        <label for="phone">Phone number:</label><br> <!-- form option copy/pasted for as many needed -->
-        <input type="tel" id="teacherPhone" name="teacherPhone" placeholder="e.g. 07826482714" required><br>
+          Phone number: <input type="tel" id="assistantPhone" name="assistantPhone" value="<?php echo $row['assistantPhone']; ?>" required><br>
 
-        <label for="address">Address:</label><br> <!-- form option copy/pasted for as many needed -->
-        <input type="text" id="teacherAddress" name="teacherAddress" placeholder="House number street, city, country, postcode" required><br><br>
+          Address: <input type="text" id="assistantAddress" name="assistantAddress" value="<?php echo $row['assistantAddress']; ?>" required><br>
+          
+          TeacherID:
+          <select id="teacherID" name="teacherID">
+          <option value="T001" <?php if($row['teacherID'] == "T001") echo "selected"; ?>>T001</option>
+          <option value="T002" <?php if($row['teacherID'] == "T002") echo "selected"; ?>>T002</option>
+          <option value="T003" <?php if($row['teacherID'] == "T003") echo "selected"; ?>>T003</option>
+          <option value="T004" <?php if($row['teacherID'] == "T004") echo "selected"; ?>>T004</option>
+          <option value="T005" <?php if($row['teacherID'] == "T005") echo "selected"; ?>>T005</option>
+          <option value="T006" <?php if($row['teacherID'] == "T006") echo "selected"; ?>>T006</option>
+          <option value="T007" <?php if($row['teacherID'] == "T007") echo "selected"; ?>>T007</option>
+          </select><br><br>
 
-        <input type="submit" value="Submit"> <!-- Submit button -->
+          <input type="submit" value="Update">
       </form>
-      
-      <p>If you click the "Submit" button, the form-data will be sent to a page called "AddTeacher.php".</p>
 
-      <!-- END OF MY OWN CODE -->
-  
-      <!-- JS cdn link for bootstrap elements to work -->  
+      <?php
+        } else {
+          echo "No record found.";
+        }
+        $conn->close();
+      ?>
+
+      <!-- JS cdn link for bootstrap elements to work -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    
+      
     </body>
 </html>
