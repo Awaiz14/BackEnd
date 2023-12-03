@@ -169,7 +169,7 @@
       <form action="addSalary.php" method="POST">
         <label for="staffID">Staff ID:</label>
         <select name="staffID" id="staffID" onchange="updateStaffRole()" required>
-        <?php include 'AddSalaryDropdownOptions.php'; ?>
+          <?php include 'AddSalaryDropdownOptions.php'; ?>
         </select>
         <br>
         <!-- Rest of the form fields -->

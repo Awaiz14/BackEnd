@@ -35,17 +35,6 @@ if (mysqli_num_rows($result) > 0) {
    $error = true;
 }
 
-// Validate name
-if (!preg_match("/^[A-Za-z]+$/", $assistantName)) {
-    echo "Error: First name should only contain letters.<br>";
-    $error = true;
- }
- // Validate surname
- if (!preg_match("/^[A-Za-z]+$/", $assistantSurname)) {
-    echo "Error: Last name should only contain letters.<br>";
-    $error = true;
- }
-
  if ($error) {
     echo '<button onclick="history.go(-1)">Go Back</button>';
  }

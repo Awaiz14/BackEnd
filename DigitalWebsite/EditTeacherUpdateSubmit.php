@@ -21,27 +21,7 @@ $teacherDOB = $_POST['teacherDOB'];
 $teacherEmail = $_POST['teacherEmail'];
 $teacherPhone = $_POST['teacherPhone'];
 $teacherAddress = $_POST['teacherAddress'];
-
-//error variable
-$error = false;
-
-// Validate name
-if (!preg_match("/^[A-Za-z]+$/", $teacherName)) {
-    echo "Error: First name should only contain letters.<br>";
-    $error = true;
- }
- // Validate surname
- if (!preg_match("/^[A-Za-z]+$/", $teacherSurname)) {
-    echo "Error: Last name should only contain letters.<br>";
-    $error = true;
- }
-
- if ($error) {
-    echo '<button onclick="history.go(-1)">Go Back</button>';
- }
- 
- else {
-    
+   
 // Update the teachers table
 $query = "UPDATE teachers SET teacherTitle = '$teacherTitle', teacherName = '$teacherName', teacherSurname = '$teacherSurname', 
 teacherDOB = '$teacherDOB', teacherEmail = '$teacherEmail', teacherPhone = '$teacherPhone', teacherAddress = '$teacherAddress' 
@@ -53,7 +33,7 @@ if (mysqli_query($conn, $query)) {
 } else {
    echo "Error updating teachers: " . mysqli_error($connection);
 }
-}
+
 
 
 // Close connection

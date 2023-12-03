@@ -20,25 +20,6 @@ $parentEmail = $_POST['parentEmail'];
 $parentPhone = $_POST['parentPhone'];
 $parentAddress = $_POST['parentAddress'];
 
-//error variable
-$error = false;
-
-// Validate name
-if (!preg_match("/^[A-Za-z]+$/", $parentName)) {
-    echo "Error: First name should only contain letters.<br>";
-    $error = true;
- }
- // Validate surname
- if (!preg_match("/^[A-Za-z]+$/", $parentSurname)) {
-    echo "Error: Last name should only contain letters.<br>";
-    $error = true;
- }
-
- if ($error) {
-    echo '<button onclick="history.go(-1)">Go Back</button>';
- }
- 
- else {
     // Insert the data into the "pupils" table
     $sql = "INSERT INTO parents (parentID, parentName, parentSurname, parentEmail, parentPhone, parentAddress ) 
     VALUES ('$parentID', '$parentName', '$parentSurname', '$parentEmail', '$parentPhone', '$parentAddress')";
@@ -49,7 +30,7 @@ if (!preg_match("/^[A-Za-z]+$/", $parentName)) {
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
-}
+
  
  
 // Close connection
