@@ -202,17 +202,17 @@
           <option value="Miss" <?php if($row['assistantTitle'] == "Miss") echo "selected"; ?>>Miss</option>
           </select><br>
 
-          First Name: <input type="text" id="assistantName" name="assistantName" pattern="[A-Za-z]+" title="Please enter a valid First name (no numbers)" value="<?php echo $row['assistantName']; ?>" required><br>
+          First Name: <input type="text" id="assistantName" name="assistantName" placeholder="e.g. John" pattern="[A-Za-z]+" title="Please enter a valid First name (no numbers)" value="<?php echo $row['assistantName']; ?>" required><br>
 
-          Last Name: <input type="text" id="assistantSurname" name="assistantSurname" pattern="[A-Za-z]+" title="Please enter a valid Surname (no numbers)" value="<?php echo $row['assistantSurname']; ?>" required><br>
+          Last Name: <input type="text" id="assistantSurname" name="assistantSurname" placeholder="e.g. Smith" pattern="[A-Za-z]+" title="Please enter a valid Surname (no numbers)" value="<?php echo $row['assistantSurname']; ?>" required><br>
           
           Date Of Birth: <input type="date" id="assistantDOB" name="assistantDOB" value="<?php echo $row['assistantDOB']; ?>" required><br>
 
-          Email: <input type="email" id="assistantEmail" name="assistantEmail" value="<?php echo $row['assistantEmail']; ?>" required><br>
+          Email: <input type="email" id="assistantEmail" name="assistantEmail" placeholder="e.g. example@outlook.com" value="<?php echo $row['assistantEmail']; ?>" required><br>
 
-          Phone number: <input type="tel" id="assistantPhone" name="assistantPhone" value="<?php echo $row['assistantPhone']; ?>" required><br>
+          Phone number: <input type="tel" id="assistantPhone" name="assistantPhone" placeholder="e.g. 07826482714" value="<?php echo $row['assistantPhone']; ?>" required><br>
 
-          Address: <input type="text" id="assistantAddress" name="assistantAddress" value="<?php echo $row['assistantAddress']; ?>" required><br>
+          Address: <input type="text" id="assistantAddress" name="assistantAddress" placeholder="House number street, city, country, postcode" value="<?php echo $row['assistantAddress']; ?>" required><br>
           
           TeacherID:
           <select id="teacherID" name="teacherID">

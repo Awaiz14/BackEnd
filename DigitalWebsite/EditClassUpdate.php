@@ -206,7 +206,7 @@
           <option value="T007" <?php if($row['teacherID'] == "T007") echo "selected"; ?>>T007</option>
           </select><br>
 
-          Class Capacity: <input type="number" id="classCapacity" name="classCapacity" value="<?php echo $row['classCapacity']; ?>" required><br><br>
+          Class Capacity: <input type="number" id="classCapacity" name="classCapacity" placeholder="Enter a number" value="<?php echo $row['classCapacity']; ?>" required><br><br>
 
           <input type="submit" value="Update">
       </form>

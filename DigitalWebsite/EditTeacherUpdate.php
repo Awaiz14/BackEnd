@@ -202,17 +202,17 @@
           <option value="Miss" <?php if($row['teacherTitle'] == "Miss") echo "selected"; ?>>Miss</option>
           </select><br>
 
-          First Name: <input type="text" id="teacherName" name="teacherName" pattern="[A-Za-z]+" title="Please enter a valid First name (no numbers)" value="<?php echo $row['teacherName']; ?>" required><br>
+          First Name: <input type="text" id="teacherName" name="teacherName" placeholder="e.g. John" pattern="[A-Za-z]+" title="Please enter a valid First name (no numbers)" value="<?php echo $row['teacherName']; ?>" required><br>
 
-          Last Name: <input type="text" id="teacherSurname" name="teacherSurname" pattern="[A-Za-z]+" title="Please enter a valid Surname (no numbers)" value="<?php echo $row['teacherSurname']; ?>" required><br>
+          Last Name: <input type="text" id="teacherSurname" name="teacherSurname" placeholder="e.g. Smith" pattern="[A-Za-z]+" title="Please enter a valid Surname (no numbers)" value="<?php echo $row['teacherSurname']; ?>" required><br>
           
           Date Of Birth: <input type="date" id="teacherDOB" name="teacherDOB" value="<?php echo $row['teacherDOB']; ?>" required><br>
 
-          Email: <input type="email" id="teacherEmail" name="teacherEmail" value="<?php echo $row['teacherEmail']; ?>" required><br>
+          Email: <input type="email" id="teacherEmail" name="teacherEmail" placeholder="e.g. example@outlook.com" value="<?php echo $row['teacherEmail']; ?>" required><br>
 
-          Phone number: <input type="tel" id="teacherPhone" name="teacherPhone" value="<?php echo $row['teacherPhone']; ?>" required><br>
+          Phone number: <input type="tel" id="teacherPhone" name="teacherPhone" placeholder="e.g. 07826482714" value="<?php echo $row['teacherPhone']; ?>" required><br>
 
-          Address: <input type="text" id="teacherAddress" name="teacherAddress" value="<?php echo $row['teacherAddress']; ?>" required><br><br>
+          Address: <input type="text" id="teacherAddress" name="teacherAddress" placeholder="House number street, city, country, postcode" value="<?php echo $row['teacherAddress']; ?>" required><br><br>
 
           <input type="submit" value="Update">
       </form>

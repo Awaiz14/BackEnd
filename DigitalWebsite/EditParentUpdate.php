@@ -195,15 +195,15 @@
       <form action="EditParentUpdateSubmit.php" method="POST">
           ParentID: <input type="text" id="parentID" name="parentID" value="<?php echo $row['parentID']; ?>" readonly><br>
 
-          First Name: <input type="text" id="parentName" name="parentName" pattern="[A-Za-z]+" title="Please enter a valid First name (no numbers)" value="<?php echo $row['parentName']; ?>" required><br>
+          First Name: <input type="text" id="parentName" name="parentName" placeholder="e.g. John" pattern="[A-Za-z]+" title="Please enter a valid First name (no numbers)" value="<?php echo $row['parentName']; ?>" required><br>
 
-          Last Name: <input type="text" id="parentSurname" name="parentSurname" pattern="[A-Za-z]+" title="Please enter a valid Surname (no numbers)" value="<?php echo $row['parentSurname']; ?>" required><br>
+          Last Name: <input type="text" id="parentSurname" name="parentSurname" placeholder="e.g. Smith" pattern="[A-Za-z]+" title="Please enter a valid Surname (no numbers)" value="<?php echo $row['parentSurname']; ?>" required><br>
 
-          Email: <input type="email" id="parentEmail" name="parentEmail" value="<?php echo $row['parentEmail']; ?>" required><br>
+          Email: <input type="email" id="parentEmail" name="parentEmail" placeholder="e.g. example@outlook.com" value="<?php echo $row['parentEmail']; ?>" required><br>
 
-          Phone number: <input type="tel" id="parentPhone" name="parentPhone" value="<?php echo $row['parentPhone']; ?>" required><br>
+          Phone number: <input type="tel" id="parentPhone" name="parentPhone" placeholder="e.g. 07826482714" value="<?php echo $row['parentPhone']; ?>" required><br>
 
-          Address: <input type="text" id="parentAddress" name="parentAddress" value="<?php echo $row['parentAddress']; ?>" required><br><br>
+          Address: <input type="text" id="parentAddress" name="parentAddress" placeholder="House number street, city, country, postcode" value="<?php echo $row['parentAddress']; ?>" required><br><br>
 
           <input type="submit" value="Update">
       </form>

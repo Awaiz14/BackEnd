@@ -216,7 +216,7 @@
         <input type="text" id="teacherID" name="teacherID" readonly> <br>
 
         <label for="id">Parent1ID:</label><br> <!-- form option copy/pasted for as many needed -->
-        <select id="parent1ID" name="parent1ID" placeholder="e.g. P001" required>
+        <select id="parent1ID" name="parent1ID" required>
           <?php // Database connection parameters
           $servername = "127.0.0.1";
           $username = "root";
@@ -246,7 +246,7 @@
         <br>
 
         <label for="id">Parent2ID:</label><br> <!-- form option copy/pasted for as many needed -->
-        <select id="parent2ID" name="parent2ID" placeholder="(optional) or leave blank">
+        <select id="parent2ID" name="parent2ID">
         <?php // Database connection parameters
         $servername = "127.0.0.1";
         $username = "root";
