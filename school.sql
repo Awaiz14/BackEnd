@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2023 at 07:44 PM
+-- Generation Time: Dec 03, 2023 at 10:01 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -51,9 +51,9 @@ CREATE TABLE `classes` (
 --
 
 INSERT INTO `classes` (`className`, `teacherID`, `classCapacity`) VALUES
-('Reception', 'T001', 20),
+('Reception', 'T001', 2),
 ('Year1', 'T003', 15),
-('Year2', 'T002', 15);
+('Year2', 'T004', 15);
 
 -- --------------------------------------------------------
 
@@ -78,7 +78,7 @@ INSERT INTO `parents` (`parentID`, `parentName`, `parentSurname`, `parentEmail`,
 ('', NULL, NULL, NULL, NULL, NULL),
 ('P001', 'James', 'Potter', 'Snapesbully@gmail.com', '07329183728', '81 Sandon Road, Stafford, England, ST16 3HF'),
 ('P002', 'Lily', 'Potter', 'motherseyes@yahoo.com', '07836472822', '81 Sandon Road, Stafford, England, ST16 3HF'),
-('P003', 'test', 'test', 'test@test.com', 'test', 'test');
+('P003', 'Mother', 'Teresa3', 'hello@gmail', 'test', 'test');
 
 -- --------------------------------------------------------
 
@@ -93,6 +93,14 @@ CREATE TABLE `salaries` (
   `annualPay` decimal(10,0) DEFAULT NULL,
   `payFrequency` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `salaries`
+--
+
+INSERT INTO `salaries` (`staffID`, `staffRole`, `staffLevel`, `annualPay`, `payFrequency`) VALUES
+('T001', 'Teacher', '3', 40000, 'Monthly'),
+('TA002', 'Assistant', '2', 20001, 'Weekly');
 
 --
 -- Triggers `salaries`
@@ -139,7 +147,8 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`studentID`, `studentName`, `studentSurname`, `studentDOB`, `studentEmail`, `studentAddress`, `className`, `teacherID`, `parent1ID`, `parent2ID`, `medicalInfo`) VALUES
-('S001', 'Harry', 'Potter', '2019-09-01', 'HarryS001@alphonsus.ac.uk', '81 Sandon Road, Stafford, England, ST16 3HF', 'Reception', 'T001', 'P001', 'P002', 'Has a scar that hurts 24/7');
+('S001', 'Harry', 'Potter', '2019-09-01', 'HarryS001@alphonsus.ac.uk', '81 Sandon Road, Stafford, England, ST16 3HF', 'Year1', 'T003', 'P001', '', ''),
+('S002', 'Sammy', 'Doe', '2015-06-14', 'JohnnyS002@alphonsus.ac.uk', '5 Churn Close, Crudgington, England, TF6 6FE', 'Year2', 'T004', 'P002', '', 'mental ill person');
 
 -- --------------------------------------------------------
 
@@ -165,18 +174,7 @@ CREATE TABLE `teacherassistants` (
 --
 
 INSERT INTO `teacherassistants` (`assistantID`, `assistantTitle`, `assistantName`, `assistantSurname`, `assistantDOB`, `assistantEmail`, `assistantPhone`, `assistantAddress`, `teacherID`, `assistantSalary`) VALUES
-('TA002', 'Mr', 'Bucky', 'Barnes', '1974-12-27', 'WinterSoldier@gmail.com', '07891665382', '5 Bourne Close, Salisbury, England, SP1 1NR', 'T002', NULL);
-
---
--- Triggers `teacherassistants`
---
-DELIMITER $$
-CREATE TRIGGER `delete_teacherassistant` AFTER DELETE ON `teacherassistants` FOR EACH ROW BEGIN
-DELETE FROM salaries
-WHERE staffID = OLD.assistantID;
-END
-$$
-DELIMITER ;
+('TA001', 'Mr', 'testworking', 'testworking', '2000-12-14', 'test@gmail.com', 'test', 'test', 'T001', NULL);
 
 -- --------------------------------------------------------
 
@@ -201,20 +199,9 @@ CREATE TABLE `teachers` (
 --
 
 INSERT INTO `teachers` (`teacherID`, `teacherTitle`, `teacherName`, `teacherSurname`, `teacherDOB`, `teacherEmail`, `teacherPhone`, `teacherAddress`, `teacherSalary`) VALUES
-('T001', 'Miss', 'Wanda', 'Maximoff', '1998-06-23', 'Scarletwitch@gmail.com', '07937622865', '87 Railway Road, Downham, England, PE38 9EL', NULL),
-('T002', 'Mr', 'Steve', 'Rogers', '1973-08-16', 'Captainamerica@yahoo.com', '07852741964', '101 Castle Drive, Preston, England, PR1 2FB', NULL),
-('T003', 'Mr', 'Peter', 'Parker', '1998-09-13', 'Spidey@webs.co.uk', '07663297562', '66 Park Lane, London, England, OX42 5BE', NULL);
-
---
--- Triggers `teachers`
---
-DELIMITER $$
-CREATE TRIGGER `delete_teacher` AFTER DELETE ON `teachers` FOR EACH ROW BEGIN
-DELETE FROM salaries 
-WHERE staffID = OLD.teacherID;
-END
-$$
-DELIMITER ;
+('T001', 'Miss', 'Wanda', 'Maximoff', '1998-06-23', 'Scarletwitch@gmail.com', '07937622864', '87 Railway Road, Downham, England, PE38 9EL', '40000'),
+('T003', 'Mr', 'Peter', 'Parker', '1998-09-13', 'Spidey@webs.co.uk', '07663297562', '66 Park Lane, London, England, OX42 5BE', NULL),
+('T004', 'Mrs', 'Lorraine', 'Warren', '1976-12-14', 'Iseeghosts@conjuring.com', '07328427182', '36 Buxted Road, Kirkby, England, L32 6SQ', NULL);
 
 --
 -- Indexes for dumped tables
