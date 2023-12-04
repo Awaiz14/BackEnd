@@ -165,33 +165,40 @@
       </nav>
 
       <!-- MY OWN CODE -->
-      <form action="AddClass.php" method="post"> <!-- Creates a HTML form and links to php -->
-        <label for="id">Class Name:</label><br> <!-- Label name for form option -->
-        <select name="className" id="className" required>
-          <option value=""disabled selected>Select a class</option> <!-- Acts like a placeholder default option non-selectable -->
-          <option value="Reception">Reception</option>
-          <option value="Year1">Year1</option>
-          <option value="Year2">Year2</option>
-          <option value="Year3">Year3</option>
-          <option value="Year4">Year4</option>
-          <option value="Year5">Year5</option>
-          <option value="Year6">Year6</option>
-        </select> <br>
-        <label for="id">TeacherID:</label><br> <!-- Label name for form option -->
-        <select name="teacherID" id="teacherID" required> 
-          <option value=""disabled selected>Select a teacher</option> <!-- Acts like a placeholder default option non-selectable -->
-          <option value="T001">T001</option>
-          <option value="T002">T002</option>
-          <option value="T003">T003</option>
-          <option value="T004">T004</option>
-          <option value="T005">T005</option>
-          <option value="T006">T006</option>
-          <option value="T007">T007</option>
-        </select> <br>
-        <label for="Capacity">Class Capacity:</label><br> <!-- Label name for form option -->
-        <input type="number" id="classCapacity" name="classCapacity" placeholder="Enter a number" required><br><br>
-        <input type="submit" value="Submit"> <!-- Submit button -->
-      </form> 
+      <form action="TakeAttendance.php" method="post">
+    <label for="className">Select Class:</label>
+    <select name="className" id="className">
+
+        <!-- Fetch and populate classes from the database -->
+        <?php
+// Database connection parameters
+$servername = "127.0.0.1";
+$username = "root";
+$password = "";
+$database = "school";
+ 
+// Create the connection using parameters
+$conn = new mysqli($servername, $username, $password, $database);
+ 
+// Checks the connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+        
+        // Fetch classes from the database
+        $sql = "SELECT * FROM classes";
+        $result = $conn->query($sql);
+        
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<option value='" . $row['className'] . "'>" . $row['className'] . "</option>";
+            }
+        }
+        ?>
+    </select>
+    
+    <input type="submit" value="Show Students">
+</form>
       
       <p>If you click the "Submit" button, the form-data will be sent to a page called "AddClass.php".</p> <!-- Extra information-->
 

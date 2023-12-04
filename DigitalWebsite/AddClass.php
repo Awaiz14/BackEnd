@@ -5,13 +5,14 @@ $username = "root";
 $password = "";
 $database = "school";
  
-// Create connection
+// Create the connection using parameters
 $conn = new mysqli($servername, $username, $password, $database);
  
-// Check connection
+// Checks the connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
 // Get form data
 $className = $_POST['className'];
 $teacherID = $_POST['teacherID'];

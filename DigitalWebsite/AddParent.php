@@ -20,7 +20,7 @@ $parentEmail = $_POST['parentEmail'];
 $parentPhone = $_POST['parentPhone'];
 $parentAddress = $_POST['parentAddress'];
 
-    // Insert the data into the "pupils" table
+    // Insert the data into the "parents" table
     $sql = "INSERT INTO parents (parentID, parentName, parentSurname, parentEmail, parentPhone, parentAddress ) 
     VALUES ('$parentID', '$parentName', '$parentSurname', '$parentEmail', '$parentPhone', '$parentAddress')";
  
