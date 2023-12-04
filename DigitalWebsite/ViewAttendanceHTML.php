@@ -3,12 +3,9 @@
     <head> <!-- Head section provides non-visible information, metadata and resource links -->
       <meta charset="UTF-8"> <!-- Specify metadata such as character encoding -->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-      <title>Welcome!</title> <!-- Set the title of the page which is shown in the browser tabs -->
-      <!-- Links elements to link external resources starting with Bootstrap, CSS and Google fonts -->
+      <title>Add a Class!</title> <!-- Set the title of the page which is shown in the browser tabs -->
+      <!-- Links elements to link external resources (Bootstrap) -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@1,700&family=Sail&display=swap" rel="stylesheet">
     </head>
 
     <!-- MY OWN CODE -->
@@ -16,53 +13,76 @@
       body { /* Styling the main body */
         margin: 0; 
         padding: 0; /* Setting no margin or padding for any content in the body*/
-        background-image: url(schoolbg.jpg); /* Adding image as background */
-        background-repeat: no-repeat; 
-        background-attachment: fixed; /* Keeps image in place so does not move when scrolling */
-        background-size: cover; /* Allows image to cover full page */
-        background-position: center;
+        background-color:aquamarine;
       }
-
-      h1 {
-        color: yellow; /* Sets colour of heading */
-        font-size: 70px; /* Sets text size of heading */
-        font-family: 'Sail', sans-serif; /* Sets the font */
-        font-weight:100; /* Sets the boldness */
-        text-shadow: 2px 2px 8px black; /* Adds shadow behind text making it more visible on background */
-        background-color: rgba(0,0,0,0.5); /* Adds background colour to text */
-        text-align: center; /* Sets text to show in center of page */ 
-        margin-top: 46.900px; /* Added due to bootstrap as it takes away default margins */
-        margin-bottom: 46.900px; /* Added due to bootstrap as it takes away default margins */
-      }
-
+        
       .navbar {
-        background-color: blueviolet; /* Adds background colour to bootstrap nav bar */
-        border-bottom: 4px solid black; /* Adds a bottom border to bootstrap nav bar */
+      background-color: blueviolet; /* Adds background colour to bootstrap nav bar */
+      border-bottom: 4px solid black; /* Adds a bottom border to bootstrap nav bar */
       }
 
       .navbar-nav .nav-link {
         font-size: 18px; /* Changes size of navbar link text */
         color: white; /* Changes colour of navbar link text */
       }
-    
+      
+      form {
+        width: 400px; /* Changes size of the html form */
+        margin-top: 20px; /* Adds spacing on top */
+        margin-left: 20px; /* Adds spacing on left */
+        background-color: orangered; /* Changes background colour of form */
+        justify-content: center; /* Centers all the content in form */
+        text-align: center; /* Centers all the text in form */
+        border: solid 4px black; /* Adds border to form */
+        border-radius: 6px;
+      }
+
+      select { /* Styles the input boxes which are select options */
+        border: 2px solid black;
+        border-radius: 4px;
+        padding: 2px;
+        margin-bottom: 10px;
+        width: 350px; /* Size of the option box */
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="number"],
+      input[type="date"] { /* Styles the the different input boxes based on input type*/
+        border: 2px solid black;
+        border-radius: 4px;
+        padding: 2px;
+        margin-bottom: 10px; /* Adds space below each input box */
+        width: 350px; /* Size of the input boxes */
+      }
+
+      input[type="submit"] { /* Styles the submit button */
+        padding: 8px 16px;
+        margin-bottom: 10px;
+        background-color: #4CAF50; /* Colour of submit button */
+        color: white; /* Colour of submit buttons text */
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
       /* END OF MY OWN CODE */
     </style>
-
+    
     <body>
-      <!-- Strictly Bootstrap code added from Bootstrap website to create Recipe cards (changed to suit my webpage) -->
-      <!-- https://getbootstrap.com/docs/5.3/components/navbar/ -->
-      <nav class="navbar navbar-expand-lg bg-maroon"> <!-- Expands navbar full width and chooses bg colour - overwritten with css -->
+      <nav class="navbar navbar-expand-lg bg-maroon">
         <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">St Alphonsus Primary School</a> <!-- Has school name as logo on left in navbar -->
+          <a class="navbar-brand" href="index.html">St Alphonsus Primary School</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.html">Home</a> <!-- Has home page link in navbar with it being active while on page -->
+                <a class="nav-link" href="index.html">Home</a>
               </li>
-
+    
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Classes
@@ -119,13 +139,13 @@
               </li>
 
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Attendance
                 </a>
                 <ul class="dropdown-menu"> <!-- Added Attendance link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewAttendanceHTML.php">View Attendance</a></li>
-                  <li><a class="dropdown-item" href="TakeAttendanceHTML.php">Take Attendance</a></li>
-                  <li><a class="dropdown-item" href="EditAttendanceHTML.php">Update Attendance</a></li>
+                  <li><a class="dropdown-item" href="TakeAttendance.html">Take Attendance</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </li>
 
@@ -144,10 +164,52 @@
         </div>
       </nav>
 
-      <h1> Welcome to St Alphonsus Primary School </h1> <!-- Added heading on page -->
+      <!-- MY OWN CODE -->
+      <form action="ViewAttendance.php" method="post">
+    <label for="className">Select Class:</label>
+    <select name="className" id="className">
+
+        <!-- Fetch and populate classes from the database -->
+        <?php
+// Database connection parameters
+$servername = "127.0.0.1";
+$username = "root";
+$password = "";
+$database = "school";
+ 
+// Create the connection using parameters
+$conn = new mysqli($servername, $username, $password, $database);
+ 
+// Checks the connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+        
+        // Fetch classes from the database
+        $sql = "SELECT * FROM classes";
+        $result = $conn->query($sql);
+        
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<option value='" . $row['className'] . "'>" . $row['className'] . "</option>";
+            }
+        }
+        ?>
+    </select>
+
+  <!-- Add an input field for selecting the date -->
+  <label for="selectedDate">Select Date:</label>
+    <input type="date" id="selectedDate" name="selectedDate">
+    
+    <input type="submit" value="Show Students">
+</form>
+      
+      <p>If you click the "Submit" button, the form-data will be sent to a page called "AddClass.php".</p> <!-- Extra information-->
+
+      <!-- END OF MY OWN CODE -->
 
       <!-- JS cdn link for bootstrap elements to work -->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-      
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>  
+    
     </body>
 </html>

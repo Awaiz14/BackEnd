@@ -13,7 +13,7 @@
     body { /* Styling the main body */
       margin: 0; 
       padding: 0; /* Setting no margin or padding for any content in the body*/
-      background-color: Yellow;
+      background-color: pink;
     }
       
     .navbar {
@@ -132,7 +132,7 @@
                   Attendance
                 </a>
                 <ul class="dropdown-menu"> <!-- Added Attendance link as dropdown options -->
-                  <li><a class="dropdown-item" href="#">View Attendance</a></li>
+                  <li><a class="dropdown-item" href="ViewAttendanceHTML.php">View Attendance</a></li>
                   <li><a class="dropdown-item" href="TakeAttendance.html">Take Attendance</a></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
@@ -167,67 +167,53 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
-        // Get form data
-        $className = $_POST['className'];
+       // Get form data
+    $className = $_POST['className'];
+    $selectedDate = $_POST['selectedDate']; // Add this line to retrieve the selected date
 
-        // Fetch students based on the selected class name
-$studentsQuery = "SELECT students.studentID, students.studentName, students.studentSurname, classes.className
-FROM students 
-INNER JOIN classes ON students.className = classes.className 
-WHERE classes.className = '$className'";
+    // Query to fetch attendance records for the selected class and date
+    $sql = "SELECT * FROM attendance WHERE className = '$className' AND attendanceDate = '$selectedDate'";
+    $result = $conn->query($sql);
 
-$studentsResult = $conn->query($studentsQuery);
 
-if ($studentsResult->num_rows > 0) {
-?>
+    if ($result->num_rows > 0) {
+      echo "<br><h2>Attendance Records for Class: " . $className . "</h2><br>";
+      echo "<form method='post' action='EditAttendanceUpdateSubmit.php'>"; // Create a form for updating attendance
+  
+      echo "<table border='1'>
+      <tr>
+          <th>studentID</th>
+          <th>attendanceDate</th>
+          <th>studentName</th>
+          <th>studentSurname</th>
+          <th>className</th>
+          <th>attendanceStatus</th>
+          <th>attendanceNotes</th>
+      </tr>";
+  
+      while ($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td><input type='hidden' name='studentID[]' value='" . $row['studentID'] . "'>" . $row['studentID'] . "</td>";
+        echo "<td><input type='hidden' name='attendanceDate[]' value='" . $row['attendanceDate'] . "'>" . $row['attendanceDate'] . "</td>";
+        echo "<td>" . $row['studentName'] . "</td>";
+        echo "<td>" . $row['studentSurname'] . "</td>";
+        echo "<td>" . $row['className'] . "</td>";
+        echo "<td>
+            <input type='hidden' name='originalAttendanceStatus[]' value='" . $row['attendanceStatus'] . "'>
+            <select name='attendanceStatus[]'>
+                <option value='Present' " . ($row['attendanceStatus'] == 'Present' ? 'selected' : '') . ">Present</option>
+                <option value='Late' " . ($row['attendanceStatus'] == 'Late' ? 'selected' : '') . ">Late</option>
+                <option value='Absent' " . ($row['attendanceStatus'] == 'Absent' ? 'selected' : '') . ">Absent</option>
+            </select>
+        </td>";
+        echo "<td><input type='text' name='attendanceNotes[]' value='" . $row['attendanceNotes'] . "'></td>";
+        echo "</tr>";
+      }
+      echo "</table><br>";
+      echo "<input type='submit' value='Update Attendance'>";
+      echo "</form>";
+  } else {
+      echo "No attendance records found for this class.";
+  }
 
-<?php echo "<br><h2>Mark Attendance for $className </h2><br>" ?>
-
-<form action="TakeAttendanceSubmit.php" method="post">
-<table>
-<thead>
-<tr>
-    <th>studentID</th>
-    <th>attendanceDate</th>
-    <th>studentName</th>
-    <th>studentSurname</th>
-    <th>className</th>
-    <th>attendanceStatus</th>
-    <th>attendanceNotes</th>
-</tr>
-</thead>
-<tbody>
-<?php
-while ($row = $studentsResult->fetch_assoc()) {
-  $studentID = $row['studentID'];
-  $studentName = $row['studentName'];
-  $studentSurname = $row['studentSurname'];
-  $className = $row['className'];
-  echo "<tr>";
-  echo "<td>" . $studentID . "<input type='hidden' name='studentID[]' value='" . $studentID . "'></td>";
-  echo "<td>" . date('d-m-Y') . "<input type='hidden' name='attendanceDate[]' value='" . date('Y-m-d') . "'></td>";
-  echo "<td>" . $studentName . "<input type='hidden' name='studentName[]' value='" . $studentName . "'></td>";
-  echo "<td>" . $studentSurname . "<input type='hidden' name='studentSurname[]' value='" . $studentSurname . "'></td>";
-  echo "<td>" . $className . "<input type='hidden' name='className[]' value='" . $className . "'></td>";
-  echo "<td>";
-?>
-  <select name="attendanceStatus[]">
-      <option value="Present">Present</option>
-      <option value="Late">Late</option>
-      <option value="Absent">Absent</option>
-  </select>
-<?php
-  echo "</td>";
-  echo "<td><input type='text' name='attendanceNotes[]'></td>";
-  echo "</tr>";
-}
-?>
-</tbody>
-</table>
-<input type="submit" value="Submit Attendance">
-</form>
-<?php
-} else {
-echo "No students found in the selected class.";
-}
 ?>
