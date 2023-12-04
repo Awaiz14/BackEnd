@@ -98,10 +98,10 @@
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Students
                 </a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu"> <!-- Added Students link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewStudentHTML.php">View Students</a></li>
-                  <li><a class="dropdown-item" href="AddStudent.html">Add a Student</a></li>
-                  <li><a class="dropdown-item" href="#">Remove a Student</a></li>
+                  <li><a class="dropdown-item" href="AddStudentHTML.php">Add a Student</a></li>
+                  <li><a class="dropdown-item" href="EditStudentHTML.php">Update/Delete Students</a></li>
                 </ul>
               </li>
 
@@ -109,10 +109,10 @@
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Parents
                 </a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu"> <!-- Added Parents link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewParentHTML.php">View Parents</a></li>
                   <li><a class="dropdown-item" href="AddParent.html">Add a Parent</a></li>
-                  <li><a class="dropdown-item" href="#">Remove a Parent</a></li>
+                  <li><a class="dropdown-item" href="EditParentHTML.php">Update Parents</a></li>
                 </ul>
               </li>
 
@@ -123,18 +123,18 @@
                 <ul class="dropdown-menu"> <!-- Added Teacher assistants link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewTeacherassistantHTML.php">View Teacher Assistants</a></li>
                   <li><a class="dropdown-item" href="AddTeacherAssistant.html">Add a Teacher Assistant</a></li>
-                  <li><a class="dropdown-item" href="#">Remove Teacher Assistants</a></li>
+                  <li><a class="dropdown-item" href="EditTeacherAssistantHTML.php">Update Teacher Assistants</a></li>
                 </ul>
               </li>
 
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Attendance
                 </a>
                 <ul class="dropdown-menu"> <!-- Added Attendance link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewAttendanceHTML.php">View Attendance</a></li>
-                  <li><a class="dropdown-item" href="TakeAttendance.html">Take Attendance</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="TakeAttendanceHTML.php">Take Attendance</a></li>
+                  <li><a class="dropdown-item" href="EditAttendanceHTML.php">Update Attendance</a></li>
                 </ul>
               </li>
 
@@ -168,12 +168,12 @@
         }
 
        // Get form data
-    $className = $_POST['className'];
-    $selectedDate = $_POST['selectedDate']; // Add this line to retrieve the selected date
+        $className = $_POST['className'];
+        $selectedDate = $_POST['selectedDate']; // Add this line to retrieve the selected date
 
-    // Query to fetch attendance records for the selected class and date
-    $sql = "SELECT * FROM attendance WHERE className = '$className' AND attendanceDate = '$selectedDate'";
-    $result = $conn->query($sql);
+        // Query to fetch attendance records for the selected class and date
+        $sql = "SELECT * FROM attendance WHERE className = '$className' AND attendanceDate = '$selectedDate'";
+        $result = $conn->query($sql);
 
 
         if ($result->num_rows > 0) {
@@ -205,4 +205,10 @@
             echo "No attendance records found for this class.";
         }
 
-?>
+      ?>
+
+      <!-- JS cdn link for bootstrap elements to work -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+      
+    </body>
+</html>

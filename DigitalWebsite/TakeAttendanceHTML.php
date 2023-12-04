@@ -84,7 +84,7 @@
               </li>
     
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Classes
                 </a>
                 <ul class="dropdown-menu"> <!-- Added Classes link as dropdown options -->
@@ -139,13 +139,13 @@
               </li>
 
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Attendance
                 </a>
                 <ul class="dropdown-menu"> <!-- Added Attendance link as dropdown options -->
-                  <li><a class="dropdown-item" href="#">View Attendance</a></li>
-                  <li><a class="dropdown-item" href="TakeAttendance.html">Take Attendance</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="ViewAttendanceHTML.php">View Attendance</a></li>
+                  <li><a class="dropdown-item" href="TakeAttendanceHTML.php">Take Attendance</a></li>
+                  <li><a class="dropdown-item" href="EditAttendanceHTML.php">Update Attendance</a></li>
                 </ul>
               </li>
 

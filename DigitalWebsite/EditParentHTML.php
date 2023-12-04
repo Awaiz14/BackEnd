@@ -102,8 +102,8 @@
                 </a>
                 <ul class="dropdown-menu"> <!-- Added Students link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewStudentHTML.php">View Students</a></li>
-                  <li><a class="dropdown-item" href="AddStudent.html">Add a Student</a></li>
-                  <li><a class="dropdown-item" href="#">Remove a Student</a></li>
+                  <li><a class="dropdown-item" href="AddStudentHTML.php">Add a Student</a></li>
+                  <li><a class="dropdown-item" href="EditStudentHTML.php">Update/Delete Students</a></li>
                 </ul>
               </li>
 
@@ -125,7 +125,7 @@
                 <ul class="dropdown-menu"> <!-- Added Teacher assistants link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewTeacherassistantHTML.php">View Teacher Assistants</a></li>
                   <li><a class="dropdown-item" href="AddTeacherAssistant.html">Add a Teacher Assistant</a></li>
-                  <li><a class="dropdown-item" href="#">Remove Teacher Assistants</a></li>
+                  <li><a class="dropdown-item" href="EditTeacherAssistantHTML.php">Update Teacher Assistants</a></li>
                 </ul>
               </li>
 
@@ -134,9 +134,9 @@
                   Attendance
                 </a>
                 <ul class="dropdown-menu"> <!-- Added Attendance link as dropdown options -->
-                  <li><a class="dropdown-item" href="#">View Attendance</a></li>
-                  <li><a class="dropdown-item" href="TakeAttendance.html">Take Attendance</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="ViewAttendanceHTML.php">View Attendance</a></li>
+                  <li><a class="dropdown-item" href="TakeAttendanceHTML.php">Take Attendance</a></li>
+                  <li><a class="dropdown-item" href="EditAttendanceHTML.php">Update Attendance</a></li>
                 </ul>
               </li>
 

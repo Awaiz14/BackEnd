@@ -144,8 +144,8 @@
                 </a>
                 <ul class="dropdown-menu"> <!-- Added Attendance link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewAttendanceHTML.php">View Attendance</a></li>
-                  <li><a class="dropdown-item" href="TakeAttendance.html">Take Attendance</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="TakeAttendanceHTML.php">Take Attendance</a></li>
+                  <li><a class="dropdown-item" href="EditAttendanceHTML.php">Update Attendance</a></li>
                 </ul>
               </li>
 

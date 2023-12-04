@@ -113,8 +113,8 @@
                 </a>
                 <ul class="dropdown-menu"> <!-- Added Students link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewStudentHTML.php">View Students</a></li>
-                  <li><a class="dropdown-item" href="AddStudent.html">Add a Student</a></li>
-                  <li><a class="dropdown-item" href="#">Remove a Student</a></li>
+                  <li><a class="dropdown-item" href="AddStudentHTML.php">Add a Student</a></li>
+                  <li><a class="dropdown-item" href="EditStudentHTML.php">Update/Delete Students</a></li>
                 </ul>
               </li>
 
@@ -125,7 +125,7 @@
                 <ul class="dropdown-menu"> <!-- Added Parents link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewParentHTML.php">View Parents</a></li>
                   <li><a class="dropdown-item" href="AddParent.html">Add a Parent</a></li>
-                  <li><a class="dropdown-item" href="#">Remove a Parent</a></li>
+                  <li><a class="dropdown-item" href="EditParentHTML.php">Update Parents</a></li>
                 </ul>
               </li>
 
@@ -145,9 +145,9 @@
                   Attendance
                 </a>
                 <ul class="dropdown-menu"> <!-- Added Attendance link as dropdown options -->
-                  <li><a class="dropdown-item" href="#">View Attendance</a></li>
-                  <li><a class="dropdown-item" href="TakeAttendance.html">Take Attendance</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="ViewAttendanceHTML.php">View Attendance</a></li>
+                  <li><a class="dropdown-item" href="TakeAttendanceHTML.php">Take Attendance</a></li>
+                  <li><a class="dropdown-item" href="EditAttendanceHTML.php">Update Attendance</a></li>
                 </ul>
               </li>
 
@@ -158,7 +158,7 @@
                 <ul class="dropdown-menu"> <!-- Added Salaries link as dropdown options -->
                   <li><a class="dropdown-item" href="ViewSalaryHTML.php">View Salaries</a></li>
                   <li><a class="dropdown-item" href="AddSalaryHTML.php">Add Salaries</a></li>
-                  <li><a class="dropdown-item" href="UpdateSalaryHTML.php">Update/Delete Salaries</a></li>
+                  <li><a class="dropdown-item" href="EditSalaryHTML.php">Update/Delete Salaries</a></li>
                 </ul>
               </li>
             </ul>
