@@ -12,7 +12,7 @@ $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-   // Retrieve teachers' information from the database
+   // Retrieve class table information from the database
    $query = "SELECT className, teacherID, classCapacity FROM classes";
    $result = mysqli_query($conn, $query);
    // Display the retrieved information in the HTML table

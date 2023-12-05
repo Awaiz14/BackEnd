@@ -155,31 +155,31 @@
 
       <?php
 
-        // Establish database connection
-        $servername = "127.0.0.1";
-        $username = "root";
-        $password = "";
-        $database = "school";
+      // Establish database connection
+      $servername = "127.0.0.1";
+      $username = "root";
+      $password = "";
+      $database = "school";
 
-        $conn = new mysqli($servername, $username, $password, $database);
+      $conn = new mysqli($servername, $username, $password, $database);
 
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+      if ($conn->connect_error) {
+          die("Connection failed: " . $conn->connect_error);
+      }
 
-        // Get form data
-        $className = $_POST['className'];
+      // Get form data
+      $className = $_POST['className'];
 
-        // Fetch students based on the selected class name
-$studentsQuery = "SELECT students.studentID, students.studentName, students.studentSurname, classes.className
-FROM students 
-INNER JOIN classes ON students.className = classes.className 
-WHERE classes.className = '$className'";
+      // Fetch students based on the selected class name
+      $studentsQuery = "SELECT students.studentID, students.studentName, students.studentSurname, classes.className
+      FROM students 
+      INNER JOIN classes ON students.className = classes.className 
+      WHERE classes.className = '$className'";
 
-$studentsResult = $conn->query($studentsQuery);
+      $studentsResult = $conn->query($studentsQuery);
 
-if ($studentsResult->num_rows > 0) {
-?>
+      if ($studentsResult->num_rows > 0) {
+      ?>
 
 <?php echo "<br><h2>Mark Attendance for $className </h2><br>" ?>
 

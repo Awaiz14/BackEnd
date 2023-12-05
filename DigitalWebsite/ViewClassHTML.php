@@ -6,6 +6,7 @@
     <title>View Class!</title> <!-- Set the title of the page which is shown in the browser tabs -->
     <!-- Links elements to link external resources (Bootstrap) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
 
   <!-- MY OWN CODE -->
@@ -55,6 +56,22 @@
     tr:hover { /* Styles the hover over table rows */
       background-color: blue; 
     }
+
+    /* CSS styles to adjust the chart container and canvas */
+.chart-container {
+    width: 600px; /* Set desired width */
+    height: 300px; /* Set desired height */
+    margin: 30px; /* Add margin as needed */
+    padding: 10px; /* Add padding as needed */
+    background-color: white; /* Optional: Background color for the chart container */
+    border: 1px solid black; /* Optional: Border for the chart container */
+}
+
+/* Adjust the canvas size to fill its container */
+.chart-container canvas {
+    width: 100%;
+    height: 100%;
+}
 
     /* END OF MY OWN CODE */
   </style>
@@ -167,6 +184,39 @@
       </table>
       
       <!-- END OF MY OWN CODE -->
+
+      <h1>Class Capacity</h1>
+
+      <div class="chart-container">
+        <canvas id="barChart"></canvas>
+      </div>
+
+      <?php include 'ViewClassCapacity.php';?>
+
+      <script>
+      // JavaScript section for Chart.js
+      var ctx = document.getElementById('barChart').getContext('2d');
+      var barChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: <?php echo json_encode($classNames); ?>,
+              datasets: [{
+                  label: 'Class Capacities',
+                  data: <?php echo json_encode($classCapacities); ?>,
+                  backgroundColor: 'rgba(54, 0, 0, 0.5)', // Color for the bars
+                  borderColor: 'black', // Border color
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      });
+      </script>
 
       <!-- JS cdn link for bootstrap elements to work -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

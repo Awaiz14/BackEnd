@@ -22,7 +22,7 @@ $teacherEmail = $_POST['teacherEmail'];
 $teacherPhone = $_POST['teacherPhone'];
 $teacherAddress = $_POST['teacherAddress'];
 
-    // Insert data into the "pupils" table
+    // Insert data into the "Teachers" table
     $sql = "INSERT INTO teachers (teacherID, teacherTitle, teacherName, teacherSurname, teacherDOB, teacherEmail, teacherPhone, teacherAddress) 
     VALUES ('$teacherID', '$teacherTitle', '$teacherName', '$teacherSurname', '$teacherDOB', '$teacherEmail', '$teacherPhone', '$teacherAddress')";
  
