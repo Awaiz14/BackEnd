@@ -1,4 +1,10 @@
 <?php
+      // Database connection parameters
+      $servername = "127.0.0.1";
+      $username = "root";
+      $password = "";
+      $database = "school";
+      
       // Creates the connection using parameters
       $conn = new mysqli($servername, $username, $password, $database);
 
