@@ -174,6 +174,19 @@
         <!-- PHP code that needs to be executed to retrieve and display information required -->
         <?php include 'ViewTeacherassistant.php';?>
       </table>
+
+      <h1>Teacher pairing</h1>
+      
+      <table> <!-- Creates table on webpage -->
+        <tr>  <!-- Defines the table row and groups headers and data -->
+        <th>assistantID</th> <!-- Table header for each column -->
+        <th>Teacher Assistant</th>
+        <th>Teacher</th>
+        <th>Class</th>
+        </tr>
+        <!-- PHP code that needs to be executed to retrieve and display information required -->
+        <?php include 'ViewTeacherAssistantPairs.php';?>
+      </table>
       
       <!-- END OF MY OWN CODE -->
 
