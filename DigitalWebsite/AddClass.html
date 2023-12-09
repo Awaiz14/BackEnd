@@ -71,6 +71,8 @@
     </style>
     
     <body>
+      <!-- Strictly Bootstrap code added from Bootstrap website to create Navbar (changed to suit my webpage) -->
+      <!-- https://getbootstrap.com/docs/5.3/components/navbar/ -->
       <nav class="navbar navbar-expand-lg bg-maroon">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html">St Alphonsus Primary School</a>
@@ -165,6 +167,7 @@
       </nav>
 
       <!-- MY OWN CODE -->
+      <H1> Lets add a class!</H1>
       <form action="AddClass.php" method="post"> <!-- Creates a HTML form and links to php -->
         <label for="id">Class Name:</label><br> <!-- Label name for form option -->
         <select name="className" id="className" required>
@@ -193,7 +196,7 @@
         <input type="submit" value="Submit"> <!-- Submit button -->
       </form> 
       
-      <p>If you click the "Submit" button, the form-data will be sent to a page called "AddClass.php".</p> <!-- Extra information-->
+      <p>Upon submitting successfully a class record should be added to my "classes" table.</p> <!-- Extra information-->
 
       <!-- END OF MY OWN CODE -->
 

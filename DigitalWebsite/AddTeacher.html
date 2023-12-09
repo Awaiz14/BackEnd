@@ -71,6 +71,8 @@
     </style>
 
     <body>
+      <!-- Strictly Bootstrap code added from Bootstrap website to create Navbar (changed to suit my webpage) -->
+      <!-- https://getbootstrap.com/docs/5.3/components/navbar/ -->
       <nav class="navbar navbar-expand-lg bg-maroon">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html">St Alphonsus Primary School</a>
@@ -165,7 +167,8 @@
       </nav>
 
       <!-- MY OWN CODE  -->
-      <form action="AddTeacher.php" method="post"> <!-- Creates a HTML form and links to php -->
+      <H1> Lets add a teacher!</H1>  
+      <form action="AddTeacher.php" method="post"> <!-- Creates a HTML form which includes validation and links to php -->
 
         <label for="id">TeacherID:</label><br> <!-- form option as a select option dropdown -->
         <select name="teacherID" id="teacherID" required>
@@ -208,7 +211,7 @@
         <input type="submit" value="Submit"> <!-- Submit button -->
       </form>
       
-      <p>If you click the "Submit" button, the form-data will be sent to a page called "AddTeacher.php".</p>
+      <p>Upon submitting successfully a teacher record should be added to my "teachers" table.</p> <!-- Extra information-->
 
       <!-- END OF MY OWN CODE -->
   

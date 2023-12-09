@@ -71,6 +71,8 @@
     </style>
 
     <body>
+      <!-- Strictly Bootstrap code added from Bootstrap website to create Navbar (changed to suit my webpage) -->
+      <!-- https://getbootstrap.com/docs/5.3/components/navbar/ -->
       <nav class="navbar navbar-expand-lg bg-maroon">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html">St Alphonsus Primary School</a>
@@ -165,7 +167,8 @@
       </nav>
 
       <!-- MY OWN CODE -->
-      <form action="AddParent.php" method="post"> <!-- Creates a HTML form and links to php -->
+      <H1> Lets add a parent!</H1>
+      <form action="AddParent.php" method="post"> <!-- Creates a HTML form which includes validation and links to php -->
         
         <label for="id">ParentID:</label><br> <!-- form option copy/pasted for as many needed -->
         <input type="text" id="parentID" name="parentID" placeholder="e.g. P001" pattern="P\d{3}" title="Please enter uppercase 'P' followed by three numbers." maxlength="4" required><br>
@@ -188,7 +191,7 @@
         <input type="submit" value="Submit"> <!-- Submit button -->
       </form>
      
-      <p>If you click the "Submit" button, the form-data will be sent to a page called "AddParent.php".</p>
+      <p>Upon submitting successfully a parent record should be added to my "parents" table.</p> <!-- Extra information-->
 
       <!-- END OF MY OWN CODE -->
   

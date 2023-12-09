@@ -3,8 +3,8 @@
     <head> <!-- Head section provides non-visible information, metadata and resource links -->
       <meta charset="UTF-8"> <!-- Specify metadata such as character encoding -->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-      <title>Welcome!</title> <!-- Set the title of the page which is shown in the browser tabs -->
-      <!-- Links elements to link external resources starting with Bootstrap, CSS and Google fonts -->
+      <title>Add Salaries!</title> <!-- Set the title of the page which is shown in the browser tabs -->
+      <!-- Links elements to link external resources (Bootstrap) -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     </head>
 
@@ -71,7 +71,7 @@
     </style>
     
     <body>
-      <!-- Strictly Bootstrap code added from Bootstrap website to create Recipe cards (changed to suit my webpage) -->
+      <!-- Strictly Bootstrap code added from Bootstrap website to create navbar(changed to suit my webpage) -->
       <!-- https://getbootstrap.com/docs/5.3/components/navbar/ -->
       <nav class="navbar navbar-expand-lg bg-maroon"> <!-- Expands navbar full width and chooses bg colour - overwritten with css -->
         <div class="container-fluid">
@@ -82,7 +82,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a> <!-- Has home page link in navbar with it being active while on page -->
+                <a class="nav-link" href="index.html">Home</a> <!-- Has home page link in navbar -->
               </li>
 
               <li class="nav-item dropdown">
@@ -166,17 +166,20 @@
         </div>
       </nav>
 
-      <form action="addSalary.php" method="POST">
-        <label for="staffID">Staff ID:</label>
+      <!-- MY OWN CODE -->
+      <H1> Lets add a salary!</H1>
+      <form action="addSalary.php" method="POST"> <!-- Creates a HTML form which includes validation and links to php -->
+
+        <label for="staffID">Staff ID:</label> <!-- form option copy/pasted for as many needed -->
         <select name="staffID" id="staffID" onchange="updateStaffRole()" required>
           <?php include 'AddSalaryDropdownOptions.php'; ?>
         </select>
         <br>
-        <!-- Rest of the form fields -->
-        <label for="staffRole">Staff Role:</label><br> <!-- Label name for form option -->
+
+        <label for="staffRole">Staff Role:</label><br> <!-- form option copy/pasted for as many needed -->
         <input type="text" id="staffRole" name="staffRole" readonly> <br>
         
-        <label for="staffLevel">Staff level:</label><br> <!-- Label name for form option -->
+        <label for="staffLevel">Staff level:</label><br> <!-- form option copy/pasted for as many needed -->
         <select name="staffLevel" id="staffLevel" onchange="validatePay()" required> 
           <option value=""disabled selected>Select a level</option> <!-- Acts like a placeholder default option non-selectable -->
           <option value="1">1</option>
@@ -194,22 +197,27 @@
           <option value="Monthly">Monthly</option>
         </select> <br>
 
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit"> <!-- Submit button-->
       </form>
+
+      <p>Upon submitting successfully a salary record should be added to my "salaries" table.</p> <!-- Extra information-->
+
+      <!-- END OF MY OWN CODE -->
 
       <!-- JS cdn link for bootstrap elements to work -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
       
+      <!-- MY OWN CODE -->
       <script>
-         function updateStaffRole() {
+        function updateStaffRole() { //Function which populates the staffRole depending on the staffID chosen
           var staffIDSelect = document.getElementById("staffID");
           var staffRoleInput = document.getElementById("staffRole");
           var selectedStaffID = staffIDSelect.value;
-          // Perform the necessary checks and update the staff role
+          // Perform the necessary checks and updates the staff role
           if (selectedStaffID.startsWith("TA")) {
-            staffRoleInput.value = "Assistant";
+            staffRoleInput.value = "Assistant"; //If staffID selected starts with TA then staffRole populates with Assistant
           } else if (selectedStaffID.startsWith("T")) {
-            staffRoleInput.value = "Teacher";
+            staffRoleInput.value = "Teacher"; //If staffID selected starts with T then staffRole populates with Teacher
           } else {
             staffRoleInput.value = ""; // Clear the staff role if no match is found
           }
@@ -217,29 +225,29 @@
       </script>
 
       <script>
-      function validatePay() {
+      function validatePay() { //Function which limits the pay range depending on staffRole and staffLevel chosen
       var staffRoleSelect = document.getElementById("staffRole");
       var staffLevelSelect = document.getElementById("staffLevel");
       var annualPayInput = document.getElementById("annualPay");
       var selectedStaffLevel = staffLevelSelect.value;
       var selectedStaffRole = staffRoleSelect.value;
       // Perform the necessary checks and update the annual pay range
-      if (selectedStaffRole === "Assistant" && selectedStaffLevel === "1") {
+      if (selectedStaffRole === "Assistant" && selectedStaffLevel === "1") { // Sets a min/max amount for different levels of salary
         annualPayInput.setAttribute("min", "18000");
         annualPayInput.setAttribute("max", "20000");
-      } else if (selectedStaffRole === "Assistant" && selectedStaffLevel === "2") {
+      } else if (selectedStaffRole === "Assistant" && selectedStaffLevel === "2") { //copy pasted for as many conditions
         annualPayInput.setAttribute("min", "20001");
         annualPayInput.setAttribute("max", "22000");
-      } else if (selectedStaffRole === "Assistant" && selectedStaffLevel === "3") {
+      } else if (selectedStaffRole === "Assistant" && selectedStaffLevel === "3") { //copy pasted for as many conditions needed
         annualPayInput.setAttribute("min", "22001");
         annualPayInput.setAttribute("max", "24000");
-      } else if (selectedStaffRole === "Teacher" && selectedStaffLevel === "1") {
+      } else if (selectedStaffRole === "Teacher" && selectedStaffLevel === "1") { //copy pasted for as many conditions needed
         annualPayInput.setAttribute("min", "24001");
         annualPayInput.setAttribute("max", "28000");
-      } else if (selectedStaffRole === "Teacher" && selectedStaffLevel === "2") {
+      } else if (selectedStaffRole === "Teacher" && selectedStaffLevel === "2") { //copy pasted for as many conditions needed
         annualPayInput.setAttribute("min", "28001");
         annualPayInput.setAttribute("max", "32000");
-      } else if (selectedStaffRole === "Teacher" && selectedStaffLevel === "3") {
+      } else if (selectedStaffRole === "Teacher" && selectedStaffLevel === "3") { //copy pasted for as many conditions needed
         annualPayInput.setAttribute("min", "32001");
         annualPayInput.setAttribute("max", "40000");
       } else {
@@ -249,6 +257,8 @@
       }
       }
       </script>
+
+      <!-- END OF MY OWN CODE -->
       
     </body>
 </html>

@@ -71,6 +71,8 @@
     </style>
 
     <body>
+      <!-- Strictly Bootstrap code added from Bootstrap website to create Navbar (changed to suit my webpage) -->
+      <!-- https://getbootstrap.com/docs/5.3/components/navbar/ -->
       <nav class="navbar navbar-expand-lg bg-maroon">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html">St Alphonsus Primary School</a>
@@ -164,8 +166,9 @@
         </div>
       </nav>   
 
-      <!-- MY OWN CODE -->      
-      <form action="AddStudent.php" method="post"> <!-- Creates a HTML form and links to php -->
+      <!-- MY OWN CODE -->  
+      <H1> Lets add a student!</H1>    
+      <form action="AddStudent.php" method="post"> <!-- Creates a HTML form which includes validation and links to php -->
 
         <label for="id">StudentID:</label><br>
         <input type="text" id="studentID" name="studentID" placeholder="e.g. S001" pattern="S\d{3}" title="Please enter uppercase 'S' followed by three numbers." maxlength="4" required><br>
@@ -187,7 +190,7 @@
 
         <label for="id">Class Name:</label><br> <!-- form option as a select option dropdown -->
         <select name="className" id="className" onchange="updateTeacherID()" required>
-          <?php // Database connection parameters
+          <?php // Database connection parameters to populate dropdown with existing classes
           $servername = "127.0.0.1";
           $username = "root";
           $password = "";
@@ -212,12 +215,12 @@
           ?>
         </select> <br>
 
-        <label for="teacherID">TeacherID:</label><br> <!-- Label name for form option -->
+        <label for="teacherID">TeacherID:</label><br> <!-- form option copy/pasted for as many needed -->
         <input type="text" id="teacherID" name="teacherID" readonly> <br>
 
         <label for="id">Parent1ID:</label><br> <!-- form option copy/pasted for as many needed -->
         <select id="parent1ID" name="parent1ID" required>
-          <?php // Database connection parameters
+          <?php // Database connection parameters to populate dropdown with existing parents
           $servername = "127.0.0.1";
           $username = "root";
           $password = "";
@@ -247,7 +250,7 @@
 
         <label for="id">Parent2ID:</label><br> <!-- form option copy/pasted for as many needed -->
         <select id="parent2ID" name="parent2ID">
-        <?php // Database connection parameters
+        <?php // Database connection parameters to populate dropdown with existing parents
         $servername = "127.0.0.1";
         $username = "root";
         $password = "";
@@ -279,14 +282,16 @@
         <input type="submit" value="Submit"> <!-- Submit button -->
       </form>
       
-      <p>If you click the "Submit" button, the form-data will be sent to a page called "AddStudent.php".</p>
+      <p>Upon submitting successfully a student record should be added to my "students" table.</p> <!-- Extra information-->
 
       <!-- END OF MY OWN CODE -->
   
       <!-- JS cdn link for bootstrap elements to work -->   
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
       
-      <?php
+      <!-- This code retrieves data from database in order to execute JS function below -->
+      <!-- MY OWN CODE -->
+      <?php 
       $servername = "127.0.0.1";
       $username = "root";
       $password = "";
@@ -298,33 +303,34 @@
           die("Connection failed: " . $conn->connect_error);
       }
 
-      $sql = "SELECT className, teacherID FROM classes";
+      $sql = "SELECT className, teacherID FROM classes"; //Gets the className's and teacherID's 
       $result = $conn->query($sql);
 
       $teacherIDs = [];
       if ($result->num_rows > 0) {
           while ($row = $result->fetch_assoc()) {
-              $teacherIDs[$row['className']] = $row['teacherID'];
+              $teacherIDs[$row['className']] = $row['teacherID']; //Gets the corresponding teacherID's and Classes
           }
       }
       $conn->close();
       ?>
 
-      <script>
+      <script> 
           var teacherIDs = <?php echo json_encode($teacherIDs); ?>;
           
-          function updateTeacherID() {
+          function updateTeacherID() { //Function which populates the teacherID when class is chosen
               var className = document.getElementById("className").value;
               var teacherID = document.getElementById("teacherID");
 
               if (teacherIDs[className]) {
-                  teacherID.value = teacherIDs[className];
+                  teacherID.value = teacherIDs[className]; //The assigned teacher for the class selected will be chosen
               } else {
                   teacherID.value = ""; // Clear if no teacher ID found
               }
           }
       </script>
 
+      <!-- END OF MY OWN CODE -->
     
     </body>
 </html>
