@@ -1,47 +1,55 @@
 <?php
-    // Establish database connection
-    $servername = "127.0.0.1";
-    $username = "root";
-    $password = "";
-    $database = "school";
 
-    $conn = new mysqli($servername, $username, $password, $database);
+  //MY OWN CODE
+  //Database connection learnt from following link: 
+  //https://www.raghwendra.com/blog/how-to-connect-html-to-database-with-mysql-using-php-example/
 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+  // Database connection parameters
+  $servername = "127.0.0.1";
+  $username = "root";
+  $password = "";
+  $database = "school";
 
-    // Retrieve form data
-    $studentIDs = $_POST['studentID'];
-    $attendanceDates = $_POST['attendanceDate'];
-    $attendanceStatuses = $_POST['attendanceStatus'];
-    $attendanceNotes = $_POST['attendanceNotes'];
-    $studentNames = $_POST['studentName'];
-    $studentSurnames = $_POST['studentSurname'];
-    $classNames = $_POST['className'];
+ // Creates the connection using the parameters
+ $conn = new mysqli($servername, $username, $password, $database);
+  
+ // Checks connection
+ if ($conn->connect_error) {
+   die("Connection failed: " . $conn->connect_error);
+ }
 
-    // Prepare and execute SQL statements to insert data into the attendance table
-    $stmt = $conn->prepare("INSERT INTO attendance (studentID, attendanceDate, studentName, studentSurname, className, attendanceStatus, attendanceNotes) VALUES (?, ?, ?, ?, ?, ?, ?)");
+  // Retrieve form data from TakeAttendance.php
+  $studentIDs = $_POST['studentID'];
+  $attendanceDates = $_POST['attendanceDate'];
+  $attendanceStatuses = $_POST['attendanceStatus'];
+  $attendanceNotes = $_POST['attendanceNotes'];
+  $studentNames = $_POST['studentName'];
+  $studentSurnames = $_POST['studentSurname'];
+  $classNames = $_POST['className'];
 
-    foreach ($studentIDs as $key => $studentID) {
-        $attendanceDate = $attendanceDates[$key];
-        $attendanceStatus = $attendanceStatuses[$key];
-        $attendanceNote = $attendanceNotes[$key];
-        $studentName = $studentNames[$key];
-        $studentSurname = $studentSurnames[$key];
-        $className = $classNames[$key];
+  // Prepare and execute SQL statements to insert data into the attendance table
+  $stmt = $conn->prepare("INSERT INTO attendance (studentID, attendanceDate, studentName, studentSurname, className, attendanceStatus, attendanceNotes) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
-        // Bind parameters and execute the statement
-        $stmt->bind_param("sssssss", $studentID, $attendanceDate, $studentName, $studentSurname, $className, $attendanceStatus, $attendanceNote);
-        $stmt->execute();
-    }
+  foreach ($studentIDs as $key => $studentID) { //Get all data as a key
+      $attendanceDate = $attendanceDates[$key];
+      $attendanceStatus = $attendanceStatuses[$key];
+      $attendanceNote = $attendanceNotes[$key];
+      $studentName = $studentNames[$key];
+      $studentSurname = $studentSurnames[$key];
+      $className = $classNames[$key];
 
-    // Close the statement and the database connection
-    $stmt->close();
-    $conn->close();
+      // Bind parameters and execute the statement
+      $stmt->bind_param("sssssss", $studentID, $attendanceDate, $studentName, $studentSurname, $className, $attendanceStatus, $attendanceNote);
+      $stmt->execute();
+  }
 
-    // Redirect or show a success message after insertion
-    header("Location: TakeAttendanceHTML.php");
-    exit();
+  // Close the statement and the database connection
+  $stmt->close();
+  $conn->close();
+
+  // Success message when attendance updated
+  echo '<p>Attendance taken successfully!</p>';
+  echo '<a href="ViewAttendanceHTML.php"><button>Go Back</button></a>'; //Allows user to go to view attendance 
+  exit();
 
 ?>

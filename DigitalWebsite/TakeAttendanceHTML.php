@@ -3,7 +3,7 @@
     <head> <!-- Head section provides non-visible information, metadata and resource links -->
       <meta charset="UTF-8"> <!-- Specify metadata such as character encoding -->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-      <title>Add a Class!</title> <!-- Set the title of the page which is shown in the browser tabs -->
+      <title>Take Attendance!</title> <!-- Set the title of the page which is shown in the browser tabs -->
       <!-- Links elements to link external resources (Bootstrap) -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     </head>
@@ -71,6 +71,8 @@
     </style>
     
     <body>
+      <!-- Strictly Bootstrap code added from Bootstrap website to create navbar (changed to suit my webpage) -->
+      <!-- https://getbootstrap.com/docs/5.3/components/navbar/ -->
       <nav class="navbar navbar-expand-lg bg-maroon">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html">St Alphonsus Primary School</a>
@@ -166,24 +168,25 @@
 
       <!-- MY OWN CODE -->
       <form action="TakeAttendance.php" method="post">
-    <label for="className">Select Class:</label>
-    <select name="className" id="className">
+
+        <label for="className">Select Class:</label>
+        <select name="className" id="className">
 
         <!-- Fetch and populate classes from the database -->
         <?php
-// Database connection parameters
-$servername = "127.0.0.1";
-$username = "root";
-$password = "";
-$database = "school";
- 
-// Create the connection using parameters
-$conn = new mysqli($servername, $username, $password, $database);
- 
-// Checks the connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+        // Database connection parameters
+        $servername = "127.0.0.1";
+        $username = "root";
+        $password = "";
+        $database = "school";
+        
+        // Create the connection using parameters
+        $conn = new mysqli($servername, $username, $password, $database);
+        
+        // Checks the connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
         
         // Fetch classes from the database
         $sql = "SELECT * FROM classes";
@@ -195,12 +198,12 @@ if ($conn->connect_error) {
             }
         }
         ?>
-    </select>
-    
-    <input type="submit" value="Show Students">
-</form>
+        </select>
+        
+        <input type="submit" value="Show Students">
+      </form>
       
-      <p>If you click the "Submit" button, the form-data will be sent to a page called "AddClass.php".</p> <!-- Extra information-->
+      <p>Upon submitting successfully the students should show for the chosen class in order to take attendance.</p> <!-- Extra information-->
 
       <!-- END OF MY OWN CODE -->
 

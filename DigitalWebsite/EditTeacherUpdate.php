@@ -3,8 +3,8 @@
     <head> <!-- Head section provides non-visible information, metadata and resource links -->
       <meta charset="UTF-8"> <!-- Specify metadata such as character encoding -->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-      <title>Welcome!</title> <!-- Set the title of the page which is shown in the browser tabs -->
-      <!-- Links elements to link external resources starting with Bootstrap, CSS and Google fonts -->
+      <title>Edit Teacher!</title> <!-- Set the title of the page which is shown in the browser tabs -->
+      <!-- Links elements to link external resources (Bootstrap) -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     </head>
 
@@ -71,7 +71,7 @@
     </style>
     
     <body>
-      <!-- Strictly Bootstrap code added from Bootstrap website to create Recipe cards (changed to suit my webpage) -->
+      <!-- Strictly Bootstrap code added from Bootstrap website to create navbar (changed to suit my webpage) -->
       <!-- https://getbootstrap.com/docs/5.3/components/navbar/ -->
       <nav class="navbar navbar-expand-lg bg-maroon"> <!-- Expands navbar full width and chooses bg colour - overwritten with css -->
         <div class="container-fluid">
@@ -82,7 +82,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a> <!-- Has home page link in navbar with it being active while on page -->
+                <a class="nav-link" href="index.html">Home</a> <!-- Has home page link in navbar -->
               </li>
 
               <li class="nav-item dropdown">
@@ -167,7 +167,9 @@
       </nav>
 
       <?php
-        //Retrieve the staffID from the URL parameter
+
+        //MY OWN CODE
+        //Retrieve the teacherID from the URL parameter
         $teacherID = $_GET['id'];
 
         // Database connection parameters
@@ -184,7 +186,7 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
-        // Retrieve the existing record
+        // Retrieve the existing record from teachers table
         $sql = "SELECT * FROM teachers WHERE teacherID = '$teacherID'";
         $result = $conn->query($sql);
         // Display the existing record in a form
@@ -192,7 +194,11 @@
           $row = $result->fetch_assoc();
 
       ?>
-      <form action="EditTeacherUpdateSubmit.php" method="POST">
+
+      <h1>Edit teacher!</h1>
+      <form action="EditTeacherUpdateSubmit.php" method="POST"> <!-- Creates a HTML form and links to php -->
+
+          <!-- Prepopulated form which can be edited if it is not readonly -->
           TeacherID: <input type="text" id="teacherID" name="teacherID" value="<?php echo $row['teacherID']; ?>" readonly><br>
           
           Teacher Title:
@@ -221,7 +227,9 @@
         } else {
           echo "No record found.";
         }
-        $conn->close();
+        $conn->close(); //close connections
+
+        //END OF MY OWN CODE
       ?>
 
       <!-- JS cdn link for bootstrap elements to work -->

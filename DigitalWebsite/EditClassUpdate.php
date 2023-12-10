@@ -3,8 +3,8 @@
     <head> <!-- Head section provides non-visible information, metadata and resource links -->
       <meta charset="UTF-8"> <!-- Specify metadata such as character encoding -->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-      <title>Welcome!</title> <!-- Set the title of the page which is shown in the browser tabs -->
-      <!-- Links elements to link external resources starting with Bootstrap, CSS and Google fonts -->
+      <title>Edit Class!</title> <!-- Set the title of the page which is shown in the browser tabs -->
+      <!-- Links elements to link external resources (Bootstrap) -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     </head>
 
@@ -71,7 +71,7 @@
     </style>
     
     <body>
-      <!-- Strictly Bootstrap code added from Bootstrap website to create Recipe cards (changed to suit my webpage) -->
+      <!-- Strictly Bootstrap code added from Bootstrap website to create navbar (changed to suit my webpage) -->
       <!-- https://getbootstrap.com/docs/5.3/components/navbar/ -->
       <nav class="navbar navbar-expand-lg bg-maroon"> <!-- Expands navbar full width and chooses bg colour - overwritten with css -->
         <div class="container-fluid">
@@ -82,7 +82,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a> <!-- Has home page link in navbar with it being active while on page -->
+                <a class="nav-link" href="index.html">Home</a> <!-- Has home page link in navbar -->
               </li>
 
               <li class="nav-item dropdown">
@@ -167,7 +167,9 @@
       </nav>
 
       <?php
-        //Retrieve the staffID from the URL parameter
+
+        //MY OWN CODE
+        //Retrieve the ID from the URL parameter
         $className = $_GET['id'];
 
         // Database connection parameters
@@ -176,7 +178,7 @@
         $password = "";
         $database = "school";
         
-        // Creates the connection using parameters
+        // Creates the connection using the parameters
         $conn = new mysqli($servername, $username, $password, $database);
         
         // Checks connection
@@ -184,7 +186,7 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
-        // Retrieve the existing record
+        // Retrieve the existing record from classes table
         $sql = "SELECT * FROM classes WHERE className = '$className'";
         $result = $conn->query($sql);
         // Display the existing record in a form
@@ -192,30 +194,37 @@
           $row = $result->fetch_assoc();
 
       ?>
-      <form action="EditClassUpdateSubmit.php" method="POST">
-          Class Name: <input type="text" id="className" name="className" value="<?php echo $row['className']; ?>" readonly><br>
 
-          TeacherID:
-          <select id="teacherID" name="teacherID">
-          <option value="T001" <?php if($row['teacherID'] == "T001") echo "selected"; ?>>T001</option>
-          <option value="T002" <?php if($row['teacherID'] == "T002") echo "selected"; ?>>T002</option>
-          <option value="T003" <?php if($row['teacherID'] == "T003") echo "selected"; ?>>T003</option>
-          <option value="T004" <?php if($row['teacherID'] == "T004") echo "selected"; ?>>T004</option>
-          <option value="T005" <?php if($row['teacherID'] == "T005") echo "selected"; ?>>T005</option>
-          <option value="T006" <?php if($row['teacherID'] == "T006") echo "selected"; ?>>T006</option>
-          <option value="T007" <?php if($row['teacherID'] == "T007") echo "selected"; ?>>T007</option>
-          </select><br>
+      <H1> Edit class!</H1>
+      <form action="EditClassUpdateSubmit.php" method="POST"> <!-- Creates a HTML form and links to php -->
 
-          Class Capacity: <input type="number" id="classCapacity" name="classCapacity" placeholder="Enter a number" value="<?php echo $row['classCapacity']; ?>" required><br><br>
+        <!-- Prepopulated form which can be edited if it is not readonly -->
 
-          <input type="submit" value="Update">
+        Class Name: <input type="text" id="className" name="className" value="<?php echo $row['className']; ?>" readonly><br>
+
+        TeacherID:
+        <select id="teacherID" name="teacherID">
+        <option value="T001" <?php if($row['teacherID'] == "T001") echo "selected"; ?>>T001</option>
+        <option value="T002" <?php if($row['teacherID'] == "T002") echo "selected"; ?>>T002</option>
+        <option value="T003" <?php if($row['teacherID'] == "T003") echo "selected"; ?>>T003</option>
+        <option value="T004" <?php if($row['teacherID'] == "T004") echo "selected"; ?>>T004</option>
+        <option value="T005" <?php if($row['teacherID'] == "T005") echo "selected"; ?>>T005</option>
+        <option value="T006" <?php if($row['teacherID'] == "T006") echo "selected"; ?>>T006</option>
+        <option value="T007" <?php if($row['teacherID'] == "T007") echo "selected"; ?>>T007</option>
+        </select><br>
+
+        Class Capacity: <input type="number" id="classCapacity" name="classCapacity" placeholder="Enter a number" value="<?php echo $row['classCapacity']; ?>" required><br><br>
+
+        <input type="submit" value="Update">
       </form>
 
       <?php
         } else {
           echo "No record found.";
         }
-        $conn->close();
+        $conn->close(); //closes connection
+
+        //END OF MY OWN CODE
       ?>
 
       <!-- JS cdn link for bootstrap elements to work -->

@@ -3,7 +3,7 @@
     <head> <!-- Head section provides non-visible information, metadata and resource links -->
       <meta charset="UTF-8"> <!-- Specify metadata such as character encoding -->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-      <title>View Parent!</title> <!-- Set the title of the page which is shown in the browser tabs -->
+      <title>Edit Parent!</title> <!-- Set the title of the page which is shown in the browser tabs -->
       <!-- Links elements to link external resources (Bootstrap) -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     </head>
@@ -60,7 +60,7 @@
     </style>
 
     <body>
-      <!-- Strictly Bootstrap code added from Bootstrap website to create Recipe cards (changed to suit my webpage) -->
+      <!-- Strictly Bootstrap code added from Bootstrap website to create navbar (changed to suit my webpage) -->
       <!-- https://getbootstrap.com/docs/5.3/components/navbar/ -->
       <nav class="navbar navbar-expand-lg bg-maroon"> <!-- Expands navbar full width and chooses bg colour - overwritten with css -->
         <div class="container-fluid">
@@ -71,7 +71,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a> <!-- Has home page link in navbar with it being active while on page -->
+                <a class="nav-link" href="index.html">Home</a> <!-- Has home page link in navbar -->
               </li>
 
               <li class="nav-item dropdown">
@@ -156,7 +156,7 @@
       </nav>
 
       <!-- MY OWN CODE -->
-      <h1>Parents</h1>
+      <h1>Edit Parents</h1>
       
       <table> <!-- Creates table on webpage -->
         <tr>  <!-- Defines the table row and groups headers and data -->
@@ -170,20 +170,21 @@
         </tr>
         <!-- PHP code that needs to be executed to retrieve and display information required -->
         <?php
-        // Database connection parameters
-        $servername = "127.0.0.1";
-        $username = "root";
-        $password = "";
-        $database = "school";
-        
-        // Creates the connection using parameters
-        $conn = new mysqli($servername, $username, $password, $database);
-        
-        // Checks connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-          // Retrieve Salary information from the database
+          // Database connection parameters
+          $servername = "127.0.0.1";
+          $username = "root";
+          $password = "";
+          $database = "school";
+          
+          // Creates the connection using the parameters
+          $conn = new mysqli($servername, $username, $password, $database);
+          
+          // Checks connection
+          if ($conn->connect_error) {
+              die("Connection failed: " . $conn->connect_error);
+          }
+
+          // Retrieve information from the parents table in school database
           $query = "SELECT parentID, parentName, parentSurname, 
           parentEmail, parentPhone, parentAddress FROM parents";
           $result = mysqli_query($conn, $query);

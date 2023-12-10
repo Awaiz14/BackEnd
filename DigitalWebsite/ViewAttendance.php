@@ -202,7 +202,8 @@
             }
             echo "</table>";
         } else {
-            echo "No attendance records found for this class.";
+            echo "No attendance records found for this class.<br>";
+            echo '<button onclick="history.go(-1)">Go Back</button>'; //Allows user to go back to form
         }
 
       ?>

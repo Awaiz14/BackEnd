@@ -3,8 +3,8 @@
     <head> <!-- Head section provides non-visible information, metadata and resource links -->
       <meta charset="UTF-8"> <!-- Specify metadata such as character encoding -->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-      <title>Welcome!</title> <!-- Set the title of the page which is shown in the browser tabs -->
-      <!-- Links elements to link external resources starting with Bootstrap, CSS and Google fonts -->
+      <title>Edit Salary</title> <!-- Set the title of the page which is shown in the browser tabs -->
+      <!-- Links elements to link external resources (Bootstrap) -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     </head>
 
@@ -71,7 +71,7 @@
     </style>
     
     <body>
-      <!-- Strictly Bootstrap code added from Bootstrap website to create Recipe cards (changed to suit my webpage) -->
+      <!-- Strictly Bootstrap code added from Bootstrap website to create navbar (changed to suit my webpage) -->
       <!-- https://getbootstrap.com/docs/5.3/components/navbar/ -->
       <nav class="navbar navbar-expand-lg bg-maroon"> <!-- Expands navbar full width and chooses bg colour - overwritten with css -->
         <div class="container-fluid">
@@ -82,7 +82,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a> <!-- Has home page link in navbar with it being active while on page -->
+                <a class="nav-link" href="index.html">Home</a> <!-- Has home page link in navbar -->
               </li>
 
               <li class="nav-item dropdown">
@@ -167,6 +167,8 @@
       </nav>
 
       <?php
+
+        //MY OWN CODE
         //Retrieve the staffID from the URL parameter
         $staffID = $_GET['id'];
 
@@ -176,7 +178,7 @@
         $password = "";
         $database = "school";
         
-        // Creates the connection using parameters
+        // Creates the connection using the parameters
         $conn = new mysqli($servername, $username, $password, $database);
         
         // Checks connection
@@ -192,7 +194,12 @@
           $row = $result->fetch_assoc();
 
       ?>
-      <form action="EditSalaryUpdateSubmit.php" method="POST">
+
+      <H1> Edit salary!</H1>
+      <form action="EditSalaryUpdateSubmit.php" method="POST"> <!-- Creates a HTML form and links to php -->
+
+        <!-- Prepopulated form which can be edited if it is not readonly -->
+
           StaffID: <input type="text" id="staffID" name="staffID" value="<?php echo $row['staffID']; ?>" readonly><br>
 
           Staff Role: <input type="text" id="staffRole" name="staffRole"  value="<?php echo $row['staffRole']; ?>" readonly><br>
@@ -219,36 +226,39 @@
         } else {
           echo "No record found.";
         }
-        $conn->close();
+        $conn->close(); //Close connection
+
+        //END OF MY OWN CODE
       ?>
 
       <!-- JS cdn link for bootstrap elements to work -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
+      <!-- MY OWN CODE -->
       <script>
-      function validatePay() {
+      function validatePay() { //Function which limits the pay range depending on staffRole and staffLevel chosen
       var staffRoleSelect = document.getElementById("staffRole");
       var staffLevelSelect = document.getElementById("staffLevel");
       var annualPayInput = document.getElementById("annualPay");
       var selectedStaffLevel = staffLevelSelect.value;
       var selectedStaffRole = staffRoleSelect.value;
       // Perform the necessary checks and update the annual pay range
-      if (selectedStaffRole === "Assistant" && selectedStaffLevel === "1") {
+      if (selectedStaffRole === "Assistant" && selectedStaffLevel === "1") { // Sets a min/max amount for different levels of salary
         annualPayInput.setAttribute("min", "18000");
         annualPayInput.setAttribute("max", "20000");
-      } else if (selectedStaffRole === "Assistant" && selectedStaffLevel === "2") {
+      } else if (selectedStaffRole === "Assistant" && selectedStaffLevel === "2") { //copy pasted for as many conditions needed
         annualPayInput.setAttribute("min", "20001");
         annualPayInput.setAttribute("max", "22000");
-      } else if (selectedStaffRole === "Assistant" && selectedStaffLevel === "3") {
+      } else if (selectedStaffRole === "Assistant" && selectedStaffLevel === "3") { //copy pasted for as many conditions needed
         annualPayInput.setAttribute("min", "22001");
         annualPayInput.setAttribute("max", "24000");
-      } else if (selectedStaffRole === "Teacher" && selectedStaffLevel === "1") {
+      } else if (selectedStaffRole === "Teacher" && selectedStaffLevel === "1") { //copy pasted for as many conditions needed
         annualPayInput.setAttribute("min", "24001");
         annualPayInput.setAttribute("max", "28000");
-      } else if (selectedStaffRole === "Teacher" && selectedStaffLevel === "2") {
+      } else if (selectedStaffRole === "Teacher" && selectedStaffLevel === "2") { //copy pasted for as many conditions needed
         annualPayInput.setAttribute("min", "28001");
         annualPayInput.setAttribute("max", "32000");
-      } else if (selectedStaffRole === "Teacher" && selectedStaffLevel === "3") {
+      } else if (selectedStaffRole === "Teacher" && selectedStaffLevel === "3") { //copy pasted for as many conditions needed
         annualPayInput.setAttribute("min", "32001");
         annualPayInput.setAttribute("max", "40000");
       } else {
@@ -258,6 +268,8 @@
       }
       }
       </script>
+
+      <!-- END OF MY OWN CODE -->
       
     </body>
 </html>

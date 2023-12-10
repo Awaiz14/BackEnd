@@ -3,8 +3,8 @@
     <head> <!-- Head section provides non-visible information, metadata and resource links -->
       <meta charset="UTF-8"> <!-- Specify metadata such as character encoding -->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-      <title>Welcome!</title> <!-- Set the title of the page which is shown in the browser tabs -->
-      <!-- Links elements to link external resources starting with Bootstrap, CSS and Google fonts -->
+      <title>Edit Student!</title> <!-- Set the title of the page which is shown in the browser tabs -->
+      <!-- Links elements to link external resources (Bootstrap) -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     </head>
 
@@ -71,7 +71,7 @@
     </style>
     
     <body>
-      <!-- Strictly Bootstrap code added from Bootstrap website to create Recipe cards (changed to suit my webpage) -->
+      <!-- Strictly Bootstrap code added from Bootstrap website to create navbar (changed to suit my webpage) -->
       <!-- https://getbootstrap.com/docs/5.3/components/navbar/ -->
       <nav class="navbar navbar-expand-lg bg-maroon"> <!-- Expands navbar full width and chooses bg colour - overwritten with css -->
         <div class="container-fluid">
@@ -82,7 +82,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a> <!-- Has home page link in navbar with it being active while on page -->
+                <a class="nav-link" href="index.html">Home</a> <!-- Has home page link in navbar -->
               </li>
 
               <li class="nav-item dropdown">
@@ -167,7 +167,9 @@
       </nav>
 
       <?php
-        //Retrieve the staffID from the URL parameter
+
+        //MY OWN CODE
+        //Retrieve the studentID from the URL parameter
         $studentID = $_GET['id'];
 
         // Database connection parameters
@@ -176,7 +178,7 @@
         $password = "";
         $database = "school";
 
-        // Creates the connection using parameters
+        // Creates the connection using the parameters
         $conn = new mysqli($servername, $username, $password, $database);
 
         // Checks connection
@@ -184,7 +186,7 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
-        // Retrieve the existing record
+        // Retrieve the existing record from students table
         $sql = "SELECT * FROM students WHERE studentID = '$studentID'";
         $result = $conn->query($sql);
         // Display the existing record in a form
@@ -193,7 +195,11 @@
 
       ?>
 
-      <form action="EditStudentUpdateSubmit.php" method="POST">
+      <H1> Edit student!</H1>    
+      <form action="EditStudentUpdateSubmit.php" method="POST"> <!-- Creates a HTML form and links to php -->
+
+        <!-- Prepopulated form which can be edited if it is not readonly -->
+
         studentID: <input type="text" id="studentID" name="studentID" value="<?php echo $row['studentID']; ?>" readonly><br>
 
         First Name: <input type="text" id="studentName" name="studentName" placeholder="e.g. John" pattern="[A-Za-z]+" title="Please enter a valid First name (no numbers)" value="<?php echo $row['studentName']; ?>" required><br>
@@ -207,13 +213,14 @@
         Address: <input type="text" id="studentAddress" name="studentAddress" placeholder="House number street, city, country, postcode" value="<?php echo $row['studentAddress']; ?>" required><br>
 
         <?php
-          // Fetch existing class names from the 'classes' table and prepopulate the class name
+          // Fetch existing class names from the 'classes' table and prepopulate the class name options
           $sql_classes = "SELECT className FROM classes";
           $result_classes = $conn->query($sql_classes);
 
           // Display the dropdown if class names are retrieved
           if ($result_classes->num_rows > 0) {
         ?>
+
         Class Name:
         <select id="className" name="className" onchange="updateTeacherID()">
           <?php
@@ -224,6 +231,7 @@
             }
           ?>
         </select><br>
+
         <?php
           } else {
               echo "No classes found.";
@@ -240,6 +248,7 @@
           // Display the dropdown if non-blank parent IDs are retrieved for Parent1ID
           if ($result_parents_1->num_rows > 0) {
         ?>
+
         Parent1ID:
         <select id="parent1ID" name="parent1ID">
           <?php
@@ -250,6 +259,7 @@
             }
           ?>
         </select><br>
+
         <?php
           } else {
               echo "No non-blank parent IDs found for Parent1ID.";
@@ -264,6 +274,7 @@
           // Display the dropdown for all parent IDs (including null/blank) for Parent2ID
           if ($result_parents_2->num_rows > 0) {
         ?>
+
         Parent2ID:
         <select id="parent2ID" name="parent2ID">
           <?php
@@ -274,6 +285,7 @@
             }
           ?>
         </select><br>
+
         <?php
           } else {
               echo "No parent IDs found for Parent2ID.";
@@ -289,12 +301,17 @@
       } else {
           echo "No record found.";
       }
-      $conn->close();
+      $conn->close(); //Close connection
+
+      //END OF MY OWN CODE
+
       ?>
 
       <!-- JS cdn link for bootstrap elements to work -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
+      <!-- This code retrieves data from database in order to execute JS function below -->
+      <!-- MY OWN CODE -->
       <?php
       $servername = "127.0.0.1";
       $username = "root";
@@ -307,13 +324,13 @@
           die("Connection failed: " . $conn->connect_error);
       }
 
-      $sql = "SELECT className, teacherID FROM classes";
+      $sql = "SELECT className, teacherID FROM classes"; //Gets the className's and teacherID's 
       $result = $conn->query($sql);
 
       $teacherIDs = [];
       if ($result->num_rows > 0) {
           while ($row = $result->fetch_assoc()) {
-              $teacherIDs[$row['className']] = $row['teacherID'];
+              $teacherIDs[$row['className']] = $row['teacherID']; //Gets the corresponding teacherID's and Classes
           }
       }
       $conn->close();
@@ -322,17 +339,19 @@
       <script>
           var teacherIDs = <?php echo json_encode($teacherIDs); ?>;
           
-          function updateTeacherID() {
+          function updateTeacherID() { //Function which populates the teacherID when class is chosen
               var className = document.getElementById("className").value;
               var teacherID = document.getElementById("teacherID");
 
               if (teacherIDs[className]) {
-                  teacherID.value = teacherIDs[className];
+                  teacherID.value = teacherIDs[className]; //The assigned teacher for the class selected will be chosen
               } else {
                   teacherID.value = ""; // Clear if no teacher ID found
               }
           }
       </script>
+
+      <!-- END OF MY OWN CODE -->
       
     </body>
 </html>
