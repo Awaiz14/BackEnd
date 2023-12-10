@@ -30,8 +30,8 @@
   // Prepare and execute SQL statements to insert data into the attendance table
   $stmt = $conn->prepare("INSERT INTO attendance (studentID, attendanceDate, studentName, studentSurname, className, attendanceStatus, attendanceNotes) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
-  foreach ($studentIDs as $key => $studentID) { //Get all data as a key
-      $attendanceDate = $attendanceDates[$key];
+  foreach ($studentIDs as $key => $studentID) { // $key represents the identifier of the current student in the array
+      $attendanceDate = $attendanceDates[$key]; // Retrieves all the information in relation to the current student in the loop
       $attendanceStatus = $attendanceStatuses[$key];
       $attendanceNote = $attendanceNotes[$key];
       $studentName = $studentNames[$key];

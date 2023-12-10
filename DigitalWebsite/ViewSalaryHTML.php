@@ -3,8 +3,8 @@
     <head> <!-- Head section provides non-visible information, metadata and resource links -->
       <meta charset="UTF-8"> <!-- Specify metadata such as character encoding -->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-      <title>View Parent!</title> <!-- Set the title of the page which is shown in the browser tabs -->
-      <!-- Links elements to link external resources (Bootstrap) -->
+      <title>View Salary!</title> <!-- Set the title of the page which is shown in the browser tabs -->
+      <!-- Links elements to link external resources (Bootstrap and chart.js) -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
@@ -57,27 +57,26 @@
         background-color: blue; 
       }
 
-         /* CSS styles to adjust the chart container and canvas */
-.chart-container {
-    width: 600px; /* Set desired width */
-    height: 300px; /* Set desired height */
-    margin: 30px; /* Add margin as needed */
-    padding: 10px; /* Add padding as needed */
-    background-color: white; /* Optional: Background color for the chart container */
-    border: 1px solid black; /* Optional: Border for the chart container */
-}
+      .chart-container { /* Styles the chart container and canvas */
+        width: 600px; /* Sets width */
+        height: 300px; /* Sets height */
+        margin: 30px; /* Added margin */
+        padding: 10px; /* Added padding */
+        background-color: white; /* =Background color for the chart container */
+        border: 1px solid black; /* Border for the chart container */
+      }
 
-/* Adjust the canvas size to fill its container */
-.chart-container canvas {
-    width: 100%;
-    height: 100%;
-}
+ 
+      .chart-container canvas { /*Styles the canvas size to fill its container */
+        width: 100%;
+        height: 100%;
+      }
 
       /* END OF MY OWN CODE */
     </style>
 
     <body>
-      <!-- Strictly Bootstrap code added from Bootstrap website to create Recipe cards (changed to suit my webpage) -->
+      <!-- Strictly Bootstrap code added from Bootstrap website to create navbar (changed to suit my webpage) -->
       <!-- https://getbootstrap.com/docs/5.3/components/navbar/ -->
       <nav class="navbar navbar-expand-lg bg-maroon"> <!-- Expands navbar full width and chooses bg colour - overwritten with css -->
         <div class="container-fluid">
@@ -88,7 +87,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a> <!-- Has home page link in navbar with it being active while on page -->
+                <a class="nav-link" href="index.html">Home</a> <!-- Has home page link in navbar -->
               </li>
 
               <li class="nav-item dropdown">
@@ -200,29 +199,27 @@
         <!-- PHP code that needs to be executed to retrieve and display information required -->
         <?php include 'ViewSalaryAmount.php';?>
       </table>
-      
-      <!-- END OF MY OWN CODE -->
 
       <h1>Staff Salaries</h1>
 
-    <div class="chart-container">
-        <canvas id="lineChart"></canvas>
-    </div>
+      <div class="chart-container">
+          <canvas id="lineChart"></canvas>
+      </div>
+      <!-- PHP code that needs to be executed to retrieve and display information required -->
+      <?php include 'ViewSalaryAmountGraph.php';?>
 
-    <?php include 'ViewSalaryAmountGraph.php';?>
-
-    <script>
-        // JavaScript section for Chart.js using the fetched PHP data
+      <script>
         var ctx = document.getElementById('lineChart').getContext('2d');
+        // Create a new Chart object representing a line chart
         var lineChart = new Chart(ctx, {
-            type: 'line',
+            type: 'line', // Specify the chart type as 'line'
             data: {
                 labels: <?php echo json_encode($staffIDs); ?>,
                 datasets: [{
-                    label: 'Staff Annual Salary',
+                    label: 'Staff Annual Salary', //Label for the dataset
                     data: <?php echo json_encode($annualPays); ?>,
-                    backgroundColor: 'Blue',
-                    borderColor: 'black',
+                    backgroundColor: 'Blue', // colour of the dots on the line graph
+                    borderColor: 'black', //colour of the line
                     borderWidth: 1
                 }]
             },
@@ -234,7 +231,9 @@
                 }
             }
         });
-    </script>
+      </script>
+
+      <!-- END OF MY OWN CODE -->
 
       <!-- JS cdn link for bootstrap elements to work -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
