@@ -167,6 +167,8 @@
       </nav>
 
       <!-- MY OWN CODE -->
+      <H1> Take Attendance!</H1> 
+      <H2> Select a class and date!</H2>
       <form action="TakeAttendance.php" method="post">
 
         <label for="className">Select Class:</label>

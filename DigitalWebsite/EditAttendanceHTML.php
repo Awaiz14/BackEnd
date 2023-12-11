@@ -167,7 +167,8 @@
       </nav>
 
       <!-- MY OWN CODE -->
-      <H1> Select a class and date!</H1>  
+      <H1> Edit Attendance!</H1> 
+      <H2> Select a class and date!</H2>  
       <form action="EditAttendanceUpdate.php" method="post">
 
         <label for="className">Select Class:</label>
