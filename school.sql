@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2023 at 11:09 PM
+-- Generation Time: Dec 14, 2023 at 03:59 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -134,7 +134,7 @@ INSERT INTO `salaries` (`staffID`, `staffRole`, `staffLevel`, `annualPay`, `payF
 ('T003', 'Teacher', '2', 32000, 'Monthly'),
 ('T004', 'Teacher', '3', 35000, 'Monthly'),
 ('TA002', 'Assistant', '1', 20000, 'Weekly'),
-('TA003', 'Assistant', '1', 18000, 'Monthly'),
+('TA003', 'Assistant', '1', 19000, 'Monthly'),
 ('TA004', 'Assistant', '3', 24000, 'Weekly');
 
 --
@@ -216,7 +216,7 @@ CREATE TABLE `teacherassistants` (
 INSERT INTO `teacherassistants` (`assistantID`, `assistantTitle`, `assistantName`, `assistantSurname`, `assistantDOB`, `assistantEmail`, `assistantPhone`, `assistantAddress`, `teacherID`, `assistantSalary`) VALUES
 ('TA001', 'Mr', 'Ed', 'Warren', '1970-09-04', 'Warrenman@conjuring.com', '07392748194', '29 Greenwood Close, Birmingham, England, B14 6ET', 'T004', NULL),
 ('TA002', 'Mr', 'Robert', 'Lewandowski', '1980-09-17', 'Rl9@polski.com', '07947284281', '34 Charnwood Crescent, Newton, England, DE55 5SB', 'T007', 20000),
-('TA003', 'Mrs', 'Emma', 'Watson', '1982-02-16', 'Emmaw@gmail.com', '07362582917', '92 Huntington Road, York, England, YO31 8RN', 'T005', 18000),
+('TA003', 'Mrs', 'Emma', 'Watson', '1982-02-16', 'Emmaw@gmail.com', '07362582917', '92 Huntington Road, York, England, YO31 8RN', 'T005', 19000),
 ('TA004', 'Miss', 'Zara', 'Larsson', '1992-01-01', 'ZaraLars@yahoo.com', '07462184763', '1 Pengeulan, Dolwyddelan, England, LL25 0UQ', 'T001', 24000);
 
 -- --------------------------------------------------------
@@ -249,6 +249,25 @@ INSERT INTO `teachers` (`teacherID`, `teacherTitle`, `teacherName`, `teacherSurn
 ('T005', 'Mr', 'Michael', 'Scofield', '1982-03-29', 'prisonbreaker@gmail.com', '07381942754', '49A Lytton Grove, London, England, SW15 2HD', NULL),
 ('T006', 'Mrs', 'Ariana', 'Grande', '1963-10-06', 'Arianboo@hotmail.co.uk', '07518427491', '18 Almond Drive, Plymouth, England, PL7 2WY', NULL),
 ('T007', 'Mr', 'Cristiano', 'Ronaldo', '1987-07-07', 'Cr7@ronaldo.com', '07927644255', '3 Brow Street, Maryport, England, CA15 6EF', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `ID` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`ID`, `username`, `password`) VALUES
+(1, 'Admin', '$2y$10$rxVK3BDI.ZEd3BWxYJ0bNuatGjH1K6rewy9SRTwZE8JNna9yFBXke');
 
 --
 -- Indexes for dumped tables
@@ -301,6 +320,22 @@ ALTER TABLE `teacherassistants`
 --
 ALTER TABLE `teachers`
   ADD PRIMARY KEY (`teacherID`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
